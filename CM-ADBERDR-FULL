@@ -1,0 +1,38 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+
+
+$SiteServer = $Env:COMPUTERNAME
+
+# Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
+
+$Manu = "Adobe"
+$AppName = "Acrobat Reader DC"
+
+                   $MinVer = "937"
+                   $AppDesc = "Reader November 20th 2025 Planned Update"
+
+$ExeLocation = "\\$SiteServer\Sources$\Applications\Adobe\OSD\2025.001.20$MinVer"
+$ExpectedVersion = "25.001.20$MinVer"
+
+$InstStr = "setup.exe"
+$UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
+$HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
+$AppFullName = "$Manu $AppName $ExpectedVersion"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$DPGName = "BSC_DPG"
+
+$clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1,$clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

@@ -13,7 +13,7 @@ $DTName = "Office 365 Default Deployment Type"
 
  ############################################## ADDED A REPAIR STRING ######################   setup.exe /download Config365Apps_2408.xml     ##################################################   -AllowRepairApp ADDED 
 
-               $MINVER =  "708"
+               $MINVER =  "730"
 
 $ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.17928.20$MINVER.V2408"
 $ExpectedVersion = "16.0.17928.20$MINVER"

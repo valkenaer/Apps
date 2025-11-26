@@ -1,0 +1,48 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+             $DPGName = "BSC_DPG"
+ 
+
+$Manu = "Microsoft"
+$AppName = "365 Apps for Enterprise"
+$AppDesc = "Microsoft 365 Apps for enterprise is a version of Office applications and is made available as part of your Microsoft 365 subscription. The apps are installed on your computer or smartphone from the cloud. You would need an active subscription to Microsoft 365 so that the apps are verified to have the requisite license."
+$DTName = "Office 365 Default Deployment Type"
+
+ ############################################## ADDED A REPAIR STRING ######################   setup.exe /download Config365Apps_2408.xml     ##################################################   -AllowRepairApp ADDED 
+
+               $MINVER =  "708"
+
+$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.17928.20$MINVER.V2408"
+$ExpectedVersion = "16.0.17928.20$MINVER"
+$UpdateVersion = "(version 2408)"
+$InstStr = "setup.exe /configure Config365Apps_2408.xml"
+$ConsoleFolderPath = "\Applications\Microsoft"
+$UninstStr = "setup.exe /configure Uninstall-365Apps.xml"
+$RepStr = "`"C:\Program Files\Microsoft Office 15\ClientX64\OfficeClickToRun.exe`" scenario=Repair platform=x64 culture=nl-nl RepairType=QuickRepair DisplaylayLevel=False"
+$HKLMKey = "SOFTWARE\Microsoft\Office\ClickToRun\Configuration"
+$RegValName = "VersionToReport"
+$RunningExe = "excel.exe"
+$AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
+
+$DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
+$DevColl02 = "W10V22H2 - 20250613 - BackOffice - P03_73"
+$DevColl03 = "BSC-P ALL MACHINES WITH M365"
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -PropertyType Version -ValueName $RegValName -Value -ExpectedValue $ExpectedVersion -ExpressionOperator GreaterEquals 
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $DTName -InstallCommand $InstStr -UninstallCommand $UninstStr -RepairCommand $RepStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+         New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+         New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+         New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

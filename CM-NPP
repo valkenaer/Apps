@@ -1,0 +1,50 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+             $DPGName = "BSC_DPG"
+ 
+$Manu = "Don Ho"
+$AppName = "NotepadPlusPlus"
+$AppDesc = "Notepad++ is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window."
+$RunningProc = "notepad++.exe"
+
+          $ExpectedVersion = "8.8.9"                       # MAKE SURE THERE IS A SOURCE SUBFOLDER!!!!!!!!!!!!!
+          $VerMinOne       = "8.8.8"
+
+$ExeLocation       = "\\$SiteServer\Sources$\Applications\NotepadPlusPlus\X64\$ExpectedVersion\Source"
+$InstStr           = "npp.$ExpectedVersion.Installer.x64.exe /S"
+$PrevVer           = "Don Ho NotepadPlusPlus $VerMinOne"
+$UninstStr         = "`"C:\Program Files\Notepad++\uninstall.exe`" /S"
+$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Notepad++"
+$Purp              = "Required"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$DevColl01         = "Computer All Physical (incl Spark)" 
+$DevColl02         = "BSC-P All VDI's"
+$AppFullName       = "$Manu $AppName $ExpectedVersion"
+
+If (Get-CMApplication $PrevVer) {
+
+    Remove-CMApplicationDeployment -Name $PrevVer -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVer -CollectionName $DevColl02 -Force
+    Remove-CMApplication -Name $PrevVer -Force
+}
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $AppName
+Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $RunningProc
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

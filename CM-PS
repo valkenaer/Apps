@@ -8,7 +8,7 @@ Set-Location "$($SiteCode.Name):\"
     $VerMinOne   = "7.5.2"
 
 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\PowerShell\$AppVer\PoweShell-$AppVer-win-x64.msi"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\PowerShell\$AppVer\PowerShell-$AppVer-win-x64.msi"
 $AppName         = "Powershell"
 
 $Manu            = "Microsoft"

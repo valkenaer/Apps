@@ -1,0 +1,41 @@
+
+    
+    $AppVer      = "7.5.4"
+    $VerMinOne   = "7.5.2"
+
+
+$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\PowerShell\$AppVer\PoweShell-$AppVer-win-x64.msi"
+$AppName         = "Powershell"
+
+$Manu            = "Microsoft"
+$AppDesc         = "PowerShell $AppVer is Microsoft's latest version of Windows task automation framework"
+$Purp            = "Required"
+$DPGName         = "BSC_DPG"
+$AppFullName     = "$Manu $AppName $AppVer"
+$PrevVersion     = "$Manu $AppName $VerMinOne"
+
+   $DevColl01         = "BSC-P Beheer VDI's"
+   $DevColl02         = "BSC-P SOC Beheer VDI's"
+   $DevColl03         = "All Computer Witrhg"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+
+

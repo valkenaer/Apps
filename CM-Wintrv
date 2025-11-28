@@ -22,6 +22,7 @@ $UninstStr = "`"%programfiles%\blp\Uninstall\unins000.exe`" /SILENT"
 $HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Bloomberg Terminal_is1"
 $ExpectedVersion = "2.0"
 $ConsoleFolderPath = "\Applications\Agentschap Generale Thesaurie"
+$DGName = "BSC_DPG"
 $DevColl = "BSCC0750_BSCC0750"
 $AppFullName = "$Manu $AppName [$RDATE] $Version"
 

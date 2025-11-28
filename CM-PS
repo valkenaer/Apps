@@ -1,4 +1,8 @@
-
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
     
     $AppVer      = "7.5.4"
     $VerMinOne   = "7.5.2"
@@ -16,7 +20,7 @@ $PrevVersion     = "$Manu $AppName $VerMinOne"
 
    $DevColl01         = "BSC-P Beheer VDI's"
    $DevColl02         = "BSC-P SOC Beheer VDI's"
-   $DevColl03         = "All Computer Witrhg"
+   $DevColl03         = "All Computer With Windows Server **"
 
 
 If (Get-CMApplication $PrevVersion) {

@@ -1,0 +1,65 @@
+# $Version    = "174.6.81"         #3174. 1. 80. 1             Outlook, Excel, Word and Powerpoint CANNOT RUN while installing     https://www.bloomberg.com/professional/support/software-updates/
+# $Version    = "177.5.81"         #3177. 1. 80. 2
+# $Version    = "182.5.81"         #3182. 1. 80. 1
+  $Version    = "183.4.81"         #3183. 1. 80. 1      20251120
+
+$RDATE      = "20251120"
+
+$Manu = "Bloomberg"
+$AppName = "Terminal"
+$AppDesc = "Full install of Bloomberg Terminal"
+$MSILocation = "\\$SiteServer\Sources$\Applications\Bloomberg Professional\$RDATE"
+# $InstStr = "sotr$Version.exe /s /cfg=setup.blp"
+$InstStr = "sotr$Version.exe /s /maindir=`"C:\Program Files`""
+$UninstStr = "`"%programfiles%\blp\Uninstall\unins000.exe`" /SILENT"
+$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Bloomberg Terminal_is1"
+$ExpectedVersion = "2.0"
+$ConsoleFolderPath = "\Applications\Agentschap Generale Thesaurie"
+$DevColl = "BSCC0750_BSCC0750"
+$AppFullName = "$Manu $AppName [$RDATE] $Version"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+#  $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "CustomVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $CustomVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $Version 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "11/11/2025 09:00" -TimeBaseOn LocalTime -Verbose
+
+<#
+
+$detVersion = "3183. 1. 80. 1"
+
+$path64 = ${Env:ProgramFiles} + "\blp\Wintrv\wintrv.exe"
+
+if (Test-Path $path64) {
+     $path = $path64
+} else {
+     # App doesn't exist
+     exit 0
+}
+
+$appVersion = (Get-Item $path).VersionInfo.FileVersion
+# Bloomberg uses commas instead of spaces in file versioning
+$appVersion = $appVersion.replace(",",".")
+
+if ([version]$appVersion -ge [version]$detVersion) {
+     Write-Host "Installed"
+}
+else {
+     # App exists but is outdated
+     exit 0
+}
+
+
+#>

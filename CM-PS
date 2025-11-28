@@ -2,11 +2,10 @@ Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmana
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
  
-          $SiteServer = $Env:COMPUTERNAME
+     $SiteServer = $Env:COMPUTERNAME
     
     $AppVer      = "7.5.4"
-    $VerMinOne   = "7.5.2"
-
+    $VerMinOne   = "7.5.0"
 
 $MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\PowerShell\$AppVer\PowerShell-$AppVer-win-x64.msi"
 $AppName         = "Powershell"
@@ -17,6 +16,7 @@ $Purp            = "Required"
 $DPGName         = "BSC_DPG"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
+$ConsoleFolderPath = "\Applications\Microsoft"
 
    $DevColl01         = "BSC-P Beheer VDI's"
    $DevColl02         = "BSC-P SOC Beheer VDI's"
@@ -32,7 +32,6 @@ If (Get-CMApplication $PrevVersion) {
 
 }
 
-
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
@@ -40,6 +39,13 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
 
 
 

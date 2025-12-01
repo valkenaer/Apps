@@ -1,7 +1,10 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
 
-
-
-      $AppVer      = "2501"
+$AppVer      = "20251111"
 
 $MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
 $AppName         = "Teams"
@@ -11,6 +14,8 @@ $Purp            = "Required"
 $DPGName         = "BSC_DPG"
 $AppFullName     = "$AppName $AppVer"
 $PrevVersion     = "$AppName $VerMinOne"
+$ConsoleFolderPath = "\Applications\Microsoft"
+
 
    $DevColl01         = "BSC-P Beheer VDI's"
    $DevColl02         = "BSC-P Telewerken VDI's"
@@ -39,5 +44,10 @@ New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -Deplo
 # New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
 
 

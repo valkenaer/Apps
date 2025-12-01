@@ -1,0 +1,43 @@
+
+
+
+      $AppVer      = "2501"
+
+$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
+$AppName         = "Teams"
+$Manu            = "Microsoft"
+$AppDesc         = "Microsoft Teams is the ultimate messaging app for your organization—a workspace for real-time collaboration and communication, meetings, file and app sharing, and even the occasional emoji!"
+$Purp            = "Required"
+$DPGName         = "BSC_DPG"
+$AppFullName     = "$AppName $AppVer"
+$PrevVersion     = "$AppName $VerMinOne"
+
+   $DevColl01         = "BSC-P Beheer VDI's"
+   $DevColl02         = "BSC-P Telewerken VDI's"
+   $DevColl03         = "BSC-P SOC Beheer VDI's"
+   $DevColl04         = "Computer All Physical (incl Spark)"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl04 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+# New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+
+

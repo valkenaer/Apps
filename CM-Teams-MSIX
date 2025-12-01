@@ -6,14 +6,14 @@ Set-Location "$($SiteCode.Name):\"
 
 $AppVer      = "20251111"
 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
+$MSIXLocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
 $AppName         = "Teams"
 $Manu            = "Microsoft"
 $AppDesc         = "Microsoft Teams is the ultimate messaging app for your organization—a workspace for real-time collaboration and communication, meetings, file and app sharing, and even the occasional emoji!"
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
-$AppFullName     = "$AppName $AppVer"
-$PrevVersion     = "$AppName $VerMinOne"
+$AppFullName     = "$Manu $AppName $AppVer"
+$PrevVersion     = "$Manu $AppName $VerMinOne"
 $ConsoleFolderPath = "\Applications\Microsoft"
 
 
@@ -33,9 +33,8 @@ If (Get-CMApplication $PrevVersion) {
 
 }
 
-
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
-Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Add-CMMSIXDeploymentType -ApplicationName $AppFullname -ContentLocation $MSIXLocation
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 

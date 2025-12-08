@@ -1,3 +1,9 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+
+$SiteServer = $Env:COMPUTERNAME
+
     $AppVer      = "143.0.7499.41"
     $VerMinOne   = "142.0.7444.176"
 
@@ -5,12 +11,12 @@
 $MSILocation     = "\SiteServer$\Sources$\Applications\Google\$AppVer\googlechromestandaloneenterprise64.msi"
 $AppName         = "Chrome"
 
-$Manu            = "Google, Inc."
+$Manu            = "Google"
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
-$AppFullName     = "$AppName $AppVer"
-$PrevVersion     = "$AppName $VerMinOne"
+$AppFullName     = "$Manu $AppName $AppVer"
+$PrevVersion     = "$Manu $AppName $VerMinOne"
 
    $DevColl01         = "Workstation Windows 10 version 22H2"
    $DevColl02         = "Workstation Windows 11 version 24H2"

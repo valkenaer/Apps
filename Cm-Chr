@@ -1,0 +1,56 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+
+     $PublName = "Google, Inc."
+$PublShortName = "Google"
+     $Product = "Chrome" 
+ $ConsoleFolderPath = "\Applications\Productivity Tools"
+
+          $SWVersion = "143.0.7499.41"
+         $VerMinOne  = "142.0.7444.176"
+
+$PrevVersion = "Google Chrome $VerMinOne"
+$AppFullName = "$PublShortname $Product $SWVersion"
+    $AppDesc = "Fist release of Chrome 139"
+   $Location = "\\$SiteServer\Sources$\Applications\Google\Chrome\$SWVersion\googlechromestandaloneenterprise64.msi"
+  $DPGName   = "BSC_DPG"
+   $ProcName = "chrome.exe"
+     $DTName = "Google Chrome - Windows Installer (*.msi file)"
+
+        $DevColl01 = "Computer All Physical (incl Spark)" 
+        $DevColl02 = "Workstations Windows 10 version 22H2"
+        $DevColl03 = "Workstations Windows 11 version 24H2"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $PublName -SoftwareVersion $SWVersion
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $Location -Force -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+     $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
+    Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+# \\host1014\Packages$\AppIcons

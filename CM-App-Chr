@@ -8,10 +8,9 @@ $SiteServer = $Env:COMPUTERNAME
     $VerMinOne   = "142.0.7444.176"
 
 
-$MSILocation     = "\SiteServer$\Sources$\Applications\Google\$AppVer\googlechromestandaloneenterprise64.msi"
-$AppName         = "Chrome"
-
+$MSILocation     = "\\SiteServer$\Sources$\Applications\Google\$AppVer\googlechromestandaloneenterprise64.msi"
 $Manu            = "Google"
+$AppName         = "Chrome"
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"

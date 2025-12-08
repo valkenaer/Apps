@@ -4,7 +4,8 @@ Set-Location "$($SiteCode.Name):\"
  
           $SiteServer = $Env:COMPUTERNAME
 
-$AppVer      = "20251111"
+$AppVer         = "20251211"
+$VerMinOne      = "20251111"
 
 $MSIXLocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
 $AppName         = "Teams"
@@ -16,8 +17,7 @@ $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
 $ConsoleFolderPath = "\Applications\Microsoft"
 
-
-   $DevColl01         = "BSC-P Beheer VDI's"
+$DevColl01         = "BSC-P Beheer VDI's
    $DevColl02         = "BSC-P Telewerken VDI's"
    $DevColl03         = "BSC-P SOC Beheer VDI's"
    $DevColl04         = "Computer All Physical (incl Spark)"

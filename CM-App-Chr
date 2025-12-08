@@ -14,6 +14,7 @@ $AppName         = "Chrome"
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
 
@@ -40,3 +41,10 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+

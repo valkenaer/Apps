@@ -14,7 +14,7 @@ $PublShortName = "Google"
 
 $PrevVersion = "Google Chrome $VerMinOne"
 $AppFullName = "$PublShortname $Product $SWVersion"
-    $AppDesc = "Fist release of Chrome 139"
+    $AppDesc = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
    $Location = "\\$SiteServer\Sources$\Applications\Google\Chrome\$SWVersion\googlechromestandaloneenterprise64.msi"
   $DPGName   = "BSC_DPG"
    $ProcName = "chrome.exe"

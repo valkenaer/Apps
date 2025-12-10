@@ -9,8 +9,8 @@ $Manu = "Mozilla"
 $AppName = "Firefox"
 $AppDesc = "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, Mozilla Corporation"
 
-           $ExpVer      = "145.0.2"
-       $VerMinOne       = "145.0.1"
+           $ExpVer      = "146.0"
+       $VerMinOne       = "145.0.2"
 
        $PrevVersion = "Mozilla Firefox $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\Mozilla\Firefox\$ExpVer"

@@ -9,17 +9,17 @@ $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
 
-             $MinVer = "997"
-          $VerMinOne = "937"
-            $RDate   = "December 11th 2025"
+             $MinVer = "0997"
+          $VerMinOne = "0937"
+            $RDate   = "January 13th 2026"
 
 
 $PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.20$VerMinOne"
 
 $AppDesc = "Adobe Acrobat DC Reader $RDate Planned update"
-$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.20$MinVer"
-$InstStr = "msiexec.exe /p AcroRdrDCUpd2500120$MinVer.msp /qn"
-$UninstStr = "msiexec.exe /p AcroRdrDCUpd2500120$MinVer.msp"
+$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.2$MinVer"
+$InstStr = "msiexec.exe /p AcroRdrDCUpd250012$MinVer.msp /qn"
+$UninstStr = "msiexec.exe /p AcroRdrDCUpd250012$MinVer.msp"
 $ExpectedVersion = "25.001.20$MinVer"
 $CustomVal = "MSP 2025.001.20$MinVer"
 

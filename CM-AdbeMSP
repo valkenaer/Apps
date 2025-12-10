@@ -1,10 +1,17 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+             $DPGName = "BSC_DPG"
+
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
 
              $MinVer = "997"
           $VerMinOne = "937"
-      $RDate         = "December 11th 2025"
+            $RDate   = "December 11th 2025"
 
 
 $PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.20$VerMinOne"
@@ -39,7 +46,7 @@ If (Get-CMApplication $PrevVersion) {
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
-Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName "Script Installer"
 Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcNAme -DisplayName "Running image name"

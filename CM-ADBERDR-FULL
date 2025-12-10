@@ -10,8 +10,8 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 
-                   $MinVer = "937"
-                   $AppDesc = "Reader November 20th 2025 Planned Update"
+                   $MinVer = "997"
+                   $AppDesc = "Reader Decmeber 11th 2025 Planned Update"
 
 $ExeLocation = "\\$SiteServer\Sources$\Applications\Adobe\OSD\2025.001.20$MinVer"
 $ExpectedVersion = "25.001.20$MinVer"

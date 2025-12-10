@@ -1,0 +1,60 @@
+$Manu = "Adobe"
+$AppName = "Acrobat Reader DC"
+$ProcName = "AcroRd32.exe"
+
+             $MinVer = "997"
+          $VerMinOne = "937"
+      $RDate         = "December 11th 2025"
+
+
+$PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.20$VerMinOne"
+
+$AppDesc = "Adobe Acrobat DC Reader $RDate Planned update"
+$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.20$MinVer"
+$InstStr = "msiexec.exe /p AcroRdrDCUpd2500120$MinVer.msp /qn"
+$UninstStr = "msiexec.exe /p AcroRdrDCUpd2500120$MinVer.msp"
+$ExpectedVersion = "25.001.20$MinVer"
+$CustomVal = "MSP 2025.001.20$MinVer"
+
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
+
+$DevColl01 = "Computer All Physical (incl Spark)" 
+$DevColl02 = "Workstations Windows 10 version 22H2"
+$DevColl03 = "Workstations Windows 11 version 24H2"
+
+$AppFullName = "$Manu $AppName $CustomVal"
+
+$clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName "Script Installer"
+Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcNAme -DisplayName "Running image name"
+
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+# InstalledSoftware | where Publisher == 'Adobe Systems Incorporated'

@@ -1,0 +1,51 @@
+<#
+
+https://dotnet.microsoft.com/en-us/download/dotnet/8.0
+
+First install on standalone, use the key that holds "Microsoft Windows Desktop Runtime VERSION" as check
+
+8.0.12 [20250115]   {71CD19D6-C448-4B5D-9A38-018741753290}    64.48.26178
+8.0.13 [20250212]   {852F821B-340A-4473-BA94-8FAFD5AFFE85}    64.52.27986
+8.0.14 [20250314]   {BC56BEFC-D9B7-476F-9B7C-2CD494572C27}    64.56.29521
+8.0.15 [20250411]   {0E4A7820-FDA4-4250-B7AC-E7A2F7B43B64}    64.60.31203
+8.0.16 [20250519]   {AAEFDC34-F493-41AC-A264-11FE93008418}    64.64.32786
+8.0.17 [20250622]   {64AB07EF-120F-4A5A-A356-61D6D8966457}    64.68.34385
+8.0.18 [20250708]   {2A96D04B-A9AA-4140-93CA-3B1DE8ACEC09}    64.72.35986  
+8.0.19 [20250819]   {A6EA542C-884C-4FE7-89E4-8C28E14B601C}    64.76.37602
+8.0.20 [20250910]   {A6EA542C-884C-4FE7-89E4-8C28E14B601C}    64.78.33333
+8.0.21 [20251015]   {A32777AD-F93A-4F26-BEE6-9C5961EA71D6}    64.84.40919
+8.0.22 [20251114]   {4CCC1CCD-6FA3-4DD5-A06B-E94EA90094CF}    64.88.42561
+8.0.23 [20251209]   {                                    }    64.92
+
+
+#>
+
+   $ExpVer          = "8.0.23"
+   $GUIDRT          = "{7d9b6d96-4e54-49b2-b28e-72922abb1f66}"
+   $ExpectedVersion = "64.92.52341"
+   $Location        = "\\host1417\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
+
+
+
+   $AppName         = "Windows Desktop Runtime $ExpVer [2025-12]"
+   $ProcName        = "abacab4e.exe"
+   $Manu            = "Microsoft"
+   $InstStr         = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"
+   $UninstStr       = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
+
+
+$AppDesc   = "The .NET Desktop Runtime enables you to run existing Windows desktop applications. This release includes the .NET Runtime; you don't need to install it separately."
+
+$HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUIDRT"
+
+# $DevColl   = "Computer All Physical (incl Spark)"
+$DevColl   = "BSCC0750_BSCC0750"
+$AppFullName = "$AppName" 
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $Location -ApplicationName $AppFullname -DeploymentTypeName $AppFullName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+# New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "05/06/2025 08:00" -TimeBaseOn LocalTime -Verbose
+

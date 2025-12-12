@@ -10,8 +10,8 @@ $AppName = "VSCode"
 $ProcName = "code.exe"
 $AppDesc = "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux."
 
-                                  $ExpectedVersion = "1.106.3"
-                                     $VerMINUSONE  = "1.106.2"
+                                  $ExpectedVersion = "1.107.0"
+                                     $VerMINUSONE  = "1.106.3"
 
 $PrevVersion = "Microsoft VSCode $VerMINUSONE"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\VSCode\$ExpectedVersion"

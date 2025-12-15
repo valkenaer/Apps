@@ -4,8 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 
 $SiteServer = $Env:COMPUTERNAME
 
-    $AppVer      = "143.0.7499.41"
-    $VerMinOne   = "142.0.7444.176"
+    $AppVer      = "143.0.7499.110"
+    $VerMinOne   = "143.0.7499.41"
 
 
 $MSILocation     = "\\SiteServer$\Sources$\Applications\Google\$AppVer\googlechromestandaloneenterprise64.msi"

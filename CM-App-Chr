@@ -7,8 +7,7 @@ $SiteServer = $Env:COMPUTERNAME
     $AppVer      = "143.0.7499.147"
     $VerMinOne   = "143.0.7499.110"
 
-
-$MSILocation     = "\\SiteServer$\Sources$\Applications\Google\Chrome\$AppVer\googlechromestandaloneenterprise64.msi"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\Google\Chrome\$AppVer\googlechromestandaloneenterprise64.msi"
 $Manu            = "Google"
 $AppName         = "Chrome"
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
@@ -18,8 +17,8 @@ $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
 
-   $DevColl01         = "Workstation Windows 10 version 22H2"
-   $DevColl02         = "Workstation Windows 11 version 24H2"
+   $DevColl01         = "Workstations Windows 10 version 22H2"
+   $DevColl02         = "Workstations Windows 11 version 24H2"
    $DevColl03         = "Computer All Physical (incl Spark)"
 
 

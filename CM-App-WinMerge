@@ -19,7 +19,7 @@ $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows
        $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "winmerge.exe"
-       $DevColl     = "20180808_FIREFOX"
+       $DevColl     = "W10V22H2 - 20250613 - MidOffice - P03_65"
        $DTName      = "WinMerge"
        $AppFullName = "$AppName $ExpVer"
 

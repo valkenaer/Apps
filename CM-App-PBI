@@ -1,0 +1,68 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+
+$SiteServer = $Env:COMPUTERNAME
+
+    $Manu            = "Microsoft"
+    $AppName         = "PowerBI Desktop"
+    $AppDesc         = "Dig deeper into data and find patterns you may have otherwise missed that lead to actionable insights. Use features like quick measures, grouping, forecasting, and clustering. Give advanced users full control over their model using powerful Data Analysis Expressions (DAX) formula language. If you’re familiar with Microsoft 365, you’ll feel at home in Power BI."
+    $ProcName        = "PBIDesktop.exe"
+	$DPGName         = "BSC_DPG"
+
+              $ExpectedVersion = "2.149.1429.0"
+              $VerMinOne       = "2.148.878.0"
+              $GUID            = "{ea577906-4d27-4fb9-b06f-070567a674a6}"         # Use New-Guid to create bogus GUID on first run
+
+    $PrevVersion = "Microsoft PowerBI Desktop $VerMinOne"
+    $ExeLoc      = "\\$SiteServer\Sources$\Applications\Microsoft\PowerBI Desktop\$ExpectedVersion"
+    $InstStr     = "PBIDesktopSetup_x64.exe -quiet -norestart ACCEPT_EULA=1 INSTALLDESKTOPSHORTCUT=0 DISABLE_UPDATE_NOTIFICATION=0"
+    $UninstStr   = "MsiExec.exe /X$GUID"
+    $HKLMKey     = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
+    $AppFullName = "$Manu $AppName $ExpectedVersion"
+$ConsoleFolderPath = "\Applications\Microsoft"
+    $DevColl01     = "BSCC0750_BSCC0750"
+    $DevColl02     = "W1XV2XH2 - 20250613 - ITS - P04_65"
+    $DevColl03     = "W10V22H2 - 20250613 - MidOffice - P03_65"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+
+    $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+    New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+    Add-CMScriptDeploymentType -ContentLocation $ExeLoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+    Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+    $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName "Script Installer"
+    Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
+
+    New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+    New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+
+<#
+
+$AppVersion    20251028           2.148.878.0       {48b28c1b-3682-4780-9984-6f075b58dad9}
+$AppVersion    202511212          2.149.1429.0      {}
+
+\\host1014\Packages$\AppIcons  
+
+
+#>

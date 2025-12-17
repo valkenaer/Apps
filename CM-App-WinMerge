@@ -9,8 +9,8 @@ $Manu = "WinMerge"
 $AppName = "WinMerge"
 $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle."
 
-           $ExpVer      = "2.16.50.2"
-       $VerMinOne       = "2.16.42.2"
+           $ExpVer      = "2.16.52.2"
+       $VerMinOne       = "2.16.50.2"
 
        $PrevVersion = "WinMerge $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\WinMerge\$ExpVer"

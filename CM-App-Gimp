@@ -1,0 +1,56 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+
+$SiteServer = $Env:COMPUTERNAME
+
+
+                                      # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
+
+
+               $Version = "3.0.6"
+           $FullVersion = "3.0.6.1"
+              $PrevVer  = "3.0.4"
+
+
+$Manu              = "GIMP"
+$AppName           = "for Windows"
+$AppDesc           = "GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems. It is free software, you can change its source code and distribute your changes."
+$RunningImg        = "gimp.exe"
+$MSILocation       = "\\$SiteServer\Sources$\Applications\SBP\GIMP\$Version"
+$InstStr           = "gimp-$Version-setup.exe /VERYSILENT /NORESTART /ALLUSERS"
+$UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GIMP-3_is1"
+$AppFullName       = "$Manu $AppName $Version"
+$PrevVersion       = "$Manu $AppName $PrevVer"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $FullVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplication -$PrevVersion -Force  
+
+}
+
+
+    New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+

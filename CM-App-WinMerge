@@ -14,9 +14,9 @@ $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows
 
        $PrevVersion = "WinMerge $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\WinMerge\$ExpVer"
-           $InstStr = "WinMerge-$ExpVer-x64-Setup.exe /DesktopShortcut=false /PreventRebootRequired=true"
-           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Mozilla Firefox"
-       $UninstStr   = "`"C:\Program Files\Mozilla Firefox\uninstall\helper.exe`" /S"
+           $InstStr = "WinMerge-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1"
+       $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "winmerge.exe"
        $DevColl     = "20180808_FIREFOX"

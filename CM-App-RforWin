@@ -1,0 +1,51 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+$ExpectedVersion = "4.5.2"
+$PrevVer         = "4.5.1"
+
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R for Windows\$ExpectedVersion"
+
+        $Manu      = "R Project"
+        $AppName   = "R for Windows"
+        $AppDesc   = "R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS"
+        $InstStr   = "R-$ExpectedVersion-win.exe /VERYSILENT"
+        $UninstStr = "`"C:\Program Files\R\R-$ExpectedVersion\unins000.exe`" /VERYSILENT /NORESTART"
+        $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\R for Windows "+"$ExpectedVersion"+"_is1"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+          $DevColl = "BSCC0750_BSCC0750"
+      $AppFullName = "$Manu $AppName $ExpectedVersion"
+      $PrevVersion = "$Manu $AppName $PrevVer"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "11/11/2025 09:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+<#
+
+REPO    https://cran.r-project.org/bin/windows/base/old/
+HELP    https://jrsoftware.org/ishelp/index.php?topic=setupcmdline
+ICON    RGUI.exe
+
+#>

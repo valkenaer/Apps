@@ -2,17 +2,19 @@ Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmana
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
- 
-               $MINVER =  "672"
+              
+  $MAJVER =  "18526"        
+                          $MINVER =  "20672"
+  $FRIENDLY = "2502"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
 $AppDesc = "Microsoft 365 Apps for enterprise is a version of Office applications and is made available as part of your Microsoft 365 subscription. The apps are installed on your computer or smartphone from the cloud. You would need an active subscription to Microsoft 365 so that the apps are verified to have the requisite license."
 $DTName = "Office 365 Default Deployment Type"
-$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.18526.20$MINVER.V2502"
-$ExpectedVersion = "16.0.18526.20$MINVER"
-$UpdateVersion = "(version 2502)"
-$InstStr = "setup.exe /configure Config365Apps_2502.xml"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.$MAJVER.$MINVER.V$FRIENDLY"
+$ExpectedVersion = "16.0.$MAJVER.20$MINVER"
+$UpdateVersion = "(version FRIENDLY)"
+$InstStr = "setup.exe /configure Config365Apps_$FRIENDLY.xml"
 $ConsoleFolderPath = "\Applications\Microsoft"
 $UninstStr = "setup.exe /configure Uninstall-365Apps.xml"
 $RepStr = "`"C:\Program Files\Microsoft Office 15\ClientX64\OfficeClickToRun.exe`" scenario=Repair platform=x64 culture=nl-nl RepairType=QuickRepair DisplaylayLevel=False"

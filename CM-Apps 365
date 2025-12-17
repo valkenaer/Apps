@@ -13,11 +13,11 @@ $DTName = "Office 365 Default Deployment Type"
 
  ############################################## ADDED A REPAIR STRING ######################   setup.exe /download Config365Apps_2408.xml     ##################################################   -AllowRepairApp ADDED 
 
-               $MINVER =  "730"
+               $MINVER =  "672"
 
-$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.17928.20$MINVER.V2408"
-$ExpectedVersion = "16.0.17928.20$MINVER"
-$UpdateVersion = "(version 2408)"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.18526.20$MINVER.V2502"
+$ExpectedVersion = "16.0.18526.20$MINVER"
+$UpdateVersion = "(version 2502)"
 $InstStr = "setup.exe /configure Config365Apps_2408.xml"
 $ConsoleFolderPath = "\Applications\Microsoft"
 $UninstStr = "setup.exe /configure Uninstall-365Apps.xml"

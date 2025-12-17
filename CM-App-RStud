@@ -1,0 +1,35 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+  $MajVer = "2025.09.2        # Icon in RStudio.exe   
+  $MinVer = "418              # DL in https://posit.co/download/rstudio-desktop/
+
+$Manu = "RStudio"
+$AppName = "RStudio"
+$AppDesc = "RStudio is a set of integrated tools designed to help you be more productive with R. It includes a console, syntax-highlighting editor that supports direct code execution, and a variety of robust tools for plotting, viewing history, debugging and managing your workspace."
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Studio\$MajVer"
+$ProcName = "rstudio.exe"
+$InstStr = "RStudio-$MajVer-$MinVer.exe /S"
+$UninstStr = "`"C:\Program Files\RStudio\Uninstall.exe`" /S"
+$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\RStudio"
+$ExpectedVersion = "$MajVer+$MinVer"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+$AppFullName = "$AppName $ExpectedVersion" 
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "11/11/2025 13:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

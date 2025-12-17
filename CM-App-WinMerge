@@ -44,13 +44,10 @@ Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName
 # END ADDED IN CONFIGMGR 2107
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 
 If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
-
-
-#  InstalledSoftware | where Publisher == 'Mozilla'     138.0.4                \\host1014\Packages$\AppIcons             Not updated      0417 0448 0337

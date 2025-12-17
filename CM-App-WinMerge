@@ -1,0 +1,56 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+             $DPGName = "BSC_DPG"
+
+$Manu = "WinMerge"
+$AppName = "WinMerge"
+$AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle."
+
+           $ExpVer      = "2.16.50.2"
+       $VerMinOne       = "2.16.42.2"
+
+       $PrevVersion = "WinMerge $VerMinOne"
+       $ExeLocation = "\\$SiteServer\Sources$\Applications\WinMerge\$ExpVer"
+           $InstStr = "WinMerge-$ExpVer-x64-Setup.exe /DesktopShortcut=false /PreventRebootRequired=true"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Mozilla Firefox"
+       $UninstStr   = "`"C:\Program Files\Mozilla Firefox\uninstall\helper.exe`" /S"
+ $ConsoleFolderPath = "\Applications\Productivity Tools"
+         $ProcName  = "winmerge.exe"
+       $DevColl     = "20180808_FIREFOX"
+       $DTName      = "WinMerge"
+       $AppFullName = "$AppName $ExpVer"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+# ADDED IN CONFIGMGR 2107
+
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
+Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName
+
+# END ADDED IN CONFIGMGR 2107
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+#  InstalledSoftware | where Publisher == 'Mozilla'     138.0.4                \\host1014\Packages$\AppIcons             Not updated      0417 0448 0337

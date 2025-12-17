@@ -4,13 +4,9 @@ Set-Location "$($SiteCode.Name):\"
 
 $SiteServer = $Env:COMPUTERNAME
 
-
-                                      # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
-
-
-               $Version = "3.0.6"
-           $FullVersion = "3.0.6.1"
-              $PrevVer  = "3.0.4"
+            $Version = "3.0.6"                 # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
+        $FullVersion = "3.0.6.1"
+          $PrevVer  = "3.0.4"
 
 
 $Manu              = "GIMP"

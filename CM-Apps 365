@@ -1,20 +1,14 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
  
-          $SiteServer = $Env:COMPUTERNAME
-             $DPGName = "BSC_DPG"
- 
+               $MINVER =  "672"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
 $AppDesc = "Microsoft 365 Apps for enterprise is a version of Office applications and is made available as part of your Microsoft 365 subscription. The apps are installed on your computer or smartphone from the cloud. You would need an active subscription to Microsoft 365 so that the apps are verified to have the requisite license."
 $DTName = "Office 365 Default Deployment Type"
-
- ############################################## ADDED A REPAIR STRING ######################   setup.exe /download Config365Apps_2502.xml     ##################################################   -AllowRepairApp ADDED 
-
-               $MINVER =  "672"
-
 $ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.18526.20$MINVER.V2502"
 $ExpectedVersion = "16.0.18526.20$MINVER"
 $UpdateVersion = "(version 2502)"
@@ -25,6 +19,7 @@ $RepStr = "`"C:\Program Files\Microsoft Office 15\ClientX64\OfficeClickToRun.exe
 $HKLMKey = "SOFTWARE\Microsoft\Office\ClickToRun\Configuration"
 $RegValName = "VersionToReport"
 $RunningExe = "excel.exe"
+ $DPGName = "BSC_DPG"
 $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
 
 $DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"

@@ -1,13 +1,11 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
-
 $SiteServer = $Env:COMPUTERNAME
 
             $Version = "3.0.6"                 # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
         $FullVersion = "3.0.6.1"
           $PrevVer  = "3.0.4"
-
 
 $Manu              = "GIMP"
 $AppName           = "for Windows"
@@ -29,20 +27,14 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
-
-
-
 If (Get-CMApplication $PrevVersion) {
 
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
     Remove-CMApplication -$PrevVersion -Force  
-
 }
 
 
-    New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
-
-
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
 $MoveApp = Get-CMApplication -Name $AppFullName
 
 If($ConsoleFolderPath) {

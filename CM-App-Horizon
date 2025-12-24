@@ -17,7 +17,7 @@ $InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLA
 $UninstStr = "MsiExec.exe /X$GUID"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
 $AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizon virtual desktop from your device of choice giving you on-the-go access from any location." 
-$AppFullName = "$Manu $AppName $Friendly $ExpectedVersion"
+$AppFullName = "$Manu $Prod $AppName $Friendly $ExpectedVersion"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName = "BSC_DPG"
 $PrevVersion = "VMWare Horizon Client PREV"

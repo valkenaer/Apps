@@ -2,7 +2,7 @@ Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmana
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
-$DPGName = "BSC_DPG"
+
 
       $GUID            = "{EB025864-E249-42F1-9D44-019C080D0D5D}"
       $Friendly        = "2512"
@@ -18,6 +18,8 @@ $UninstStr = "MsiExec.exe /X$GUID"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
 $AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizon virtual desktop from your device of choice giving you on-the-go access from any location." 
 $AppFullName = "$Manu $AppName $Friendly $ExpectedVersion"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$DPGName = "BSC_DPG"
 $PrevVersion = "VMWare Horizon Client PREV"
 
 $DevColl01 = "Computer All Physical (incl Spark)" 
@@ -28,7 +30,13 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
-# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "01/01/2025 12:34" -TimeBaseOn LocalTime -Verbose
+# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "26/12/2025 15:34" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
 
 #     2406  {7E49B95B-6B8A-4B4D-A35D-9ACB64F40AFC}
 #     2412  {5440EDB1-6D0C-4F28-9116-61AE2ADFE610}

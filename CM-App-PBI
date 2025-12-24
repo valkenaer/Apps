@@ -42,8 +42,8 @@ If (Get-CMApplication $PrevVersion) {
     $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName "Script Installer"
     Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
 
-    # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
-    # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+    # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "12/12/2025 12:34" -TimeBaseOn LocalTime -Verbose
+    # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "12/12/2025 12:34" -TimeBaseOn LocalTime -Verbose
 
 
 

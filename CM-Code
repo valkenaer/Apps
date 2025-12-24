@@ -1,23 +1,20 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
- 
-          $SiteServer = $Env:COMPUTERNAME
-             $DPGName = "BSC_DPG"
+$SiteServer = $Env:COMPUTERNAME
+
+                   $ExpectedVersion = "1.107.1"
+                       $VerMINUSONE  = "1.107.0"
 
 $Manu = "Microsoft"
 $AppName = "VSCode"
 $ProcName = "code.exe"
 $AppDesc = "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux."
-
-                                  $ExpectedVersion = "1.107.1"
-                                     $VerMINUSONE  = "1.107.0"
-
 $PrevVersion = "$Manu $AppName $VerMINUSONE"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
 $InstStr = "VSCodeSetup-x64-$ExpectedVersion.exe /VERYSILENT /NORESTART"
 $UninstStr = "`"C:\Program Files\Microsoft VS Code\unins000.exe`" /VERYSILENT /NORESTART"
-$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1"   # STILL UNCHANGED :)
 $DTName = "VSCode deployment"
 $DGName = "BSC_DPG"
 $Purp = "Required"

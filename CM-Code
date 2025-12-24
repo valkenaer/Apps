@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                   $ExpectedVersion = "1.107.1"
+                   $ExpectedVersion = "1.107.1"           # 20251224 Change visibility to HIDDEN
                        $VerMINUSONE  = "1.107.0"
 
 $Manu = "Microsoft"
@@ -38,7 +38,7 @@ $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName
 Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DGName
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

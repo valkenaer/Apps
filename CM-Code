@@ -9,10 +9,12 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu = "Microsoft"
 $AppName = "VSCode"
 $ProcName = "code.exe"
+$BinName = "VSCodeSetup"
+$Arch    = "x64"
 $AppDesc = "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux."
 $PrevVersion = "$Manu $AppName $VerMINUSONE"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
-$InstStr = "VSCodeSetup-x64-$ExpectedVersion.exe /VERYSILENT /NORESTART"
+$InstStr = "$BinName-$Arch-$ExpectedVersion.exe /VERYSILENT /NORESTART"
 $UninstStr = "`"C:\Program Files\Microsoft VS Code\unins000.exe`" /VERYSILENT /NORESTART"
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1"   # STILL UNCHANGED :)
 $DTName = "VSCode deployment"
@@ -26,7 +28,6 @@ If (Get-CMApplication $PrevVersion) {
            Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl -Force
            Remove-CMApplication $PrevVersion -Force
 }
-
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 

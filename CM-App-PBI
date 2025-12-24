@@ -12,10 +12,10 @@ $SiteServer = $Env:COMPUTERNAME
 
               $ExpectedVersion = "2.149.1429.0"
               $VerMinOne       = "2.148.878.0"
-              $GUID            = "{ea577906-4d27-4fb9-b06f-070567a674a6}"         # Use New-Guid to create bogus GUID on first run
+              $GUID            = "{1f201073-f25d-4638-97a6-4018c76f71f2}"         # Use New-Guid to create bogus GUID on first run
 
-    $PrevVersion = "Microsoft PowerBI Desktop $VerMinOne"
-    $ExeLoc      = "\\$SiteServer\Sources$\Applications\Microsoft\PowerBI Desktop\$ExpectedVersion"
+    $PrevVersion = "$Manu $AppName $VerMinOne"
+    $ExeLoc      = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
     $InstStr     = "PBIDesktopSetup_x64.exe -quiet -norestart ACCEPT_EULA=1 INSTALLDESKTOPSHORTCUT=0 DISABLE_UPDATE_NOTIFICATION=0"
     $UninstStr   = "MsiExec.exe /X$GUID"
     $HKLMKey     = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
@@ -60,7 +60,7 @@ If($ConsoleFolderPath) {
 <#
 
 $AppVersion    20251028           2.148.878.0       {48b28c1b-3682-4780-9984-6f075b58dad9}
-$AppVersion    202511212          2.149.1429.0      {}
+$AppVersion    202511212          2.149.1429.0      {1f201073-f25d-4638-97a6-4018c76f71f2}
 
 \\host1014\Packages$\AppIcons  
 

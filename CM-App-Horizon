@@ -10,9 +10,10 @@ $SiteServer = $Env:COMPUTERNAME
       $FullInstaller   = "8.17.0-20184583317"
 
 $Manu      = "Omnissa"
-$AppName   = "Horizon Client"
-$EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$Friendly"
-$ExeName   = "Omnissa-Horizon-Client-$Friendly-$FullInstaller.exe"
+$Prod      = "Horizon
+$AppName   = "Client"
+$EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$Prod\$AppName\$Friendly"
+$ExeName   = "$Manu-$Prod-$AppName-$Friendly-$FullInstaller.exe"
 $InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLAY=1 LOGINASCURRENTUSER_DEFAULT=1 DESKTOP_SHORTCUT=0 STARTMENU_SHORTCUT=1 AUTO_UPDATE_ENABLED=0 KEYLOGGER_BLOCKING_ENABLED=1 SKIP_DOTNET_RUNTIME_INSTALL=1 VDM_SERVER=vdi2022.bsc.rijksoverheid.nl"
 $UninstStr = "MsiExec.exe /X$GUID"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"

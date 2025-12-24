@@ -9,7 +9,7 @@ $SiteServer = $Env:COMPUTERNAME
           $FullInstaller      = "8.17.0-20184583317"
 
 $Manu      = "Omnissa"
-$Prod      = "Horizon
+$Prod      = "Horizon"
 $AppName   = "Client"
 $EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$Prod\$AppName\$Friendly"
 $ExeName   = "$Manu-$Prod-$AppName-$Friendly-$FullInstaller.exe"

@@ -13,8 +13,8 @@ $AppDesc = "Visual Studio Code is a lightweight but powerful source code editor 
                                   $ExpectedVersion = "1.107.1"
                                      $VerMINUSONE  = "1.107.0"
 
-$PrevVersion = "Microsoft VSCode $VerMINUSONE"
-$ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\VSCode\$ExpectedVersion"
+$PrevVersion = "$Manu $AppName $VerMINUSONE"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
 $InstStr = "VSCodeSetup-x64-$ExpectedVersion.exe /VERYSILENT /NORESTART"
 $UninstStr = "`"C:\Program Files\Microsoft VS Code\unins000.exe`" /VERYSILENT /NORESTART"
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1"

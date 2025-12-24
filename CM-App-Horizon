@@ -1,8 +1,37 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
- 
-          $SiteServer = $Env:COMPUTERNAME
-             $DPGName = "BSC_DPG"
+$SiteServer = $Env:COMPUTERNAME
+$DPGName = "BSC_DPG"
 
+      $GUID            = "{EB025864-E249-42F1-9D44-019C080D0D5D}"
+      $Friendly        = "2512"
+      $ExpectedVersion = "8.17.0.42163"
+      $FullInstaller   = "8.17.0-20184583317"
 
+$Manu      = "Omnissa"
+$AppName   = "Horizon Client"
+$EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$Friendly"
+$ExeName   = "Omnissa-Horizon-Client-$Friendly-$FullInstaller.exe"
+$InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLAY=1 LOGINASCURRENTUSER_DEFAULT=1 DESKTOP_SHORTCUT=0 STARTMENU_SHORTCUT=1 AUTO_UPDATE_ENABLED=0 KEYLOGGER_BLOCKING_ENABLED=1 SKIP_DOTNET_RUNTIME_INSTALL=1 VDM_SERVER=vdi2022.bsc.rijksoverheid.nl"
+$UninstStr = "MsiExec.exe /X$GUID"
+$HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
+$AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizon virtual desktop from your device of choice giving you on-the-go access from any location." 
+$AppFullName = "$Manu $AppName $Friendly $ExpectedVersion"
+$PrevVersion = "VMWare Horizon Client PREV"
+
+$DevColl01 = "Computer All Physical (incl Spark)" 
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "01/01/2025 12:34" -TimeBaseOn LocalTime -Verbose
+
+#     2406  {7E49B95B-6B8A-4B4D-A35D-9ACB64F40AFC}
+#     2412  {5440EDB1-6D0C-4F28-9116-61AE2ADFE610}
+#     2506  {D223C13D-AD5D-4875-8FD1-6EF3B79F1274}   "8.16.0.555555"
+#     2512  - DETECTION NOK - CARLODEP 6FE38F8D-17C4-4168-ABD0-4E7996D18A6A}
+#     2512  {EB025864-E249-42F1-9D44-019C080D0D5D}   "8.17.0.42163"

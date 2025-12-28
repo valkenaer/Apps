@@ -10,8 +10,8 @@ $AppName = "NotepadPlusPlus"
 $AppDesc = "Notepad++ is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window."
 $RunningProc = "notepad++.exe"
 
-          $ExpectedVersion = "8.8.9"                       # MAKE SURE THERE IS A SOURCE SUBFOLDER!!!!!!!!!!!!!
-          $VerMinOne       = "8.8.8"
+          $ExpectedVersion = "8.9"                       # MAKE SURE THERE IS A SOURCE SUBFOLDER!!!!!!!!!!!!!
+          $VerMinOne       = "8.8.9"
 
 $ExeLocation       = "\\$SiteServer\Sources$\Applications\NotepadPlusPlus\X64\$ExpectedVersion\Source"
 $InstStr           = "npp.$ExpectedVersion.Installer.x64.exe /S"

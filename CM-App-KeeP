@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME 
 
-                         $Ver    = "2.60"           # ADD UPDATE MECHANISM
+                         $Ver    = "2.60"       
                       $VerMinOne = "2.55" 
 
 $Manu = "Dominic Reichl"
@@ -20,11 +20,17 @@ $DGName = "BSC_DPG"
 $Purp = "Required"
 $DevColl01 = "Computer All Physical (incl Spark)"
 $DevColl02 = "BSC-P Telewerken VDI's"
+$PrevVersion = "$Manu $AppName $VerMinOne" 
 $AppFullName = "$Manu $AppName $Ver"
 
 
-$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Ver -Value
+If (Get-CMApplication $PrevVersion) {
+           Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+           Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+           Remove-CMApplication $PrevVersion -Force
+}
 
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Ver -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

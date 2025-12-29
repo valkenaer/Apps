@@ -25,8 +25,7 @@ $RunningExe = "excel.exe"
 $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
 
 $DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
-$DevColl02 = "W10V22H2 - 20250613 - BackOffice - P03_73"
-$DevColl03 = "BSC-P ALL MACHINES WITH M365"
+$DevColl02 = "BSC-P ALL MACHINES WITH M365"
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -PropertyType Version -ValueName $RegValName -Value -ExpectedValue $ExpectedVersion -ExpressionOperator GreaterEquals 
 
@@ -36,7 +35,6 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 
          New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
          New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
-         New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

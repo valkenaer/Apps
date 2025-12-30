@@ -7,10 +7,9 @@ Set-Location "$($SiteCode.Name):\"
     $AppVer      = "7.5.4"
     $VerMinOne   = "7.5.0"
 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\Microsoft\PowerShell\$AppVer\PowerShell-$AppVer-win-x64.msi"
-$AppName         = "Powershell"
-
+$AppName         = "PowerShell"
 $Manu            = "Microsoft"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\$AppName-$AppVer-win-x64.msi"
 $AppDesc         = "PowerShell $AppVer is Microsoft's latest version of Windows task automation framework"
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"

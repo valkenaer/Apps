@@ -1,0 +1,40 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+              
+                                              $Version = "2.0.0" 
+
+$Manu = "Rijkswaterstaat"
+$AppName = "Spark"
+$AppDesc = "SPARK staat voor Strategisch Personenauto RekenKader. Het heeft als doel de toekomstige omvang en samenstelling van het autobezit in Nederland voor verschillende economische scenarios in kaart te brengen. Daarnaast biedt dit model inzicht in de effecten van beleidsmaatregelen rond autobezit en gebruik."
+$RunningProc = "spark.exe"
+$EXELocation = "\\$SiteServer\Sources$\Applications\SBP\SPARK\$Version"
+$InstStr = "spark.$Version.installer.exe /S /D=%ProgramFiles(x86)%\SPARK"
+$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\SPARK $Version"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$UninstStr = "`"c:\Program Files (x86)\SPARK\uninstall.exe`" /S"
+$PURP = "Available"
+$DevColl = "BSCC0750_BSCC0750"
+ $DPGName = "BSC_DPG"
+$AppFullName = "$Manu $AppName $Version"
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $EXELocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 45 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden 
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $PURP -UserNotification DisplayAll -AvailableDateTime "01/01/2026 09:15" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+# Does the application also create a c:\Program WITHOUT starting SPARk?
+#   e $clause1 -MaximumRuntimeMins 45
+
+

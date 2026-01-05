@@ -1,0 +1,37 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+ 
+                        $ExpectedVersion = "4.1.9"
+
+$Manu = "Fluxicon"
+$AppName = "Disco"
+$AppDesc = "The revolutionary process mining technology in Disco helps you to create beautiful visual maps from your process data in minutes, not weeks."
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\Fluxicon\Disco\$ExpectedVersion"
+$InstStr = "Disco-Setup.exe /S"
+$UninstStr = "`"C:\Program Files (x86)\Disco\Disco-Uninstall.exe`" /S"
+$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Disco"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$Purp              = "Available"
+$DevColl = "BSCC0750_BSCC0750"
+$DPGName = "BSC_DPG"
+$AppFullName = "$Manu $AppName $ExpectedVersion"
+
+# $clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{63132825-4aae-484c-9a14-b600f6a6cb61}" -Existence
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

@@ -1,0 +1,33 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                           $AppVer      = "12.0.3"    #INSTALLFORSYSTEM
+                          $ExpPlat      = "win64"
+
+
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\Gurobi\$AppVer\Gurobi-$AppVer-$ExpPlat.msi"
+$Manu            = "Gurobi"
+$AppDesc         = "Gurobi Optimizer is a prescriptive analytics platform and a decision-making technology developed by Gurobi Optimization, LLC"
+$DevColl        = "W1XV2XH2 - 20250613 - ITS - P04_65"
+$Purp           = "Available"
+$AppFullName    = "$Manu $AppVer 001"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DTName         = "Gurobi $AppVer (64 bit) - Windows Installer (*.msi file)"
+$DPGName           = "BSC_DPG"
+$FixedInstallCMD   = "msiexec.exe /i Gurobi-$AppVer-$ExpPlat.msi /qn /norestart"
+
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

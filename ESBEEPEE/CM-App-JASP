@@ -1,0 +1,36 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                  $SWVersion = "0.17.2"
+
+$PublName = "UvA"
+$Product = "JASP"
+$AppFullName = "$PublShortname $Product $SWVersion"
+$AppDesc = "JASP (Jeffreys’s Amazing Statistics Program) is a free and open-source program for statistical analysis supported by the University of Amsterdam. It is designed to be easy to use, and familiar to users of SPSS. It offers standard analysis procedures in both their classical and Bayesian form. JASP generally produces APA style results tables and plots to ease publication."
+$ProcName = "jasp.exe"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\JASP\$SWVersion\JASP-$SWVersion-64bit.msi"
+$Purp    = "Available"
+$DPGName = "BSC_DPG"
+$DevColl = "BSCC0750_BSCC0750"
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $PublName -SoftwareVersion $SWVersion
+Add-CMDeploymentType -MsiInstaller -ApplicationName $AppFullname -InstallationFileLocation $MSILocation -ForceForUnknownPublisher $true
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+<# 
+
+x64 installer, but installs in %PROGRAMFILES(x86)%    :/
+https://jasp-stats.org/download/
+
+#>

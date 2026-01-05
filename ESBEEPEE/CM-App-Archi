@@ -1,0 +1,41 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                  $ExpectedVersion = "5.5.0"
+
+$Manu = "Philip Beauvoir"
+$AppName = "Archi"
+$AppDesc = "Archi is a free and open-source visual-modelling and design tool for creating ArchiMate models and modelling sketches."
+$ProcName = "archi.exe"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\Archi\$ExpectedVersion"
+$InstStr = "Archi-Win64-Setup-$ExpectedVersion.exe /verysilent /norestart"
+$UninstStr = "`"%ProgramFiles%\Archi4\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{17490178-4BB9-40A0-A9C4-F82027FF49B8}_is1"
+$DTName = "Archi deployment"
+$DGName = "BSC_DPG"
+$Purp = "Available"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl = "BSCC0750_BSCC0750"
+$AppFullName = "$Manu $AppName $ExpectedVersion"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
+Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+

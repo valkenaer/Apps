@@ -1,0 +1,33 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                  $ExpectedVersion = "12.2.0"
+
+$Manu              = "Jay Berkenbilt"
+$AppName           = "qpdf"
+$AppDesc           = "$Manu's $AppName is a C++ library and set of programs that inspect and manipulate the structure of PDF files. It can encrypt and linearize files, expose the internals of a PDF file, and do many other operations useful to end users and PDF developers."
+$MSILocation       = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$ExpectedVersion"
+$InstStr           = "$AppName-$ExpectedVersion-mingw64.exe /S"
+$UninstStr         = "`"C:\Program Files\$AppName $ExpectedVersion\Uninstall.exe`" /S"
+$HKLMKey           = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\$AppName $ExpectedVersion"
+$Purp              = "Available"
+$DevColl           = "BSCC0750_BSCC0750"
+$DPGName           = "BSC_DPG"
+$AppFullName       = "$Manu $AppName $ExpectedVersion"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

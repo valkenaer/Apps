@@ -4,8 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 
 $SiteServer = $Env:COMPUTERNAME
 
-    $AppVer      = "143.0.7499.170"
-    $VerMinOne   = "143.0.7499.147"
+    $AppVer      = "143.0.7499.193"
+    $VerMinOne   = "143.0.7499.170"
 
 $Manu            = "Google"
 $AppName         = "Chrome"

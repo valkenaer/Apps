@@ -11,12 +11,12 @@ $AppDesc = "$AppName is our command-line tool for working with PDFs. It is commo
 
            $ExpVer      = "2.02"
        $VerMinOne       = "2.00"
-             $GUID      = {617D29-6D71-4B5C-B9E2-C927C705E317}
+             $GUID      = "{E3617D29-6D71-4B5C-B9E2-C927C705E317}"
 
        $PrevVersion = "$AppName $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$ExpVer"
            $InstStr = "pdftk_server-$ExpVer-win-setup.exe /VERYSILENT /NORESTART"
-           $HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\$GUID_is1"
+           $HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{E3617D29-6D71-4B5C-B9E2-C927C705E317}_is1"
        $UninstStr   = "`"C:\Program Files (x86)\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\SBP Verzoeken"
          $ProcName  = "pdftk.exe"

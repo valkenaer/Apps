@@ -22,7 +22,7 @@ $AppDesc = "$AppName is our command-line tool for working with PDFs. It is commo
          $ProcName  = "pdftk.exe"
        $DevColl     = "BSCC2007_BSCC2007"
        $DTName      = "WinMerge"
-       $AppFullName = "$AppName $ExpVer"
+       $AppFullName = "$Manu $AppName $ExpVer"
 
 
 If (Get-CMApplication $PrevVersion) {

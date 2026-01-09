@@ -1,0 +1,31 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                        $AppVer      = "24.12.0"
+
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\NodeJS\$AppVer\node-v$AppVer-x64.msi"
+$Manu            = "Node_JS"
+$AppDesc         = "Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts."
+$DevColl        = "BSCC0750_BSCC0750"
+$Purp           = "Available"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$AppFullName    = "$Manu $AppVer"
+$DTName         = "Node.js - Windows Installer (*.msi file)"
+$DPGName          = "BSC_DPG"
+$FixedInstallCMD   = "msiexec.exe /i node-v$AppVer-x64.msi /qn /norestart"
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+

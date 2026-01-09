@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                  $SWVersion = "0.95.4.0"
+                  $SWVersion = "0.95.4.0"          # msi filename changed to $Name-Version-Windows.msi
 
 $PublName = "UvA"
 $Product = "JASP"
@@ -11,7 +11,7 @@ $AppFullName = "$PublShortname $Product $SWVersion"
 $AppDesc = "JASP (Jeffreys’s Amazing Statistics Program) is a free and open-source program for statistical analysis supported by the University of Amsterdam. It is designed to be easy to use, and familiar to users of SPSS. It offers standard analysis procedures in both their classical and Bayesian form. JASP generally produces APA style results tables and plots to ease publication."
 $ProcName = "jasp.exe"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
-$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\JASP\$SWVersion\JASP-$SWVersion-64bit.msi"
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\$Product\$SWVersion\$Product-$SWVersion-Windows.msi"
 $Purp    = "Available"
 $DPGName = "BSC_DPG"
 $DevColl = "BSCC0750_BSCC0750"

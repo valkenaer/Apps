@@ -6,7 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
            $ExpectedVersion = "6.1.2.0"             # Installs in %ProgramData%
            $DetectedVersion  = "6.1.2"
 
-$Manu = "SBP"
+$Manu = "Pierre Raybaut"
 $AppName = "Spyder"
 $AppDesc = "Spyder is an open-source cross-platform integrated development environment (IDE) for scientific programming in the Python language."
 $MSILocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersion"

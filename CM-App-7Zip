@@ -1,0 +1,48 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+    
+    $AppVer      = "2501"
+    $VerMinOne   = "2500"
+
+
+$AppName         = "7-Zip"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\$AppName\$AppVer\7z$AppVer-x64.msi"
+$Manu            = "Igor Pavlov"
+$AppDesc         = "7-Zip is a file archiver with a high compression ratio."
+$Purp            = "Required"
+$DPGName         = "BSC_DPG"
+$AppFullName     = "$AppName $AppVer"
+$PrevVersion     = "$AppName $VerMinOne"
+
+   $DevColl01         = "BSC-P Beheer VDI's"
+   $DevColl02         = "BSC-P Telewerken VDI's"
+   $DevColl03         = "BSC-P SOC Beheer VDI's"
+   $DevColl04         = "Computer All Physical (incl Spark)"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl04 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+
+

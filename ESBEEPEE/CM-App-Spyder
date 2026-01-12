@@ -1,0 +1,30 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+           $ExpectedVersion = "6.1.2.0"
+
+$Manu = "SBP"
+$AppName = "Spyder"
+$AppDesc = "Spyder is an open-source cross-platform integrated development environment (IDE) for scientific programming in the Python language."
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersion"
+         $InstStr = "$AppName-Windows-x86_64.exe /S /InstallationType=AllUsers"
+        $UninstStr = "`"C:\ProgramData\spyder-6\Uninstall-Spyder.exe`" /S"
+          $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Spyder 6"
+          $DevColl = "BSCC0750_BSCC0750"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+      $AppFullName = "$AppName IDE $ExpectedVersion"
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

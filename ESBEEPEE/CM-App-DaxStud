@@ -1,0 +1,37 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+  
+  $AppVersion      = "3.4.0"        # GUID IS STILL {CE2CEA93-9DD3-4724-8FE3-FCBF0A0915C1}
+  $ExpectedVersion = "3.4.0.1135"
+
+             $Manu = "DAX"
+          $AppName = "Studio"
+          $AppDesc = "DAX Studio is a tool to write, execute, and analyze DAX queries in Power BI Designer, Power Pivot for Excel, and Analysis Services Tabular"
+       $RunningImg = "Daxstudio.exe"
+      $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVersion"
+          $InstStr = "DaxStudio-$AppVersion-setup.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART"
+        $UninstStr = "`"c:\Program Files\DAX Studio\unins000.exe`" /VERYSILENT /NORESTART"
+          $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{CE2CEA93-9DD3-4724-8FE3-FCBF0A0915C1}_is1"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+          $DevColl = "BSCC0750_BSCC0750"
+      $AppFullName = "$Manu $AppName $AppVersion"
+        $DPGName   = "BSC_DPG"
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "01/01/2026 09:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+# https://daxstudio.org/docs/installation/command-line-install/
+

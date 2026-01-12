@@ -7,7 +7,7 @@ $SiteServer = $Env:COMPUTERNAME
            $Model  = "Dell Pro Max Tower T2 FCT2250"
       $ShortModel  = "FCT2250"	
   $ExpectedVersion = "1.10.1"
-     $BIOSLocation = "\\host1417\Sources$\Drivers\Dell\$Model\BIOS\$ExpectedVersion"
+     $BIOSLocation = "\\$SiteServer\Sources$\Drivers\$Manu\$Model\BIOS\$ExpectedVersion"
 
 
 $myDate     = Get-Date -f yyyyMMdd

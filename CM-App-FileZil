@@ -15,6 +15,7 @@ $PrevVersion     = "$AppName $VerMinOne"
 $InstStr         = "$AppName-$ExpectedVersion-win64-setup.exe /S /user=all"
 $UninstStr       = "`"C:\Program Files\FileZilla FTP Client\uninstall.exe`" /S"
 $HKLMKey         = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\FileZilla Client"
+ $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DevColl         = "BSCC0750_BSCC0750"
 $Purpose         = "Available"
 $DPGName         = "BSC_DPG"
@@ -26,8 +27,14 @@ If (Get-CMApplication $PrevVersion) {
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
-New-CMApplication -Name $AppFullName01 -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purpose -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "01/01/202 09:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

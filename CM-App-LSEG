@@ -8,7 +8,7 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu = "LSEG"
 $AppName = "Workspace"
 $AppDesc = "Access unmatched financial data, news and content coverage in a highly customized workflow experience built just for you. Work faster and smarter on your preferred device, at home or in the office."
-$ExeLocation = "\\$SiteServer\Sources$\Applications\LSEG\Workspace\$Version"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$Version"
 $InstStr = "RefinitivWorkspace-installer-$Version.exe --machine-autoupdate-no --installerlogpath=`"c:\Windows\tracing\ref.txt`" --silent "
 $UninstStr = "`"C:\Program Files\Refinitiv\Refinitiv Workspace\RefinitivWorkspace.exe --uninstall --silent`""
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Refinitiv Workspace"
@@ -18,7 +18,7 @@ $ConsoleFolderPath = "\Applications\Agentschap Generale Thesaurie"
 $AppFullName = "$Manu $AppName $Version - REQUIRES MICROSOFT APPS 365"
 
 
-$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $Version 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

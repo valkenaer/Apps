@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-       $ExpectedVersion = "3.69.5"
-             $VerMinOne = "3.69.1"
+           $ExpectedVersion = "3.69.5"
+                 $VerMinOne = "3.69.1"
 
 $Manu            = "Tim Kosse"
 $AppName         = "FileZilla"
@@ -19,13 +19,10 @@ $DevColl         = "BSCC0750_BSCC0750"
 $Purpose         = "Available"
 $DPGName         = "BSC_DPG"
 
-
 If (Get-CMApplication $PrevVersion) {
 
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl -Force
-    Remove-CMApplication $PrevVersion -Force
-
-}
+    Remove-CMApplication $PrevVersion -Force}
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
@@ -33,4 +30,4 @@ New-CMApplication -Name $AppFullName01 -Description $AppDesc -Publisher $Manu -S
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName01 -DeployAction Install -DeployPurpose $Purpose -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "02/02/2025 09:00" -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purpose -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "01/01/202 09:00" -TimeBaseOn LocalTime -Verbose

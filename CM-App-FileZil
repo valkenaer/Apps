@@ -1,0 +1,36 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+       $ExpectedVersion = "3.69.5"
+             $VerMinOne = "3.69.1"
+
+$Manu            = "Tim Kosse"
+$AppName         = "FileZilla"
+$AppDesc         = "FileZilla Client is a fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface"
+$ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+$AppFullName     = "$AppName $ExpectedVersion"
+$PrevVersion     = "$AppName $VerMinOne"
+$InstStr         = "$AppName-$ExpectedVersion-win64-setup.exe /S /user=all"
+$UninstStr       = "`"C:\Program Files\FileZilla FTP Client\uninstall.exe`" /S"
+$HKLMKey         = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\FileZilla Client"
+$DevColl         = "BSCC0750_BSCC0750"
+$Purpose         = "Available"
+$DPGName         = "BSC_DPG"
+
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName01 -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName01 -DeployAction Install -DeployPurpose $Purpose -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "02/02/2025 09:00" -TimeBaseOn LocalTime -Verbose

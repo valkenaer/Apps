@@ -1,0 +1,52 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                          $Version = "1.26.602"
+
+$Manu = "LSEG"
+$AppName = "Workspace"
+$AppDesc = "Access unmatched financial data, news and content coverage in a highly customized workflow experience built just for you. Work faster and smarter on your preferred device, at home or in the office."
+$ExeLocation = "\\$SiteServer\Sources$\Applications\LSEG\Workspace\$Version"
+$InstStr = "RefinitivWorkspace-installer-$Version.exe --machine-autoupdate-no --installerlogpath=`"c:\Windows\tracing\ref.txt`" --silent "
+$UninstStr = "`"C:\Program Files\Refinitiv\Refinitiv Workspace\RefinitivWorkspace.exe --uninstall --silent`""
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Refinitiv Workspace"
+$Purp = "Available"
+$DevColl = "W1XV2XH2 - 20250613 - ITS - P04_65"
+$ConsoleFolderPath = "\Applications\Agentschap Generale Thesaurie"
+$AppFullName = "$Manu $AppName $Version - REQUIRES MICROSOFT APPS 365"
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $Version 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+<#
+
+https://www.refinitiv.com/en/products/refinitiv-workspace
+
+TEMP DIR  %PROGRAMFILES%\scoped_dir6936_954876922
+FINAL DIR  C:\Program Files\Refinitiv\Refinitiv for Office
+FINAL DIR  C:\Program Files\Refinitiv\Refinitiv Workspace
+
+param                                   installation   launch/update       UpdatesAutomatically             Windows Service Required?      
+            
+--user                                         %LOCALAPPDATA%                    YES
+--machine-autoupdate-service         %ProgramFiles%    %ProgramData%             YES                                  YES
+--machine-autoupdate-no              %ProgramFiles%    %ProgramData%              x
+--machine-autoupdate-peruser         %ProgramFiles%    %LocalAppData%        Launch/update location only
+
+#>
+
+

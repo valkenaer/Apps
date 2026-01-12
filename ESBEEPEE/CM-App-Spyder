@@ -4,6 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
            $ExpectedVersion = "6.1.2.0"             # Installs in %ProgramData%
+           $DetectedVersion  = "6.1.2"
 
 $Manu = "SBP"
 $AppName = "Spyder"
@@ -16,7 +17,7 @@ $MSILocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersio
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
       $AppFullName = "$AppName IDE $ExpectedVersion"
 
-$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $DetectedVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

@@ -3,11 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-
-
-             $MinVer = "21078"
-          $VerMinOne = "20997"
-            $RDate   = "January 12th 2026"
+                    $MinVer = "21078"
+                $VerMinOne = "20997"
+                     $RDate   = "January 12th 2026"
 
 
 $Manu = "Adobe"

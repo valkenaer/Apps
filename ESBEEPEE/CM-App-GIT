@@ -1,0 +1,36 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                   $ExpectedVersion = "2.52.0"        # INNO INSTALLER
+
+       $Manu = "Git"
+    $AppName = "Git"
+    $AppDesc = "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
+$ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersion"
+$InstStr = "$AppName-$ExpectedVersion-64-bit.exe /VERYSILENT /NORESTART"
+$UninstStr = "`"C:\Program Files\Git\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Git_is1"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$Purp              = "Available"
+$DevColl = "BSCC0750_BSCC0750"
+$DPGName = "BSC_DPG"
+$AppFullName = "$AppName version $ExpectedVersion"
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime "04/01/2026 09:00" -TimeBaseOn LocalTime -Verbose
+
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+

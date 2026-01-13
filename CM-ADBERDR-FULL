@@ -10,11 +10,11 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 
-                   $MinVer = "997"
+                   $MinVer = "21078"
                    $AppDesc = "Reader January 12th 2026 Planned Update"
 
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\OSD\2025.001.20$MinVer"
-$ExpectedVersion = "25.001.20$MinVer"
+$ExpectedVersion = "25.001.$MinVer"
 
 $InstStr = "setup.exe"
 $UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"

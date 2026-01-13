@@ -9,19 +9,19 @@ $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
 
-             $MinVer = "0997"
-          $VerMinOne = "0937"
-            $RDate   = "January 13th 2026"
+             $MinVer = "21078"
+          $VerMinOne = "20997"
+            $RDate   = "January 12th 2026"
 
 
-$PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.20$VerMinOne"
+$PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.$VerMinOne"
 
 $AppDesc = "Adobe Acrobat DC Reader $RDate Planned update"
-$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.2$MinVer"
-$InstStr = "msiexec.exe /p AcroRdrDCUpd250012$MinVer.msp /qn"
-$UninstStr = "msiexec.exe /p AcroRdrDCUpd250012$MinVer.msp"
-$ExpectedVersion = "25.001.20$MinVer"
-$CustomVal = "MSP 2025.001.20$MinVer"
+$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.$MinVer"
+$InstStr = "msiexec.exe /p AcroRdrDCUpd25001$MinVer.msp /qn"
+$UninstStr = "msiexec.exe /p AcroRdrDCUpd25001$MinVer.msp"
+$ExpectedVersion = "25.001.$MinVer"
+$CustomVal = "MSP 2025.001.$MinVer"
 
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"

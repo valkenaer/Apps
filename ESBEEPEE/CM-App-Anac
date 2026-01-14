@@ -9,15 +9,15 @@ $SiteServer = $Env:COMPUTERNAME
 
 
 $Manu = "Anaconda, Inc."
-$AppName = "Anaconda"
+$AppName = "Anaconda3"
 $AppDesc = "The open-source Anaconda Individual Edition (formally Anaconda Distribution) is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X."
 $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$Version"
-$InstStr = "Anaconda3-$Version-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=1 /RegisterPython=1 /S"
-$UninstStr = "`"C:\ProgramData\Anaconda3\Uninstall-$Anaconda3.exe`" /S"
+$InstStr = "$AppName-$Version-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=1 /RegisterPython=1 /S"
+$UninstStr = "`"C:\ProgramData\$AppName\Uninstall-$AppName.exe`" /S"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $DevColl = "BSCC0750_BSCC0750"
 $DPGName = "BSC_DPG"
-$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppnName3 $Version $PythVer"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName $Version $PythVer"
 $AppFullName = "$AppName $Version $PythVer"
 
 

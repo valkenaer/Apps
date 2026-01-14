@@ -5,7 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 
                      $Version = "2025.12-1"
-                    $PythVer  = "P@$Rf"
+                    $PythVer  = "(Python 3..9.2. 64-bit)"
 
 $Manu = "Anaconda, Inc."
 $AppName = "Anaconda"
@@ -18,7 +18,7 @@ $DevColl = "BSCC0750_BSCC0750"
 $DPGName = "BSC_DPG"
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Anaconda3 2025.12 (Python 3.9.12 64-bit)"
 $ExpectedVersion = "2025.12"
-$AppFullName = "$AppName $Version (Python 3.9.12 64-bit)"
+$AppFullName = "$AppName $Version $PythVer"
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 

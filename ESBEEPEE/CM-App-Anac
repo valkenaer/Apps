@@ -8,23 +8,22 @@ $SiteServer = $Env:COMPUTERNAME
                     $PythVer  = "P@$Rf"
 
 $Manu = "Anaconda, Inc."
-$AppName = "Anaconda 3"
+$AppName = "Anaconda"
 $AppDesc = "The open-source Anaconda Individual Edition (formally Anaconda Distribution) is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X."
-$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\Anaconda\$Version"
-$InstStr = "Anaconda3-$Version-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=1 /RegisterPython=1 /S"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$Version"
+$InstStr = "$AppnName3-$Version-Windows-x86_64.exe /InstallationType=AllUsers /AddToPath=1 /RegisterPython=1 /S"
 $UninstStr = "`"C:\ProgramData\Anaconda3\Uninstall-Anaconda3.exe`" /S"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl = "BSCC0750_BSCC0750"
+$DPGName = "BSC_DPG"
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Anaconda3 2025.12 (Python 3.9.12 64-bit)"
 $ExpectedVersion = "2025.12"
-
-$ConsoleFolderPath = "\Applications\SBP Verzoeken"
-$DevColl = "20180808_"
-$DPGName = "BSC_DPG"
 $AppFullName = "$AppName $Version (Python 3.9.12 64-bit)"
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
-Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 39 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 39 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 

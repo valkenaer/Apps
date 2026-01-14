@@ -15,14 +15,14 @@ First install on standalone, use the key that holds "Microsoft Windows Desktop R
 8.0.20 [20250910]   {A6EA542C-884C-4FE7-89E4-8C28E14B601C}    64.78.33333
 8.0.21 [20251015]   {A32777AD-F93A-4F26-BEE6-9C5961EA71D6}    64.84.40919
 8.0.22 [20251114]   {4CCC1CCD-6FA3-4DD5-A06B-E94EA90094CF}    64.88.42561
-8.0.23 [20251209]   {                                    }    64.92
+8.0.23 [20260114]   {29177194-CD94-4A2D-97A4-EF77738E995A}    64.92.45458 
 
 
 #>
 
    $ExpVer          = "8.0.23"
-   $GUIDRT          = "{7d9b6d96-4e54-49b2-b28e-72922abb1f66}"
-   $ExpectedVersion = "64.92.52341"
+   $GUIDRT          = "{29177194-CD94-4A2D-97A4-EF77738E995A}"
+   $ExpectedVersion = "64.92.45458"
    $Location        = "\\host1417\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
 
 

@@ -5,7 +5,8 @@ $SiteServer = $Env:COMPUTERNAME
 
 
                      $Version = "2025.12-1"
-                    $PythVer  = "(Python 3.9.2. 64-bit)"
+                    $PythVer  = "(Python 3.13.9 64-bit)"
+
 
 $Manu = "Anaconda, Inc."
 $AppName = "Anaconda"
@@ -16,11 +17,11 @@ $UninstStr = "`"C:\ProgramData\Anaconda3\Uninstall-Anaconda3.exe`" /S"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $DevColl = "BSCC0750_BSCC0750"
 $DPGName = "BSC_DPG"
-$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Anaconda3 2025.12 (Python 3.9.12 64-bit)"
-$ExpectedVersion = "2025.12"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppnName3 $Version $PythVer"
 $AppFullName = "$AppName $Version $PythVer"
 
-$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 39 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

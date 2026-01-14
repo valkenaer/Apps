@@ -27,7 +27,7 @@ First install on standalone, use the key that holds "Microsoft Windows Desktop R
 
 
 
-   $AppName         = "Windows Desktop Runtime $ExpVer [2025-12]"
+   $AppName         = "Windows Desktop Runtime $ExpVer [2026-01]"
    $ProcName        = "abacab4e.exe"
    $Manu            = "Microsoft"
    $InstStr         = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"

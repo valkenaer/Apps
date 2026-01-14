@@ -1,11 +1,11 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
-
 $SiteServer = $Env:COMPUTERNAME
 
-    $AppVer      = "143.0.7499.193"
-    $VerMinOne   = "143.0.7499.170"
+    $AppVer      = "144.0.7559.60"
+    $VerMinOne   = "143.0.7499.193"
+
 
 $Manu            = "Google"
 $AppName         = "Chrome"

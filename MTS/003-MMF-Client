@@ -1,0 +1,32 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+
+                                $SWVersion         = "10.3.0.2"         # Install into %programfiles_x86%\MMF\MMF CLient version
+
+$Manu          = "MTS"
+$PublShortName = "MMF"
+$Product       = "Client"
+$AppFullName = "$Manu $PublShortname $Product $SWVersion"
+$AppDesc     = "Dealers benefit from access to a liquid, transparent and efficient European bond marketplace and the largest interdealer network, with innovative technology, comprehensive support and wide product coverage. Over 500 unique counterparties trade on the system each day and average daily turnover exceeds EUR 130 billion across MTS platforms."
+$MSILoc      = "\\$SiteServer\Sources$\Applications\$Manu\$PublShortName\$Product\$SWVersion\$PublShortName $Product $SWVersion.msi" 
+$ConsoleFolderPath = "\Applications\Agentschap Generale Thesaurie"
+$ProcName    = "MMFClient.exe"
+$DPGName     = "BSC_DPG"
+$DevColl   = "BSCC0750_BSCC0750"
+# $DevColl   = "FBU_W11"
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $PublName -SoftwareVersion $SWVersion -AutoInstall $true
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILoc -Force -InstallationBehaviorType InstallForSystem -LogonRequirementType WhetherOrNotUserLoggedOn -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+

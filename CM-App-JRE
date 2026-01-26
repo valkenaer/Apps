@@ -1,0 +1,65 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+              $ProdIDstart  = "{71024AE4-039E-4CA4-87B4-2F"
+                 $ProdIDend = "F0}"
+                $MinVer     = "481"
+                $VerMinOne  = "471"
+                   $MajVer  = "180"
+                   $Arch    = "32"
+                 $ArchFull  = "i586"                        # i586 or x64
+                   $AppDesc = "January 2026 Update JRE"
+
+        $Manu      = "Oracle"
+         $ExpPlat  = "($Arch-bit)"        
+        $AppName   = "Java 8 Update $MinVer"
+    $PrevVersion   = "$Manu Java 8 Update $VerMinOne $ExpPlat"
+$ConsoleFolderPath = "\Applications\Productivity Tools" 
+        $Location  = "\\$SiteServer\Sources$\Applications\Oracle\JRE\8U$MinVer\$Arch"
+        $InstStr   = "jre-8u$MinVer-windows-$ArchFull.exe /s STATIC=1 WEB_JAVA=1 WEB_JAVA_SECURITY_LEVEL=VH AUTO_UPDATE=0 SPONSORS=0 REMOVEOUTOFDATEJRES=1"
+           $ProdID = "$ProdIDstart$Arch$MajVer$MinVer$ProdIDend"
+        $UninstStr = "msiexec.exe /X$ProdID /q"
+      $AppFullName = "$Manu $AppName $ExpPlat"
+          $DPGName = "BSC_DPG"
+
+$DevColl00 = "W1XV2XH2 - 20250613 - ITS - P04_65"
+$DevColl01 = "BSC-P Beheer VDI's"
+$DevColl02 = "BSC-P SOC Beheer VDI's"
+$DevColl03 = "Computer All Physical (incl Spark)"
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl00 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+    Remove-CMApplication $PrevVersion -Force
+
+}
+
+$clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode $ProdID -Existence
+
+New-CMApplication -Name $AppFullName -Description "Latest JRE update" -Publisher $Manu -SoftwareVersion $AppName 
+Add-CMScriptDeploymentType -ContentLocation $Location -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll  -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll  -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll  -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+#  GUID for 8u431 (2024-10)    {71024AE4-039E-4CA4-87B4-2F 
+#  GUID for 8u441 (2025-01)   {77724AE4-039E-4CA4-87B4-2F
+#  GUID for 8u451 (2025-05)   {71024AE4-039E-4CA4-87B4-2F   
+#  GUID for 8u461 (2025-07)   {71124AE4-039E-4CA4-87B4-2F    -   
+#  GUID for 8u471 (2025-10)   {77924AE4-039E-4CA4-87B4-2F   
+#  GUID for 8u481 (2026-01)    {71024AE4-039E-4CA4-87B4-2F $Arc

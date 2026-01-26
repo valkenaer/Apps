@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
  
           $SiteServer = $Env:COMPUTERNAME
 
-$AppVer         = "20251211"
+$AppVer         = "20260106"
 $VerMinOne      = "20251111"
 
 $MSIXLocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"

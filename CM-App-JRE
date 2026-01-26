@@ -9,7 +9,7 @@ $SiteServer = $Env:COMPUTERNAME
                 $MinVer     = "481"
                 $VerMinOne  = "471"
                    $MajVer  = "180"
-                   $Arch    = "32"
+                   $Arch    = "32"                          # 32   or  64
                  $ArchFull  = "i586"                        # i586 or x64
                    $AppDesc = "January 2026 Update JRE"
 

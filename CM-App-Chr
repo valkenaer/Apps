@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-    $AppVer      = "144.0.7559.60"
-    $VerMinOne   = "143.0.7499.193"
+    $AppVer      = "144.0.7559.97"
+    $VerMinOne   = "144.0.7559.60"
 
 
 $Manu            = "Google"

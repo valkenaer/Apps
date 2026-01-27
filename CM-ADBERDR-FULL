@@ -1,18 +1,15 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
-
-
 $SiteServer = $Env:COMPUTERNAME
 
-# Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
+                       # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
+
+           $MinVer = "21111"
+          $AppDesc = "Reader January 20th 2026 Planned Update"
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
-
-                   $MinVer = "21078"
-                   $AppDesc = "Reader January 12th 2026 Planned Update"
-
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\OSD\2025.001.$MinVer"
 $ExpectedVersion = "25.001.$MinVer"
 

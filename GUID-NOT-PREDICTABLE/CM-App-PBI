@@ -4,8 +4,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-              $ExpectedVersion = "2.150.1704.0"
-              $VerMinOne       = "2.149.1429.0"
+              $ExpectedVersion = "2.150.2102.0"  # 2.150.2102.0
+              $VerMinOne       = "2.150.1704.0"  # 
               $GUID            = "{0ba4f580-682d-401b-8752-0bd70c9b9c48}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"

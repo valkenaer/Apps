@@ -32,7 +32,7 @@ If (Get-CMApplication $PrevVersion) {
                  Remove-CMApplication $PrevVersion -Force }
 
 
-    $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+    $clause1 = New-CMDetectionClauseRegistryKey -Hive LocalMachine -KeyName $HKLMKey
 
     New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
     Add-CMScriptDeploymentType -ContentLocation $ExeLoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

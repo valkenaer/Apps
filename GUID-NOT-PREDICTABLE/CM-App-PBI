@@ -10,7 +10,7 @@ $SiteServer = $Env:COMPUTERNAME
 
     $Manu            = "Microsoft"
     $AppName         = "PowerBI Desktop"
-    $AppDesc         = "Dig deeper into data and find patterns you may have otherwise missed that lead to actionable insights. Use features like quick measures, grouping, forecasting, and clustering. Give advanced users full control over their model using powerful Data Analysis Expressions (DAX) formula language. If you’re familiar with Microsoft 365, you’ll feel at home in Power BI."
+    $AppDesc         = "Microsoft Power BI Desktop is built for the analyst. It combines state-of-the-art interactive visualizations, with industry-leading data query and modeling built-in. Create and publish your reports to Power BI. Power BI Desktop helps you empower others with timely critical insights, anytime, anywhere."
     $ProcName        = "PBIDesktop.exe"
 	$DPGName         = "BSC_DPG"
     $ExeLoc          = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$RDATE"

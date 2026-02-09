@@ -4,6 +4,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
+              $RDATE           = "20260128"
               $ExpectedVersion = "2.150.2102.0"
               $VerMinOne       = "2.150.1704.0" 
               $GUID            = "{0312008e-09a5-4fa5-aa8f-b0ab621f05f4}"         # Use New-Guid to create bogus GUID on first run
@@ -14,11 +15,11 @@ $SiteServer = $Env:COMPUTERNAME
     $ProcName        = "PBIDesktop.exe"
 	$DPGName         = "BSC_DPG"
     $PrevVersion     = "$Manu $AppName $VerMinOne"
-    $ExeLoc          = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+    $ExeLoc          = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$RDATE"
     $InstStr         = "PBIDesktopSetup_x64.exe -quiet -norestart ACCEPT_EULA=1 INSTALLDESKTOPSHORTCUT=0 DISABLE_UPDATE_NOTIFICATION=0"
     $UninstStr       = "MsiExec.exe /X$GUID"
     $HKLMKey         = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
-    $AppFullName     = "$Manu $AppName $ExpectedVersion"
+    $AppFullName     = "$Manu $AppName $RDATE"
   $ConsoleFolderPath = "\Applications\Microsoft"
     $DevColl01       = "BSCC0750_BSCC0750"
     $DevColl02       = "W1XV2XH2 - 20250613 - ITS - P04_65"
@@ -50,19 +51,12 @@ If (Get-CMApplication $PrevVersion) {
 # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "12/12/2025 12:34" -TimeBaseOn LocalTime -Verbose
 # New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "12/12/2025 12:34" -TimeBaseOn LocalTime -Verbose
 
-
-
-
-$MoveApp = Get-CMApplication -Name $AppFullName
+    $MoveApp = Get-CMApplication -Name $AppFullName
 
 If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
 
-# $AppVersion    20251028           2.148.878.0       {48b28c1b-3682-4780-9984-6f075b58dad9}
-# $AppVersion    202511212          2.149.1429.0      {1f201073-f25d-4638-97a6-4018c76f71f2}
-# $AppVersion    20260120          2.150.1704.0        {0ba4f580-682d-401b-8752-0bd70c9b9c48}
-# $AppVersion    20260128           2.150.2102.0    
 # $AppVersion    20260128           2.150.2102.0       
 # $AppVersion    20260128           2.150.2102.0     {0312008e-09a5-4fa5-aa8f-b0ab621f05f4}
 

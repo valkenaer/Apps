@@ -4,7 +4,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-              $RDATE           = "20260128"               # Removed version numbers from AppScript
+              $RDATE           = "20260128"                                    
+# Removed version numbers from AppScript
              $RDATEOLD         = "20251214"
               $GUID            = "{0312008e-09a5-4fa5-aa8f-b0ab621f05f4}"         # Use New-Guid to create bogus GUID on first run
 
@@ -34,7 +35,7 @@ If (Get-CMApplication $PrevVersion) {
 
 $clause1 = New-CMDetectionClauseRegistryKey -Hive LocalMachine -KeyName $HKLMKey   # CHANGED TO KEY DETECTION, version is not checked
 
-    New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+    New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $RDATE 
     Add-CMScriptDeploymentType -ContentLocation $ExeLoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
     Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 

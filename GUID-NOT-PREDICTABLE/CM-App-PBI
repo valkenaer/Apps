@@ -4,8 +4,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-              $RDATE           = "20260128"
-             $RDATEOLD         = "20251209"
+              $RDATE           = "20260209"
+             $RDATEOLD         = "20260128"
               $GUID            = "{0312008e-09a5-4fa5-aa8f-b0ab621f05f4}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"

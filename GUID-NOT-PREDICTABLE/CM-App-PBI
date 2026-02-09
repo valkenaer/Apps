@@ -5,8 +5,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
               $RDATE           = "20260128"
-              $ExpectedVersion = "2.150.2102.0"
-              $VerMinOne       = "2.150.1704.0" 
+             $RDATEOLD         = "20251209"
               $GUID            = "{0312008e-09a5-4fa5-aa8f-b0ab621f05f4}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"
@@ -14,12 +13,12 @@ $SiteServer = $Env:COMPUTERNAME
     $AppDesc         = "Dig deeper into data and find patterns you may have otherwise missed that lead to actionable insights. Use features like quick measures, grouping, forecasting, and clustering. Give advanced users full control over their model using powerful Data Analysis Expressions (DAX) formula language. If you’re familiar with Microsoft 365, you’ll feel at home in Power BI."
     $ProcName        = "PBIDesktop.exe"
 	$DPGName         = "BSC_DPG"
-    $PrevVersion     = "$Manu $AppName $VerMinOne"
     $ExeLoc          = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$RDATE"
     $InstStr         = "PBIDesktopSetup_x64.exe -quiet -norestart ACCEPT_EULA=1 INSTALLDESKTOPSHORTCUT=0 DISABLE_UPDATE_NOTIFICATION=0"
     $UninstStr       = "MsiExec.exe /X$GUID"
     $HKLMKey         = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
     $AppFullName     = "$Manu $AppName $RDATE"
+    $PrevVersion     = "$Manu $AppName $RDATEOLD"
   $ConsoleFolderPath = "\Applications\Microsoft"
     $DevColl01       = "BSCC0750_BSCC0750"
     $DevColl02       = "W1XV2XH2 - 20250613 - ITS - P04_65"
@@ -27,13 +26,10 @@ $SiteServer = $Env:COMPUTERNAME
 
 
 If (Get-CMApplication $PrevVersion) {
-
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
-    Remove-CMApplication $PrevVersion -Force
-
-}
+                 Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+                 Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+                 Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
+                 Remove-CMApplication $PrevVersion -Force }
 
 
     $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value

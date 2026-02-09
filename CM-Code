@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                   $ExpectedVersion = "1.108.2"           # 20251224 Change visibility to HIDDEN
-                       $VerMINUSONE  = "1.108"
+                   $ExpectedVersion = "1.109.0"           # 20251224 Change visibility to HIDDEN
+                       $VerMINUSONE  = "1.108.2"
 
 $Manu = "Microsoft"
 $AppName = "VSCode"

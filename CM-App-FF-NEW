@@ -15,6 +15,7 @@ $SiteServer = $Env:COMPUTERNAME
        $UninstStr   = "`"C:\Program Files\Mozilla Firefox\uninstall\helper.exe`" /S"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "firefox.exe"
+          $DPGName  = "BSC_DPG"
        $DevColl     = "20180808_FIREFOX"
        $DTName      = "Firefox"
        $PrevVersion = "$Manu $AppName $VerMinOne"

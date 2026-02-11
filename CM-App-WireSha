@@ -14,6 +14,7 @@ $UninstStr = "`"C:\Program Files\Wireshark\uninstall-wireshark.exe`" /S"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WireShark"
 $ConsoleFolderPath = "\Applications\Inventory and Monitoring"
 $AppFullName = "$AppName $ExpectedVersion"
+$DevColl00 = "BSCC0750_BSCC0750" 
 $DevColl01 = "BSC-P SOC Beheer VDI's" 
 $DevColl02 = "BSCC0710-tvandijk" 
 

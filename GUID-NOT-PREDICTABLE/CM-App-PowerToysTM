@@ -1,0 +1,44 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+
+                                     $ExpectedVersion = "0.97.1"
+                                $ProdID = "{E3F34540-D997-4E34-89CB-39FAAECB93DC}"  #BOGUS 1ST
+$Manu = "Microsoft"
+$AppName = "PowerToys"
+$AppDesc = "Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity."
+$EXELocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+$InstStr = "$AppName-Setup-$ExpectedVersion-x64.exe /s /norestart"                        # ADD DASH ADD DASH
+$UninstStr = "MsiExec.exe /X$ProdID"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$ProdID"
+  $ConsoleFolderPath = "\Applications\Microsoft"
+
+       $ProcName = "powertoys.exe"
+    $AppFullName = "$Manu $AppName $ExpectedVersion"
+         $DevColl = "BSCC0750_BSCC0750"
+
+$clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode $ProdID -Existence
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $EXELocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInteractionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+
+    $MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+
+# GUID  0.56.2    D2AD7A8B-01BF-48FF-8023-922A4F7A0788
+# GUID  0.68.1    7F0C3584-ED21-4282-9931-50D173C2CCE5
+# GUID  0.76.1    845D89B3-39E9-4183-BED4-F3380D62D8A2
+# GUID  0.77.0    6F3910F2-DA29-490C-811F-D3691B134A61
+# GUID  0.78.0    E1A5AB2F-313E-43C7-8B6D-057FEB530285
+# GUID  0.80.0    4BDBD97B-E378-4B43-8F7D-B22F55169DFE
+# GUID  0.97.1    E3F34540-D997-4E34-89CB-39FAAECB93DC (PREVIEW)

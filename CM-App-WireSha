@@ -1,0 +1,28 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+
+$SiteServer = $Env:COMPUTERNAME
+
+   $ExpectedVersion = "4.6.3"
+
+
+$Manu      = "Gerald Combs"
+$AppName   = "WireShark"
+$AppDesc   = "The world's most popular network protocol analyzer" 
+$EXELoc    = "\\$SiteServer\Sources$\Applications\$AppName\$ExpectedVersion"
+$InstStr   = "$AppName-$ExpectedVersion-x64.exe /S"
+$UninstStr = "MsiExec.exe /X{7E49B95B-6B8A-4B4D-A35D-9ACB64F40AFC}"
+$HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WireShark"
+
+$AppFullName = "$Manu $AppName $ExpectedVersion"
+
+$DevColl01 = "BSCC0750_BSCC0750" 
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "02/02/2026 09:15" -TimeBaseOn LocalTime -VerMicrosoft Teamsbose

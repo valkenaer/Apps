@@ -10,7 +10,7 @@ $AppName   = "WireShark"
 $AppDesc   = "The world's most popular network protocol analyzer" 
 $EXELoc    = "\\$SiteServer\Sources$\Applications\$AppName\$ExpectedVersion"
 $InstStr   = "$AppName-$ExpectedVersion-x64.exe /S"
-$UninstStr = "`"C:\Program Files\Wireshark\uninstall-wireshark.exe`" /S""
+$UninstStr = "`"C:\Program Files\Wireshark\uninstall-wireshark.exe`" /S"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WireShark"
 $ConsoleFolderPath = "\Applications\Inventory and Monitoring"
 $AppFullName = "$AppName $ExpectedVersion"
@@ -23,7 +23,7 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
 
-New-CMApplicationDeployment -CollectionName $DevColl00 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DispalyAll -AvailableDateTime "02/02/2026 09:15" -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl00 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "02/02/2026 09:15" -TimeBaseOn LocalTime -Verbose
 # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "02/02/2026 09:15" -TimeBaseOn LocalTime -Verbose
 # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "02/02/2026 09:15" -TimeBaseOn LocalTime -Verbose
 

@@ -14,7 +14,8 @@ $UninstStr = "MsiExec.exe /X{7E49B95B-6B8A-4B4D-A35D-9ACB64F40AFC}"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WireShark"
 $ConsoleFolderPath = "\Applications\Inventory and Monitoring"
 $AppFullName = "$AppName $ExpectedVersion"
-$DevColl01 = "BSCC0750_BSCC0750" 
+$DevColl01 = "BSC-P SOC Beheer VDI's" 
+$DevColl02 = "BSCC0710-tvandijk" 
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 

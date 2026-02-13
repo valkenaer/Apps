@@ -8,7 +8,8 @@ $SiteServer = $Env:COMPUTERNAME
    $ExpVer          = "8.0.24"
    $GUIDRT          = "{29125194-CD94-5A2D-97A4-EF79738E995A}"     # 1ST RUN RANDOM
    $ExpectedVersion = "65.96.4458"
-   $AppName         = "Windows Desktop Runtime $ExpVer [2026-02]"
+   $AppName         = "Windows Desktop Runtime [2026-02]"
+   $PrevVersion     = "Windows Desktop Runtime [2025-12]"
 
 
 $Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
@@ -25,6 +26,12 @@ $ConsoleFolderPath = "\Applications\Microsoft"
 $DevColl   = "BSCC0750_BSCC0750"
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+If (Get-CMApplication $PrevVersion) {
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplication $PrevVersion -Force
+}
+
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $Location -ApplicationName $AppFullname -DeploymentTypeName $AppFullName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

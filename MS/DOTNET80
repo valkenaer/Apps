@@ -14,15 +14,13 @@ $ProcName        = "abacab4e.exe"
 $Manu            = "Microsoft"
 $InstStr         = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"
 $UninstStr       = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
-
-
 $AppDesc   = "The .NET Desktop Runtime enables you to run existing Windows desktop applications. This release includes the .NET Runtime; you don't need to install it separately."
-
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUIDRT"
+$ConsoleFolderPath = "\Applications\Microsoft"
+$AppFullName = "$AppName" 
 
 # $DevColl   = "Computer All Physical (incl Spark)"
 $DevColl   = "BSCC0750_BSCC0750"
-$AppFullName = "$AppName" 
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
@@ -30,6 +28,12 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $Location -ApplicationName $AppFullname -DeploymentTypeName $AppFullName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
 # New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "05/06/2025 08:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
 
 <#
 

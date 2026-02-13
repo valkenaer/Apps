@@ -6,13 +6,14 @@ $SiteServer = $Env:COMPUTERNAME
    $ExpVer          = "8.0.24"
    $GUIDRT          = "{29125194-CD94-5A2D-97A4-EF79738E995A}"     # 1ST RUN RANDOM
    $ExpectedVersion = "65.96.4458"
-   $Location        = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
-
    $AppName         = "Windows Desktop Runtime $ExpVer [2026-02]"
-   $ProcName        = "abacab4e.exe"
-   $Manu            = "Microsoft"
-   $InstStr         = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"
-   $UninstStr       = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
+
+
+$Location        = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
+$ProcName        = "abacab4e.exe"
+$Manu            = "Microsoft"
+$InstStr         = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"
+$UninstStr       = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
 
 
 $AppDesc   = "The .NET Desktop Runtime enables you to run existing Windows desktop applications. This release includes the .NET Runtime; you don't need to install it separately."

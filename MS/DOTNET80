@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
    $ExpVer          = "8.0.24"
-   $GUIDRT          = "{29177194-CD94-4A2D-97A4-EF77738E995A}"     # 1ST RUN RANDOM
+   $GUIDRT          = "{29125194-CD94-5A2D-97A4-EF79738E995A}"     # 1ST RUN RANDOM
    $ExpectedVersion = "65.96.4458"
    $Location        = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
 

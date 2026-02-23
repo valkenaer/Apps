@@ -7,7 +7,7 @@ $SiteServer = $Env:COMPUTERNAME
               $RDATE           = "20260220"                                    
 # Removed version numbers from AppScript
              $RDATEOLD         = "20260213"
-              $GUID            = "{0312008e-09a5-4fa5-aa8f-b0ab621f05f4}"         # Use New-Guid to create bogus GUID on first run
+              $GUID            = "{7f35eefa-13d1-4283-a8b1-7565b0247c2e}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"
     $AppName         = "PowerBI Desktop"

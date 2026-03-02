@@ -7,7 +7,7 @@ $SiteServer = $Env:COMPUTERNAME
               $RDATE           = "20260225"                                    
 # Removed version numbers from AppScript
              $RDATEOLD         = "20260220"
-              $GUID            = "{a3a0c297-5df8-405b-bcd9-461a79d73635}"         # Use New-Guid to create bogus GUID on first run
+              $GUID            = "{7d31cc3d-9496-4034-88b8-04f2e3588cc1}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"
     $AppName         = "PowerBI Desktop"
@@ -54,7 +54,5 @@ If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
 
-# $AppVersion    20260128           2.150.2102.0       
-# $AppVersion    20260128           2.150.2102.0     {0312008e-09a5-4fa5-aa8f-b0ab621f05f4}
 
 

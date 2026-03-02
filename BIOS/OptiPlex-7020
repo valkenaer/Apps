@@ -1,0 +1,49 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+           $Manu   = "Dell"
+           $Model  = "OptiPlex SFF Plus 7020"   # 20260302
+      $ShortModel  = "OptiPlex-7020"	
+  $ExpectedVersion = "1.23.1"
+     $BIOSLocation = "\\$SiteServer\Sources$\Drivers\$Manu\$Model\BIOS\$ExpectedVersion"
+
+
+$myDate     = Get-Date -f yyyyMMdd
+$AppName   = "$Manu $Model $ExpectedVersion [$myDate]"
+$AppDesc   = "DO NOT RUN THIS APP OUTSIDE OF A BIOS UPGRADE TASK SEQUENCE - BDE NEEDS TO BE DISABLED"
+$InstStr   = "$ShortModel-$ExpectedVersion-SEMB.exe /s /f /r /p=DST77TSD"
+$UninstStr = "biosupdate.exe /uninstall"
+$DPGName   = "BSC_DPG"
+$HKLMKey   = "HARDWARE\DESCRIPTION\System\BIOS"
+$AppFullName = "$Manu $AppName"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "BIOSVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $BIOSLocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+
+$dtName = "Script Installer"
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $dtName
+
+Add-CMDeploymentTypeReturnCode -InputObject $msi_dt -ReturnCode 2 -Name "DUP Reboot Required" -CodeType SoftReboot
+ 
+<#  Run these one by one  
+Add-CMDeploymentTypeReturnCode -InputObject $msi_dt -ReturnCode 1 -Name "DUP Failure" -CodeType Failure
+Add-CMDeploymentTypeReturnCode -InputObject $msi_dt -ReturnCode 4 -Name "DUP Hard Error" -CodeType Failure
+Add-CMDeploymentTypeReturnCode -InputObject $msi_dt -ReturnCode 10 -Name "DUP Reboot" -CodeType SoftReboot          # ADDED ON 20250917
+#>
+
+$ConsoleFolderPath = "\BIOS and Drivers"
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+

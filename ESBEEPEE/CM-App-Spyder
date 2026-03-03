@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpectedVersion = "6.1.2.0"             # Installs in %ProgramData%
-           $DetectedVersion  = "6.1.2"
+           $ExpectedVersion = "6.1.2.2"             # Installs in %ProgramData%
+           $DetectedVersion  = "6.1.3"
 
 $Manu = "Pierre Raybaut"
 $AppName = "Spyder"
@@ -22,7 +22,7 @@ $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HK
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

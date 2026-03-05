@@ -4,9 +4,9 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
              $GUID            = "{EB025864-E249-42F1-9D44-019C080D0D5D}"
-             $Friendly        = "2512"
-             $ExpectedVersion = "8.17.0.42163"
-          $FullInstaller      = "8.17.0-20184583317"
+             $Friendly        = "2512.1"
+             $ExpectedVersion = "8.17.1.42163"
+          $FullInstaller      = "8.17.1-22261173697"
 
 $Manu      = "Omnissa"
 $Prod      = "Horizon"

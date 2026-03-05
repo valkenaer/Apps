@@ -20,9 +20,6 @@ $AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizo
 $AppFullName = "$Manu $Prod $AppName $Friendly $ExpectedVersion"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName = "BSC_DPG"
-$PrevVersion = "VMWare Horizon Client PREV"
-
-$DevColl01 = "Computer All Physical (incl Spark)" 
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
@@ -30,6 +27,7 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
+# $DevColl01 = "Computer All Physical (incl Spark)" 
 # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "26/12/2025 15:34" -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName

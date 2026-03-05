@@ -3,9 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-             $GUID            = "{EB025864-E249-42F1-9D44-019C080D0D5D}"
+             $GUID            = "{7D2D5F3D-72D2-41C1-8EA4-3BA5C2AB0468}"
              $Friendly        = "2512.1"
-             $ExpectedVersion = "8.17.1.42163"
+             $ExpectedVersion = "8.17.1.47220"
           $FullInstaller      = "8.17.1-22261173697"
 
 $Manu      = "Omnissa"

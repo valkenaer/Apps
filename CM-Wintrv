@@ -11,8 +11,8 @@ $SiteServer = $Env:COMPUTERNAME
 # $Version   = "184.3.81"         # 
 # $Version   = "185.1.81"   
 
-         $Version   = "187.3.81"     
-        $RDATE      = "20260126"
+         $Version   = "190.3.81"     
+        $RDATE      = "20260303"
 
 $Manu = "Bloomberg"
 $AppName = "Terminal"
@@ -48,7 +48,7 @@ New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployA
 
 <#
 
-$detVersion = "3185. 1. 80. 1"
+$detVersion = "3190. 1. 80. 1"
 
 $path64 = ${Env:ProgramFiles} + "\blp\Wintrv\wintrv.exe"
 

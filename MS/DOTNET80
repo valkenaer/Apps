@@ -9,7 +9,7 @@ $SiteServer = $Env:COMPUTERNAME
    $GUIDRT          = "{99B0C384-9362-4D4E-8DAF-23CA44E306E8}"     # 1ST RUN RANDOM
    $ExpectedVersion = "64.100.48707"
    $AppName         = "Windows Desktop Runtime [2026-03]"
-   $PrevVersion     = "Windows Desktop Runtime [2025-02]"
+   $PrevVersion     = "Windows Desktop Runtime [2026-02]"
 
 
 $Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
@@ -22,8 +22,8 @@ $InstStr          = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet 
 $ConsoleFolderPath = "\Applications\Microsoft"
       $AppFullName = "$AppName" 
 
-# $DevColl   = "Computer All Physical (incl Spark)"
-$DevColl   = "BSCC0750_BSCC0750"
+$DevColl00   = "Computer All Physical (incl Spark)"
+$DevColl07   = "BSCC0750_BSCC0750"
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
@@ -62,6 +62,6 @@ First install on standalone, use the key that holds "Microsoft Windows Desktop R
 8.0.21 [20251015]   {A32777AD-F93A-4F26-BEE6-9C5961EA71D6}    64.84.40919
 8.0.22 [20251114]   {4CCC1CCD-6FA3-4DD5-A06B-E94EA90094CF}    64.88.42561
 8.0.23 [20260114]   {29177194-CD94-4A2D-97A4-EF77738E995A}    64.92.45458 
-
+8.0.25 [20260310]   {99B0C384-9362-4D4E-8DAF-23CA44E306E8}    64.100.48707
 
 #>

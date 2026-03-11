@@ -3,9 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
-  $MAJVER =  "18526"        
-                          $MINVER =  "20714"             # MOD THIS and MAIN deployment time
-  $FRIENDLY = "2502"
+  $MAJVER =  "19127"        
+                          $MINVER =  "20570"             # MOD THIS and MAIN deployment time
+  $FRIENDLY = "2508"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
@@ -34,7 +34,7 @@ Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFu
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
          New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
-         New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "13/02/2026 16:30" -TimeBaseOn LocalTime -Verbose
+         New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "13/03/2026 16:30" -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

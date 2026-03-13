@@ -16,7 +16,7 @@ $ExpectedVersion = "25.001.$MinVer"
 $InstStr = "setup.exe"
 $UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
-$AppFullName = "$Manu $AppName $ExpectedVersion"
+$AppFullName = "$Manu $AppName FULL $ExpectedVersion"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName = "BSC_DPG"
 

@@ -19,7 +19,7 @@ $UninstStr = "msiexec.exe /p AcroRdrDCUpd25001$MinVer.msp"
 $ExpectedVersion = "25.001.$MinVer"
 $CustomVal = "MSP 2025.001.$MinVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
-$AppFullName = "$Manu $AppName MSP $CustomVal"
+$AppFullName = "$Manu $AppName $CustomVal"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $DPGName = "BSC_DPG"
 

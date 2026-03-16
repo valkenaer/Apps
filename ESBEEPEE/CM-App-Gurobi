@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                           $AppVer      = "12.0.3"    #INSTALLFORSYSTEM
+                           $AppVer      = "13.0.1"    #INSTALLFORSYSTEM
                           $ExpPlat      = "win64"
 
 $Manu            = "Gurobi"
@@ -11,7 +11,7 @@ $MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppVer\Gurobi
 $AppDesc         = "Gurobi Optimizer is a prescriptive analytics platform and a decision-making technology developed by Gurobi Optimization, LLC"
 $DevColl        = "W1XV2XH2 - 20250613 - ITS - P04_65"
 $Purp           = "Available"
-$AppFullName    = "$Manu $AppVer 001"
+$AppFullName    = "$Manu $AppVer"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $DTName         = "Gurobi $AppVer (64 bit) - Windows Installer (*.msi file)"
 $DPGName           = "BSC_DPG"

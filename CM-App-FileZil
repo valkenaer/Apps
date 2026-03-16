@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpectedVersion = "3.69.5"
-                 $VerMinOne = "3.69.1"
+           $ExpectedVersion = "3.69.6"
+                 $VerMinOne = "3.69.5"
 
 $Manu            = "Tim Kosse"
 $AppName         = "FileZilla"

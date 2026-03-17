@@ -4,8 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
 
-                     $Version = "2025.12-1"
-                    $PythVer  = "(Python 3.13.9 64-bit)"
+                     $Version = "2025.12-2"
+                    $PythVer  = "(Python 3.14.1 64-bit)"
 
 
 $Manu = "Anaconda, Inc."

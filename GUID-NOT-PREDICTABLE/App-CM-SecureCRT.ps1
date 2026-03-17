@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer    = "9.7.0"
-           $MinVer    = "3761"
+           $ExpVer    = "9.7.1"
+           $MinVer    = "3815"
              $GUID    = "{5919E6A9-0AF4-4696-89A1-33F64D005DE0}"     #FIRST_FAKE
 
      $Manu         = "VanDyke"

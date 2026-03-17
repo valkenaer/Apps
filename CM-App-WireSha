@@ -4,7 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                           $ExpectedVersion = "4.6.3"
-
+                                $PrevVer   = "4.6.4"
+ 
 $Manu      = "Gerald Combs"
 $AppName   = "WireShark"
 $AppDesc   = "The world's most popular network protocol analyzer" 

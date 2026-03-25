@@ -4,10 +4,10 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-              $RDATE           = "20260316"                                    
+              $RDATE           = "20260324"
 # Removed version numbers from AppScript
-             $RDATEOLD         = "20260310"
-              $GUID            = "{e5a47103-c39e-466e-9cef-59354ee59bd0}"         # Use New-Guid to create bogus GUID on first run
+             $RDATEOLD         = "20260316"
+              $GUID            = "{63cf35b8-6d7f-40b0-b3fb-7a4db9fc0adc}"         # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"
     $AppName         = "PowerBI Desktop"

@@ -3,19 +3,19 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                    $MinVer = "21288"
-                 $VerMinOne = "21265"
-                     $RDate   = "March 10th 2026"
+                    $MinVer = "21346"
+                 $VerMinOne = "21232"
+                     $RDate   = "March 26th 2026"
 
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
-$PrevVersion = "Adobe Acrobat Reader DC MSP 2025.001.$VerMinOne"
+$PrevVersion = "Adobe Acrobat Reader DC MSP 2026.001.$VerMinOne"
 $AppDesc = "$RDate Planned update https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html#continuous-track"
-$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2025.001.$MinVer"
-$InstStr = "msiexec.exe /p AcroRdrDCUpd25001$MinVer.msp /qn"
-$UninstStr = "msiexec.exe /p AcroRdrDCUpd25001$MinVer.msp"
+$MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2026.001.$MinVer"
+$InstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp /qn"
+$UninstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp"
 $ExpectedVersion = "25.001.$MinVer"
 $CustomVal = "MSP 2025.001.$MinVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"

@@ -4,8 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                     $MinVer = "21346"
-                 $VerMinOne = "21232"
-                     $RDate   = "March 26th 2026"
+                 $VerMinOne = "21346"
+                     $RDate   = "April 2nd 2026"
 
 
 $Manu = "Adobe"
@@ -16,8 +16,8 @@ $AppDesc = "$RDate Planned update https://www.adobe.com/devnet-docs/acrobatetk/t
 $MSILocation = "\\host1417\Sources$\Applications\Adobe\MSP\2026.001.$MinVer"
 $InstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp /qn"
 $UninstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp"
-$ExpectedVersion = "25.001.$MinVer"
-$CustomVal = "MSP 2025.001.$MinVer"
+$ExpectedVersion = "26.001.$MinVer"
+$CustomVal = "MSP 2026.001.$MinVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName = "$Manu $AppName $CustomVal"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"

@@ -4,23 +4,24 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
             $Version = "6.5.6"     #INNO INST
-            $PrevVer  = "6.5.1"
+            $PrevVer  = "6.5.5"
 
 $Manu              = "Martin Prikryl"
 $AppName           = "WinSCP"
 $AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer proto"
 $RunningImg        = "$AppName.exe"
-$MSILocation       = "\\$SiteServer\Sources$\Applications\WinSCP\$Version"
+$MSILocation       = "\\$SiteServer\Sources$\Applications\$AppName\$Version"
 $InstStr           = "$AppName-$Version-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"
-$UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
-$HKLMKey           = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\winscp_is1"
+$UninstStr         = "`"c:\Program Files (x86)\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey           = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\winscp3_is1"
 $AppFullName       = "$Manu $AppName $Version"
 $PrevVersion       = "$Manu $AppName $PrevVer"
 $DPGName           = "BSC_DPG"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
-   $DevColl02         = "BSC-P Beheer VDI's"
-   $DevColl03         = "BSC-P SOC Beheer VDI's"
-    $DevColl01       = "W1XV2XH2 - 20250613 - ITS - P04_65"
+     $DevColl01       = "W1XV2XH2 - 20250613 - ITS - P04_65"
+     $DevColl02         = "BSC-P Beheer VDI's"
+     $DevColl03         = "BSC-P SOC Beheer VDI's"
+
 
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
@@ -34,7 +35,7 @@ If (Get-CMApplication $PrevVersion) {
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
-    Remove-CMApplication -$PrevVersion -Force  
+    Remove-CMApplication $PrevVersion -Force  
 }
 
 

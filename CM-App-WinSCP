@@ -9,16 +9,18 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu              = "Martin Prikryl"
 $AppName           = "WinSCP"
 $AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer proto"
-$RunningImg        = "WinSCP.exe"
+$RunningImg        = "$AppName.exe"
 $MSILocation       = "\\$SiteServer\Sources$\Applications\WinSCP\$Version"
-$InstStr           = "WinSCP-$Version-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"
+$InstStr           = "$AppName-$Version-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"
 $UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
-$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GIMP-3_is1"
+$HKLMKey           = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\winscp_is1"
 $AppFullName       = "$Manu $AppName $Version"
 $PrevVersion       = "$Manu $AppName $PrevVer"
 $DPGName           = "BSC_DPG"
-$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
 $DevColl01         = "BSCC0750_BSCC0750"
+$DevColl02         = "BSCC0750_BSCC0750"
+$DevColl03         = "BSCC0750_BSCC0750"
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $FullVersion -Value
 

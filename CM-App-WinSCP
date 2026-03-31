@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-            $Version = "6.5.6"   
+            $Version = "6.5.1"   
             $PrevVer  = "6.5.5"
 
 $Manu              = "Martin Prikryl"

@@ -1,0 +1,41 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+            $Version = "6.5.6"   
+            $PrevVer  = "6.5.5"
+
+$Manu              = "Martin Prikryl"
+$AppName           = "WinSCP"
+$AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer proto"
+$RunningImg        = "WinSCP.exe"
+$MSILocation       = "\\$SiteServer\Sources$\Applications\WinSCP\$Version"
+$InstStr           = "gimp-$Version-setup.exe /VERYSILENT /NORESTART /ALLUSERS"
+$UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GIMP-3_is1"
+$AppFullName       = "$Manu $AppName $Version"
+$PrevVersion       = "$Manu $AppName $PrevVer"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $FullVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplication -$PrevVersion -Force  
+}
+
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

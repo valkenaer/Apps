@@ -8,7 +8,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu              = "Martin Prikryl"
 $AppName           = "WinSCP"
-$AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer proto"
+$AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocol."
 $RunningImg        = "$AppName.exe"
 $MSILocation       = "\\$SiteServer\Sources$\Applications\$AppName\$Version"
 $InstStr           = "$AppName-$Version-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"

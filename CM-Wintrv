@@ -11,8 +11,8 @@ $SiteServer = $Env:COMPUTERNAME
 # $Version   = "184.3.81"         # 
 # $Version   = "185.1.81"   
 
-         $Version   = "191.3.81"     
-        $RDATE      = "20260316"
+         $Version   = "192.8.81"     
+        $RDATE      = "20260406"
 
 $Manu = "Bloomberg"
 $AppName = "Terminal"

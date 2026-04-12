@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                     $MinVer = "21411"
-                 $VerMinOne = "21374"
+                 $VerMinOne = "21367"
                      $RDate   = "April 10th 2026"
 
 

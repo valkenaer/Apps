@@ -51,3 +51,4 @@ If($ConsoleFolderPath) {
 
 
 
+#  InstalledSoftware | where Publisher == 'Dominik Reichl' 

@@ -5,7 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
                     $MinVer = "21529"
                  $VerMinOne = "21431"
-                     $RDate   = "April 24th 2026"
+                     $RDate   = "May 1st 2026"
 
 
 $Manu = "Adobe"

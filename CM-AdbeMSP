@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                    $MinVer = "21483"
+                    $MinVer = "21529"
                  $VerMinOne = "21431"
                      $RDate   = "April 24th 2026"
 
@@ -26,6 +26,7 @@ $DPGName = "BSC_DPG"
 $DevColl01 = "Computer All Physical (incl Spark)" 
 $DevColl02 = "Workstations Windows 10 version 22H2"
 $DevColl03 = "Workstations Windows 11 version 24H2"
+$DevColl09 = "BSC-A ALL Workstations"
 
 $clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value

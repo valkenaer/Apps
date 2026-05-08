@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME 
 
-                         $Ver    = "2.60"       
+                         $Ver    = "2.61.1"       
                       $VerMinOne = "2.55" 
 
 $Manu = "Dominik Reichl"
@@ -19,7 +19,7 @@ $DTName = "KeePass deployment"
 $DGName = "BSC_DPG"
 $Purp = "Required"
 $DevColl01 = "Computer All Physical (incl Spark)"
-$DevColl02 = "BSC-P Telewerken VDI's"
+$DevColl02 = "KEEP_LATEST"
 $PrevVersion = "$Manu $AppName $VerMinOne" 
 $AppFullName = "$Manu $AppName $Ver"
 

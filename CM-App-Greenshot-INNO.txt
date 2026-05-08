@@ -1,0 +1,40 @@
+﻿Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+ 
+          $SiteServer = $Env:COMPUTERNAME
+             $DPGName = "BSC_DPG"
+
+$Manu = "Greenshot"
+$AppName = "Greenshot"
+$AppDesc = "$AppName is a light-weight screenshot software tool for Windows"
+
+                     $ExpectedVersion      = "1.3.315"                     #INNO 64 installer
+
+
+       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+           $InstStr = "$AppName-INSTALLER-$ExpectedVersion-RELEASE.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"_is1"
+       $UninstStr   = "`"C:\Program Files\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
+ $ConsoleFolderPath = "\Applications\Productivity Tools"
+         $ProcName  = "$AppName.exe"
+       $DevColl00     = "BSCC0750_BSCC0750"
+	   $DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
+       $AppFullName = "$AppName $ExpectedVersion"
+    
+
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

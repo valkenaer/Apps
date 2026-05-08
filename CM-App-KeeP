@@ -6,7 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
                          $Ver    = "2.60"       
                       $VerMinOne = "2.55" 
 
-$Manu = "Dominic Reichl"
+$Manu = "Dominik Reichl"
 $AppName = "KeePass"
 $AppDesc = "KeePass is a free, open source, light-weight and easy-to-use password manager."
 $ProcName = "keepass.exe"

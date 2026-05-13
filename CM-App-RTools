@@ -6,6 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
    $Ver   = "45"
   $MajVer = "6768"        # Icon in RTools.exe   
   $MinVer = "6492"             
+$ExpectedVersion = "4.5.$MajVer"
 
 $Manu = "R"
 $AppName = "Rtools"
@@ -14,8 +15,8 @@ $MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Tools\$Ver\$
 $ProcName = "$AppName.exe"
 $InstStr = "$AppName$Ver-$MajVer-$MinVer.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
 $UninstStr = "`"C:\$AppName$Ver\unins000.exe`" /SILENT"
-$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\$AppName$Ver"+"_is1"
-$ExpectedVersion = "$MajVer+$MinVer"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName$Ver"+"_is1"
+
 $DPGName           = "BSC_DPG"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $DevColl01         = "BSCC0750_BSCC0750"

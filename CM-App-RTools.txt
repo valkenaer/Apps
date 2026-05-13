@@ -1,0 +1,35 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+
+  $MajVer = "6768"        # Icon in RTools.exe   
+  $MinVer = "6492"             
+
+$Manu = "R"
+$AppName = "Rtools45"
+$AppDesc = "Rtools is a toolchain bundle used for building R packages from source (those that need compilation of C/C++ or Fortran code) and for building R itself."
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Tools\$MajVer\$MinVer"
+$ProcName = "$AppName.exe"
+$InstStr = "$AppName-$MajVer-$MinVer.exe /S"
+$UninstStr = "`"C:\Program Files\RStudio\Uninstall.exe`" /S"
+$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\RStudio"
+$ExpectedVersion = "$MajVer+$MinVer"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+$AppFullName = "$AppName $ExpectedVersion" 
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "11/11/2025 13:00" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

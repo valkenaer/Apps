@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
 
-$ExpectedVersion = "4.5.2"
+$ExpectedVersion = "4.6.0"
 $PrevVer         = "4.5.1"
 
 $MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R for Windows\$ExpectedVersion"

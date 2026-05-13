@@ -3,14 +3,14 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-
+   $Ver   = "45"
   $MajVer = "6768"        # Icon in RTools.exe   
   $MinVer = "6492"             
 
 $Manu = "R"
 $AppName = "Rtools45"
 $AppDesc = "Rtools is a toolchain bundle used for building R packages from source (those that need compilation of C/C++ or Fortran code) and for building R itself."
-$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Tools\45\$MajVer\$MinVer"
+$MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Tools\$Ver\$MajVer\$MinVer"
 $ProcName = "$AppName.exe"
 $InstStr = "$AppName-$MajVer-$MinVer.exe /S"
 $UninstStr = "`"C:\Program Files\RStudio\Uninstall.exe`" /S"

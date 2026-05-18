@@ -1,0 +1,47 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNANE
+$DPGName = "BSC_DPG"
+
+ $Manu = "MythicSoft"
+$AppName = "Agent Ransack"
+ $AppDesc = "$AppName is a free file search tool for finding files on your PC or network drives. It has a Lite mode, which is FREE for both personal and commercial use but also a Professional mode that includes optional pay-for features."
+   
+
+                 $BUILD = "3562"
+                $ExpVer = "9.3.$BUILD.1"
+                 $GUID  = "{C5D458A9-1E8D-472A-BBF4-7AD14DE836E2}"
+
+
+    $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$BUILD"
+        $InstStr = "agentransack-$BUILD.exe" /S /uin"
+        $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
+    $UninstStr   = "msiexec /X$GUID"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+      $ProcName  = "agentransack.exe"
+    $DevColl     = "BSCC0750_BSCC0750"
+         $DTName = "AgentRansack"
+       $AppFullName = "$Manu $AppName $ExpVer"
+
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+# ADDED IN CONFIGMGR 2107
+
+$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
+Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName
+
+# END ADDED IN CONFIGMGR 2107
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

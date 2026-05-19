@@ -19,23 +19,14 @@ $AppName = "Agent Ransack"
         $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
     $UninstStr   = "msiexec /X$GUID"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
-      $ProcName  = "agentransack.exe"
     $DevColl     = "BSCC0750_BSCC0750"
-         $DTName = "AgentRansack"
-       $AppFullName = "$Manu $AppName $ExpVer"
+       $AppFullName = "$Manu $AppName $BUILD"
 
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
-
-# ADDED IN CONFIGMGR 2107
-
-$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
-Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName
-
-# END ADDED IN CONFIGMGR 2107
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose

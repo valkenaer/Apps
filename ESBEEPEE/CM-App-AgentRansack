@@ -1,7 +1,7 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
-$SiteServer = $Env:COMPUTERNANE
+$SiteServer = $Env:COMPUTERNAME
 $DPGName = "BSC_DPG"
 
  $Manu = "MythicSoft"
@@ -15,7 +15,7 @@ $AppName = "Agent Ransack"
 
 
     $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$BUILD"
-        $InstStr = "agentransack-$BUILD.exe" /S /uin"
+        $InstStr = "agentransack-$BUILD.exe /S /uin"
         $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
     $UninstStr   = "msiexec /X$GUID"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"

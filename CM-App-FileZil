@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpectedVersion = "3.69.6"             # ELEVATE UNDERSCORES FROM INSTALLER :D
-                 $VerMinOne = "3.69.5"
+           $ExpectedVersion = "3.70.6"             # ELEVATE UNDERSCORES FROM INSTALLER :D
+                 $VerMinOne = "3.70.5"
 
 $Manu            = "Tim Kosse"
 $AppName         = "FileZilla"
@@ -12,7 +12,7 @@ $AppDesc         = "FileZilla Client is a fast and reliable cross-platform FTP, 
 $ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
 $AppFullName     = "$AppName $ExpectedVersion"
 $PrevVersion     = "$AppName $VerMinOne"
-$InstStr         = "$AppName-$ExpectedVersion-win64-setup.exe /S /user=all"
+$InstStr         = "$AppName+"_"+$ExpectedVersion+"_"+win64-setup.exe /S /user=all"
 $UninstStr       = "`"C:\Program Files\FileZilla FTP Client\uninstall.exe`" /S"
 $HKLMKey         = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\FileZilla Client"
  $ConsoleFolderPath = "\Applications\Productivity Tools"

@@ -8,6 +8,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu = "VideoLAN"
 $AppName = "VLC Player"
+$SHA256  = "20ad191348684b470ddc4e05204316f3d8e39655f412b3e392a0eef97639daaf"
 $AppDesc = "VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." 
 $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$ExpectedVersion"
 $InstStr = "vlc-$ExpectedVersion-win64.exe /S"

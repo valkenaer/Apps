@@ -9,10 +9,12 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu            = "Google"
 $AppName         = "Chrome"
+$url             = "https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi"
 $MSILocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\googlechromestandaloneenterprise64.msi"
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
+
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"

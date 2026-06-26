@@ -5,8 +5,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
     
-    $AppVer      = "2600"
-    $VerMinOne   = "2501"
+    $AppVer      = "2602"
+    $VerMinOne   = "2601"
 
 
 $AppName         = "7-Zip"

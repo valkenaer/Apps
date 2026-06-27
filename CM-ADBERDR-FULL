@@ -5,8 +5,8 @@ $SiteServer = $Env:COMPUTERNAME
 
                        # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
 
-           $MinVer = "21677"
-          $AppDesc = "FULL Reader June 17th 2026 Planned Update"
+           $MinVer = "21691"
+          $AppDesc = "FULL Reader June 25th 2026 Planned Update"
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"

@@ -5,11 +5,11 @@ $SiteServer = $Env:COMPUTERNAME
 
 
 
-                                     $ExpectedVersion = "0.97.1"
-                                $ProdID = "{E3F34540-D997-4E34-89CB-39FAAECB93DC}"  #BOGUS 1ST
+                                     $ExpectedVersion = "0.100.1"
+                                $ProdID = "{1f3b3c0d-3eda-4a3a-8082-f5ee04dbd669}"  #BOGUS 1ST
 $Manu = "Microsoft"
 $AppName = "PowerToys"
-$AppDesc = "Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity."
+$AppDesc = "Microsoft PowerToys is a set of free, open-source utilities designed to help power users and developers get more out of Windows"
 $EXELocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
 $InstStr = "$AppName-Setup-$ExpectedVersion-x64.exe /s /norestart"                        # ADD DASH ADD DASH
 $UninstStr = "MsiExec.exe /X$ProdID"

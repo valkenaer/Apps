@@ -6,7 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 
                                      $ExpectedVersion = "0.100.1"
-                                $ProdID = "{1f3b3c0d-3eda-4a3a-8082-f5ee04dbd669}"  #BOGUS 1ST
+                                $ProdID = "{5657C942-2DF1-46AF-AC72-7B214CF42682}"  #BOGUS 1ST
 $Manu = "Microsoft"
 $AppName = "PowerToys"
 $AppDesc = "Microsoft PowerToys is a set of free, open-source utilities designed to help power users and developers get more out of Windows"
@@ -42,3 +42,4 @@ If($ConsoleFolderPath) {
 # GUID  0.78.0    E1A5AB2F-313E-43C7-8B6D-057FEB530285
 # GUID  0.80.0    4BDBD97B-E378-4B43-8F7D-B22F55169DFE
 # GUID  0.97.1    E3F34540-D997-4E34-89CB-39FAAECB93DC (PREVIEW)
+# 0.100.1      5657C942-2DF1-46AF-AC72-7B214CF42682

@@ -17,9 +17,9 @@ $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
 $ConsoleFolderPath = "\Applications\Microsoft"
 
-$DevColl01         = "BSC-P Beheer VDI's
+$DevColl01         = "BSC-P Telewerken Windows 11"
    $DevColl02         = "BSC-P Telewerken VDI's"
-   $DevColl03         = "BSC-P SOC Beheer VDI's"
+   $DevColl03         = "extrateamsBO"
    $DevColl04         = "Computer All Physical (incl Spark)"
 
 
@@ -38,9 +38,9 @@ Add-CMMSIXDeploymentType -ApplicationName $AppFullname -ContentLocation $MSIXLoc
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 
-# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
-# New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Available -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName

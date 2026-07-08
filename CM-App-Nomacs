@@ -15,7 +15,7 @@ $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName    = "$Manu $AppName $AppVer"
 $DTName         = "$AppName - $Manu - Windows Installer (*.msi file)"
 $DPGName          = "BSC_DPG"
-$FixedInstallCMD   = "msiexec.exe /i nomacs-setup-x64.msi /passive"
+$FixedInstallCMD   = "msiexec.exe /i $AppName-setup-x64.msi /passive"
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden

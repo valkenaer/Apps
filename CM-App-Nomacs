@@ -12,7 +12,7 @@ $DevColl        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName    = "$Manu $AppVer 750"
-$DTName         = "Node.js - Windows Installer (*.msi file)"
+$DTName         = "nomacs - Image Lounge - Windows Installer (*.msi file)"
 $DPGName          = "BSC_DPG"
 $FixedInstallCMD   = "msiexec.exe /i nomacs-setup-x64.msi /passive"
 

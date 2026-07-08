@@ -18,7 +18,7 @@ $DPGName          = "BSC_DPG"
 $FixedInstallCMD   = "msiexec.exe /i $AppName-setup-x64.msi /passive"
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
-Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -LogonRequirementType WhetherOrNotUserLoggedOn -Force -UserInterActionMode Hidden
 Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

@@ -1,0 +1,29 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                        $AppVer      = "3.22.1"
+
+$Manu            = "Nomacs"
+$AppDesc         = "Nomacs is a fully featured image viewer that supports all common image formats as well as many RAW formats and .psd (Photoshop) files."
+$MSILocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppVer\nomacs-setup-x64.msi"
+$DevColl        = "BSCC0750_BSCC0750"
+$Purp           = "Available"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$AppFullName    = "$Manu $AppVer 750"
+$DTName         = "Node.js - Windows Installer (*.msi file)"
+$DPGName          = "BSC_DPG"
+$FixedInstallCMD   = "msiexec.exe /i nomacs-setup-x64.msi /passive"
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

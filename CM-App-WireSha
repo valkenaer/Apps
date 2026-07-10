@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                          $ExpectedVersion = "4.6.3"
-                                $PrevVer   = "4.6.4"
+                          $ExpectedVersion = "4.6.7"
+                                $PrevVer   = "4.6.6"
  
 $Manu      = "Gerald Combs"
 $AppName   = "WireShark"

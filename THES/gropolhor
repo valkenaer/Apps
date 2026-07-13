@@ -1,2 +1,2 @@
-000001 NoAutoLogonBEH
+000001 NoAutoLogonBEH     CC-POLICIES-ADMT-VMWAREVIEWAGENTCONF                    AllowSingleSignOn   DISABLED
 000002 NoHWAccel25H2 

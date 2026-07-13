@@ -1,0 +1,72 @@
+{
+   "checksum": "2df60e9f352e7e3ba77520367b97af21",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13427368192563530",
+            "date_last_used": "13427368254147310",
+            "guid": "b885d9bf-707b-4494-9f05-33a28e859eeb",
+            "id": "6",
+            "name": "vSphere locatie KV7",
+            "show_icon": false,
+            "source": "user_add",
+            "type": "url",
+			"url": "https://host19055.mgmt.bsc.rijksoverheid.nl/",
+            "visit_count": 2
+         }, {
+            "date_added": "13427368233595185",
+            "date_last_used": "13427368258124686",
+            "guid": "b5cfd421-65b7-41ee-9597-ce8f65ebdde2",
+            "id": "7",
+            "name": "vSphere locatie ODC",
+            "show_icon": false,
+            "source": "user_add",
+            "type": "url",
+            "url": "https://host19057.mgmt.bsc.rijksoverheid.nl/",
+            "visit_count": 2
+         }, {
+            "date_added": "13427368266282649",
+            "date_last_used": "13427369920033757",
+            "guid": "97ad55a4-d606-48b9-9241-10d675975dc1",
+            "id": "8",
+            "name": "Horizon® 8 mgmt",
+            "show_icon": false,
+            "source": "user_add",
+            "type": "url",
+            "url": "https://vdi2022.bsc.rijksoverheid.nl/admin",
+            "visit_count": 3
+         } ],
+         "date_added": "13427367450480796",
+         "date_last_used": "0",
+         "date_modified": "13427368266282649",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Werkbalk Favorieten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13427367450480796",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Andere favorieten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13427367450480796",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobiele favorieten",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

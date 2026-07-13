@@ -1,0 +1,2592 @@
+{
+   "checksum": "6bb727e43451fa05f32f8710b5f2407a",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13362655048038667",
+               "date_last_used": "13424519194324945",
+               "guid": "53631be4-eff4-4453-9a3a-9b24fbb029ca",
+               "id": "11",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Home",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://safire-prod.planoncloud.com/startpage/SAF/HP_PSS",
+               "visit_count": 29
+            }, {
+               "date_added": "13411041006373855",
+               "date_last_used": "13421922367316211",
+               "guid": "beba166d-9c11-4cad-a88e-bc82168c6644",
+               "id": "229",
+               "name": "Use PowerShell to Unlock SCCM Objects That Are Not Available – Q's Tech Babble",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://qtechbabble.wordpress.com/2020/01/17/user-powershell-to-unlock-sccm-objects-that-are-not-available/",
+               "visit_count": 9
+            }, {
+               "date_added": "13420911976956483",
+               "date_last_used": "13421489524268346",
+               "guid": "a7b9bef3-2a7f-4770-9346-0fbeade97c8d",
+               "id": "264",
+               "name": "Inno Setup Help",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://jrsoftware.org/ishelp/index.php?topic=setupcmdline",
+               "visit_count": 4
+            }, {
+               "date_added": "13421509628806415",
+               "date_last_used": "13425463461647197",
+               "guid": "7b3ad596-4682-4b92-b194-fe831bafe54d",
+               "id": "267",
+               "name": "Add-Computer (Microsoft.PowerShell.Management) - PowerShell | Microsoft Learn",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/add-computer?view=powershell-5.1",
+               "visit_count": 5
+            }, {
+               "date_added": "13262184953004213",
+               "date_last_used": "13427371715542676",
+               "guid": "f07428c6-c305-4dde-86bc-e1e6e306241c",
+               "id": "3",
+               "name": "Download Chrome",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://chromeenterprise.google/browser/download/",
+               "visit_count": 248
+            }, {
+               "date_added": "13424285661390343",
+               "date_last_used": "13424285668394569",
+               "guid": "2d7a9a11-ce15-4c30-8f7e-628ebd227a7d",
+               "id": "279",
+               "name": "Agent Ransack Silent Install (How-To Guide) - SILENT INSTALL HQ",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://silentinstallhq.com/agent-ransack-silent-install-how-to-guide/",
+               "visit_count": 2
+            }, {
+               "date_added": "13371545575225733",
+               "date_last_used": "13427280952928883",
+               "guid": "a4949dc7-71ea-4e1a-bba3-07621b0264b8",
+               "id": "5",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "7-ZIP Download",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.7-zip.org/download.html",
+               "visit_count": 135
+            }, {
+               "date_added": "13386171975434020",
+               "date_last_used": "13427380114013384",
+               "guid": "6459226d-1115-4410-b524-c5f7aadeed49",
+               "id": "6",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Download Java WIN",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.java.com/en/download/manual.jsp",
+               "visit_count": 127
+            }, {
+               "date_added": "13257447233966988",
+               "date_last_used": "13427380118671287",
+               "guid": "d0079b8e-855a-4adb-aef5-676f56a1d525",
+               "id": "10",
+               "name": "DC Release Notes — Release Notes for Acrobat DC Products",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html#continuous-track",
+               "visit_count": 233
+            }, {
+               "date_added": "13420717207849561",
+               "date_last_used": "13427280941134306",
+               "guid": "3e3a4773-538e-410c-b366-b7b0c745c046",
+               "id": "261",
+               "name": "Adobe Acrobat Reader volume distribution | Adobe Acrobat",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.adobe.com/acrobat/pdf-reader/volume-distribution.html",
+               "visit_count": 7
+            }, {
+               "date_added": "13372341669930481",
+               "date_last_used": "13421922386530495",
+               "guid": "b0510c91-8f36-42ac-8bf9-21536c05d93f",
+               "id": "12",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Download Microsoft Power BI Desktop from Official Microsoft Download Center",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.microsoft.com/en-us/download/details.aspx?id=58494",
+               "visit_count": 96
+            }, {
+               "date_added": "13264775422132050",
+               "date_last_used": "13426953491045635",
+               "guid": "5ebb403e-2fd3-41ff-b4b7-d119082b8205",
+               "id": "7",
+               "name": "Download the Firefox Browser in English (US) and more than 90 other languages",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.mozilla.org/en-US/firefox/all/#product-desktop-release",
+               "visit_count": 171
+            }, {
+               "date_added": "13284143137393947",
+               "date_last_used": "13423668897621489",
+               "guid": "2f153dba-f294-400f-9be3-ef721c8ba614",
+               "id": "25",
+               "name": "Update history for Microsoft 365 Apps (listed by date) - Office release notes | Microsoft Docs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date",
+               "visit_count": 44
+            }, {
+               "date_added": "13408825301577473",
+               "date_last_used": "13426175020451675",
+               "guid": "362c1da6-de28-4a28-a9ae-c9e0524b96c5",
+               "id": "212",
+               "name": "Bulk deploy the Microsoft Teams desktop client - Microsoft Teams | Microsoft Learn",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://learn.microsoft.com/en-us/microsoftteams/teams-client-bulk-install",
+               "visit_count": 18
+            }, {
+               "date_added": "13275044897529757",
+               "date_last_used": "13425375336480177",
+               "guid": "954aa99f-b1c6-46f1-8c68-7a6981ff0e83",
+               "id": "13",
+               "name": "Download Visual Studio Code - Mac, Linux, Windows",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://code.visualstudio.com/download",
+               "visit_count": 95
+            }, {
+               "date_added": "13412681626795971",
+               "date_last_used": "13422526507764004",
+               "guid": "ab128cdc-a1fa-46f5-b6bf-e1e144e0291b",
+               "id": "240",
+               "name": "Download FileZilla Client",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://filezilla-project.org/download.php?show_all=1",
+               "visit_count": 18
+            }, {
+               "date_added": "13368115265954729",
+               "date_last_used": "13426074732652811",
+               "guid": "4ff27690-8326-44f9-86c8-f7b00b752cf0",
+               "id": "19",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "WinSCP :: Official Site :: Download",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://winscp.net/eng/download.php",
+               "visit_count": 62
+            }, {
+               "date_added": "13403705309549290",
+               "date_last_used": "13426862972832317",
+               "guid": "78d7184b-6d1e-4cf2-baae-5b51a408c730",
+               "id": "32",
+               "name": "GIMP - Downloads",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.gimp.org/downloads/",
+               "visit_count": 25
+            }, {
+               "date_added": "13410951619313849",
+               "date_last_used": "13423663419020624",
+               "guid": "64f1f529-a287-4e1b-a813-2bd8d115dd0a",
+               "id": "226",
+               "name": "Releases · WinMerge/winmerge",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/WinMerge/winmerge/releases",
+               "visit_count": 9
+            }, {
+               "date_added": "13394879754416133",
+               "date_last_used": "13421319059954410",
+               "guid": "b85b4c79-a3d3-4755-843e-fad692178997",
+               "id": "9",
+               "name": "Windows Driver Downloads for Downloads Section | Synaptics",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.synaptics.com/products/displaylink-graphics/downloads/windows",
+               "visit_count": 19
+            }, {
+               "date_added": "13281791041029259",
+               "date_last_used": "13426154349927586",
+               "guid": "c8088fde-0e01-4e21-9480-60e941d30dcf",
+               "id": "14",
+               "name": "Downloads | Notepad++",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://notepad-plus-plus.org/downloads/",
+               "visit_count": 124
+            }, {
+               "date_added": "13364302185279344",
+               "date_last_used": "13426154345429465",
+               "guid": "c067dc42-d1c2-43a4-9a19-d327fc1de4cd",
+               "id": "15",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Download .NET 6.0 (Linux, macOS, and Windows)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://dotnet.microsoft.com/en-us/download/dotnet/6.0",
+               "visit_count": 15
+            }, {
+               "date_added": "13389094980219933",
+               "date_last_used": "13425747561253962",
+               "guid": "ff2d731e-ce11-427c-ba69-fde627149c34",
+               "id": "16",
+               "name": "Download .NET 8.0 (Linux, macOS, and Windows)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
+               "visit_count": 22
+            }, {
+               "date_added": "13389094954213607",
+               "date_last_used": "13424531268706939",
+               "guid": "be6938f4-fa81-43d6-babd-a26ca35e8a47",
+               "id": "17",
+               "name": "Omnissa Download",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/omnissa_horizon_clients/8",
+               "visit_count": 8
+            }, {
+               "date_added": "13292350009787566",
+               "date_last_used": "13421330173670351",
+               "guid": "dc9800f4-513f-4e8d-94e3-40c955294e44",
+               "id": "20",
+               "name": "Configuration - KeePass",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://keepass.info/help/base/configuration.html",
+               "visit_count": 12
+            }, {
+               "date_added": "13266950370741144",
+               "date_last_used": "13421329352275496",
+               "guid": "05c1f1ae-877d-473b-81fb-aed3ebc80021",
+               "id": "23",
+               "name": "Anaconda | Individual Edition",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.anaconda.com/products/individual#Downloads",
+               "visit_count": 11
+            }, {
+               "date_added": "13288096339365140",
+               "date_last_used": "13403345979528736",
+               "guid": "36151743-c097-4c65-aea7-67d398f07eba",
+               "id": "24",
+               "name": "Release notes — Anaconda documentation",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.anaconda.com/anaconda/reference/release-notes/",
+               "visit_count": 1
+            }, {
+               "date_added": "13281092339338787",
+               "date_last_used": "13395741176500521",
+               "guid": "715e9c97-2d20-4d08-af4d-8fd0a89e7529",
+               "id": "26",
+               "name": "Create an offline installation - Visual Studio (Windows) | Microsoft Docs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.microsoft.com/en-us/visualstudio/install/create-an-offline-installation-of-visual-studio?view=vs-2019",
+               "visit_count": 1
+            }, {
+               "date_added": "13268490226934786",
+               "date_last_used": "0",
+               "guid": "6af7ba59-9b74-42eb-9590-d43383f89077",
+               "id": "27",
+               "name": "primeapi.cmegroup.com",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://primeapi.cmegroup.com/gfe/rest/gfeservice/getUserDetails/JLONGO3",
+               "visit_count": 0
+            }, {
+               "date_added": "13283533527025334",
+               "date_last_used": "13403347733005546",
+               "guid": "ca4ac8fb-6a6f-40f6-b5e9-19724436a328",
+               "id": "29",
+               "name": "Licenses - My Atlassian",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://my.atlassian.com/product",
+               "visit_count": 4
+            }, {
+               "date_added": "13366476949222563",
+               "date_last_used": "13397557783087087",
+               "guid": "cfc54f34-cd59-4346-a1f7-2822907e3db6",
+               "id": "31",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Patch My PC Docs | Getting Started",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.patchmypc.com/",
+               "visit_count": 4
+            }, {
+               "date_added": "13411655451725145",
+               "date_last_used": "13413979771452064",
+               "guid": "55b85d01-9c69-4fae-aaf8-5142d0be3088",
+               "id": "232",
+               "name": "Hardware Inventory Scan Cycle in ConfigMgr Explained - Patch My PC",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://patchmypc.com/kb/hardware-inventory-scan-sccm/",
+               "visit_count": 2
+            }, {
+               "date_added": "13391875656556240",
+               "date_last_used": "13409765847336991",
+               "guid": "ec1ef3f5-9dcb-4bba-8886-cc74ed15d483",
+               "id": "4",
+               "name": "Correct Domain Join Account Permissions - SCCM / MDT OS Deployment",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.moderndeployment.com/correct-domain-join-account-permissions/",
+               "visit_count": 11
+            }, {
+               "date_added": "13412439320611113",
+               "date_last_used": "0",
+               "guid": "dd18cf6e-977f-4718-8208-c4c45d781642",
+               "id": "237",
+               "name": "Affordable 3D Printers & Accessories | Wide Range – ELEGOO EU",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://eu.elegoo.com/collections/3d-printing?utm_source=officialhome&utm_medium=referral&utm_id=eustore",
+               "visit_count": 1
+            }, {
+               "date_added": "13411655457734264",
+               "date_last_used": "0",
+               "guid": "065438a6-7080-4bea-b60f-c976b3a59c78",
+               "id": "233",
+               "name": "Deep Dive Into Automatic Deployment Rule (ADR) Components (RuleEngine and PatchDownloader) in SCCM - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=u5f37k1Vl9A",
+               "visit_count": 1
+            }, {
+               "date_added": "13411655461142776",
+               "date_last_used": "0",
+               "guid": "86741f9f-9318-400d-b2df-be35d912af0f",
+               "id": "234",
+               "name": "Understanding the Software Update Policy, Maintenance Window, Business Hours and more in SCCM - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=RSj6sDoSTN4&t=230s",
+               "visit_count": 1
+            }, {
+               "date_added": "13416912250907620",
+               "date_last_used": "13418318077650486",
+               "guid": "07a20f3f-c43c-454c-9f43-98cb0df7143b",
+               "id": "245",
+               "name": "Clear-CCMCache.ps1/Clear-CCMCache.ps1 at main · virtualox/Clear-CCMCache.ps1",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/virtualox/Clear-CCMCache.ps1/blob/main/Clear-CCMCache.ps1",
+               "visit_count": 3
+            }, {
+               "date_added": "13418901759444930",
+               "date_last_used": "13421925002237713",
+               "guid": "97d5022b-d1fe-4c06-8466-29a24d32ce4c",
+               "id": "254",
+               "name": "NOS Journaal | NPO Start",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://npo.nl/start/afspelen/nos-journaal_103799",
+               "visit_count": 6
+            }, {
+               "date_added": "13418914268872559",
+               "date_last_used": "13418917365427307",
+               "guid": "5a65870a-56fa-4f19-8c4e-4b50b3dbfb11",
+               "id": "255",
+               "name": "ConfigMgr: WIM Your Applications Like a Boss | OSDeploy | Sune Thomsen",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.osdsune.com/home/archive/microsoft-configuration-manager/wim-applications-like-a-boss",
+               "visit_count": 3
+            }, {
+               "date_added": "13418923451694559",
+               "date_last_used": "13421337727680996",
+               "guid": "6280eb73-0a8e-4ff3-99fa-562a85b7fca9",
+               "id": "258",
+               "name": "New to PowerShell App Deploy Toolkit? Here's how to get started! - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=l0LSTCINPpc",
+               "visit_count": 3
+            } ],
+            "date_added": "13265817643714101",
+            "date_last_used": "0",
+            "date_modified": "13424532419700328",
+            "guid": "011e4c26-8016-4f31-a067-cbe5b61b40f4",
+            "id": "2",
+            "name": "Applications",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13269707140740366",
+               "date_last_used": "13426345191510270",
+               "guid": "fccc17f2-1819-4940-bba3-876df2bd2ded",
+               "id": "107",
+               "name": "rds.minfin.nl",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://rds.minfin.nl/",
+               "visit_count": 2
+            }, {
+               "date_added": "13270228344899826",
+               "date_last_used": "13427375788656677",
+               "guid": "3fd54f0d-05ec-409c-b103-085a96c026f1",
+               "id": "108",
+               "name": "Ministerie van Financiën - Aanmelden",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://sbpmfi.okta-emea.com/",
+               "visit_count": 27
+            }, {
+               "date_added": "13373366539035219",
+               "date_last_used": "13373384912398048",
+               "guid": "1ec68b12-01fe-4b71-9ad0-dbe26a0d2737",
+               "id": "109",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "rds.bsc.rijksoverheid.nl",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://rds.bsc.rijksoverheid.nl/my.policy",
+               "visit_count": 1
+            } ],
+            "date_added": "13269707131425124",
+            "date_last_used": "0",
+            "date_modified": "13409138425182365",
+            "guid": "857b30a4-6438-4ca0-b9b1-c86e4f743b1e",
+            "id": "106",
+            "name": "SBP",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13275137465543934",
+               "date_last_used": "13421341737166958",
+               "guid": "ab9985a4-5af6-46b8-a6b4-24f286d3a950",
+               "id": "66",
+               "name": "DigiD: Inloggen | Keuze",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://digid.nl/inloggen",
+               "visit_count": 4
+            }, {
+               "date_added": "13407335547473067",
+               "date_last_used": "13421341739679916",
+               "guid": "cbc4c85a-7503-49d4-a788-11450b166388",
+               "id": "197",
+               "name": "icscards.nl/web/consumer/abnamro/sca-login",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.icscards.nl/web/consumer/abnamro/sca-login",
+               "visit_count": 5
+            }, {
+               "date_added": "13417005259398360",
+               "date_last_used": "13421341742478752",
+               "guid": "f2ed5a6c-4b4d-400e-8879-e1782d2e5558",
+               "id": "248",
+               "name": "Tentoonstelling 'Happy Birthday Amsterdam' viert 750 jaar stadsgeschiedenis - AT5",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.at5.nl/artikelen/230180/tentoonstelling-happy-birthday-amsterdam-viert-750-jaar-stadsgeschiedenis",
+               "visit_count": 4
+            }, {
+               "date_added": "13421927407070695",
+               "date_last_used": "0",
+               "guid": "60000f8b-1107-4034-8c65-187611c4e47a",
+               "id": "270",
+               "name": "Online Programma Gemist Downloader",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://downloadgemist.nl/",
+               "visit_count": 1
+            }, {
+               "date_added": "13399390822194991",
+               "date_last_used": "13421927426506540",
+               "guid": "6ce56c7b-292a-445f-ba38-5a2797e345a7",
+               "id": "67",
+               "name": "Mijn Greenchoice",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://mijn.greenchoice.nl/",
+               "visit_count": 4
+            }, {
+               "date_added": "13405783801151174",
+               "date_last_used": "13421927438117364",
+               "guid": "355d5f02-f4da-4ea7-960f-5692312bfa5e",
+               "id": "68",
+               "name": "Wasvoorschriften voor Mellowood",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://undiemeister.com/pages/wasvoorschriften?utm_source=Tijd+voor+een+eerste+wasje%3F&utm_medium=email&utm_campaign=NL+-+Service+campagne&utm_term=542519",
+               "visit_count": 3
+            }, {
+               "date_added": "13405434462653985",
+               "date_last_used": "13407415638741220",
+               "guid": "ca4edfe9-e861-4d0b-9ba4-9c4d96fca57c",
+               "id": "69",
+               "name": "Wie zijn wij? - BewustZijnNederland",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.bewustzijnnederland.nl/wie-zijn-wij",
+               "visit_count": 3
+            }, {
+               "date_added": "13399391293267796",
+               "date_last_used": "13421927448477903",
+               "guid": "507f3190-9d43-4292-9b5a-50911acb0fca",
+               "id": "70",
+               "name": "How To Configure PKI for Microsoft SCCM to Use HTTPS/SSL Instead of HTTP - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=nChKKM9APAQ",
+               "visit_count": 3
+            }, {
+               "date_added": "13276346599389204",
+               "date_last_used": "13421927431453779",
+               "guid": "d707960d-d0a9-474f-bf19-7469fd9b820c",
+               "id": "71",
+               "name": "Last Exit to Nowhere",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.lastexittonowhere.com/",
+               "visit_count": 1
+            }, {
+               "date_added": "13366454812057962",
+               "date_last_used": "13399390849873349",
+               "guid": "832917e5-5f50-41bd-97a8-64776e1de9f3",
+               "id": "72",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Belegging Delft | Zoek beleggingen te koop: Brabantse Turfmarkt 64-66 2611 CP Delft [funda in business]",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.fundainbusiness.nl/belegging/delft/object-43449042-brabantse-turfmarkt-64-66/",
+               "visit_count": 1
+            }, {
+               "date_added": "13288104961990522",
+               "date_last_used": "13405526821386515",
+               "guid": "2998bb46-5df5-4a2d-afed-624159ef2d78",
+               "id": "73",
+               "name": "Glomus tumor in de vingertop - dokter Jacobs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dokterxanderjacobs.nl/glomus-tumor",
+               "visit_count": 2
+            }, {
+               "date_added": "13367169685632307",
+               "date_last_used": "0",
+               "guid": "e1a3e61d-220b-4959-bf15-1f3f98a1651e",
+               "id": "74",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Login | Consumentenbond",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.consumentenbond.nl/login",
+               "visit_count": 0
+            }, {
+               "date_added": "13366735451998133",
+               "date_last_used": "0",
+               "guid": "724dfc60-1d34-44b1-9249-f55fb0afc67d",
+               "id": "75",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "60's & 70's Hits - Luister het beste uit de 60's en 70's | Radio 10 | Radio10",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.radio10.nl/60s-en-70s-hits",
+               "visit_count": 0
+            }, {
+               "date_added": "13279978279342313",
+               "date_last_used": "13409828473305381",
+               "guid": "0f4b7800-d4ed-44ef-bec1-a07418d9f19f",
+               "id": "76",
+               "name": "KINK",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://kink.nl/",
+               "visit_count": 1
+            }, {
+               "date_added": "13300186339222879",
+               "date_last_used": "13407429737560527",
+               "guid": "b12cd556-b291-45bd-ac9b-d4c322c3c782",
+               "id": "77",
+               "name": "het team - De Schans Tandartsen",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://deschanstandartsen.nl/over-ons/team/",
+               "visit_count": 2
+            }, {
+               "date_added": "13276335309477982",
+               "date_last_used": "0",
+               "guid": "9bc2def4-ef50-4588-9f6d-04fc6d216855",
+               "id": "78",
+               "name": "Ticketmaster.nl",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.ticketmaster.nl/",
+               "visit_count": 0
+            }, {
+               "date_added": "13275392394933890",
+               "date_last_used": "0",
+               "guid": "00eeef6d-cf12-4ee4-bc99-482b51d2ecb8",
+               "id": "79",
+               "name": "Mobiliteitsbank - Inloggen",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.mobiliteitsbank.nl/inloggen",
+               "visit_count": 0
+            }, {
+               "date_added": "13367140035925243",
+               "date_last_used": "0",
+               "guid": "ef59e589-3639-4cbd-82d2-04e26e76329e",
+               "id": "80",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Racoon Tablature",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://people.zeelandnet.nl/snarfje/",
+               "visit_count": 0
+            }, {
+               "date_added": "13335695300519814",
+               "date_last_used": "13395329676425863",
+               "guid": "c874a789-d310-4203-9136-4b694ba27cee",
+               "id": "81",
+               "name": "Lego Technic 8860 Car Chassis (1980) - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=fcxQiw683Aw",
+               "visit_count": 3
+            }, {
+               "date_added": "13335695862907938",
+               "date_last_used": "13399391530022992",
+               "guid": "3724da2a-c8d2-4924-8d08-932b105591c0",
+               "id": "82",
+               "name": "Lego Technic 8020 Universtal Set (1984)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=qMnYLc7DPuU",
+               "visit_count": 2
+            }, {
+               "date_added": "13335695597181466",
+               "date_last_used": "13374940013865425",
+               "guid": "d691e3f0-f09d-457b-85e3-b456a3ef7215",
+               "id": "83",
+               "name": "Lego Technic 8040 Pneumatic (1984) ",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=FKqHhEW3mDI",
+               "visit_count": 1
+            }, {
+               "date_added": "13335696668626450",
+               "date_last_used": "0",
+               "guid": "6f585de0-0827-4e20-a852-de60e5a75109",
+               "id": "84",
+               "name": "Lego 5540 Model Team Formula 1 Racer (1986)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=F4Denm3rf68",
+               "visit_count": 0
+            }, {
+               "date_added": "13335696517604903",
+               "date_last_used": "13390054736822714",
+               "guid": "75e1f5d3-c207-49c6-959c-ba6b10dd544e",
+               "id": "85",
+               "name": "Lego 5510 Model Team Jeep (1986)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=ybyz5UPPpU4",
+               "visit_count": 2
+            }, {
+               "date_added": "13335695444488388",
+               "date_last_used": "13390054733873739",
+               "guid": "09195f71-352f-4436-abd7-afa88a8042a3",
+               "id": "86",
+               "name": "Lego Technic 8094 Control Set (1990)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=8W4vrKUAbMA",
+               "visit_count": 1
+            }, {
+               "date_added": "13368012915126081",
+               "date_last_used": "0",
+               "guid": "d7e4753f-3445-4fb6-b0ab-dc19f05c6678",
+               "id": "87",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Home - leerportaal van Ministerie van Financiën",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://minfin.trainingscatalogus.nl/nl/ui#/",
+               "visit_count": 0
+            }, {
+               "date_added": "13368014653141964",
+               "date_last_used": "13399390957472292",
+               "guid": "8ebf2034-fed4-40fe-a8a2-89b4c385e25a",
+               "id": "88",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "VMHIAT | VMware Horizon 8: Infrastructure Administration and Troubleshooting | Training Course | VMware.",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.globalknowledge.com/nl-nl/trainingen/vmware/virtualisation/vmhiat",
+               "visit_count": 1
+            }, {
+               "date_added": "13366454749376244",
+               "date_last_used": "0",
+               "guid": "9ecf2943-5d16-4469-89be-d1cc83dd2e04",
+               "id": "89",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Van der Valk",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.valk.com/",
+               "visit_count": 0
+            }, {
+               "date_added": "13364036289775162",
+               "date_last_used": "13415097731879931",
+               "guid": "c622fdbc-b960-4683-97fd-197a0df262a5",
+               "id": "90",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Op bezoek bij UWV | Jorien Heuker vertelt over haar werk bij het Facilitair Bedrijf van UWV - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=JYQ1mlTM9ms",
+               "visit_count": 1
+            }, {
+               "date_added": "13364053873035202",
+               "date_last_used": "13412704858068159",
+               "guid": "827b65d6-3648-4231-a295-89cb868a73b6",
+               "id": "91",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Marvin al drie weken vermist, familie radeloos",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.omroepwest.nl/nieuws/4831174/marvin-al-drie-weken-vermist-familie-is-radeloos-niemand-is-boos-op-je",
+               "visit_count": 2
+            }, {
+               "date_added": "13275476933384714",
+               "date_last_used": "0",
+               "guid": "3c114f9c-d456-4e33-aff3-4840a1e4740b",
+               "id": "92",
+               "name": "GitHub: Where the world builds software · GitHub",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/",
+               "visit_count": 0
+            }, {
+               "date_added": "13275664008666267",
+               "date_last_used": "0",
+               "guid": "cdf5f8eb-fb24-421e-99ad-bd501852b6cc",
+               "id": "93",
+               "name": "Inloggen - Creditcard Online | International Card Services",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.icscards.nl/abnamro/sca-login/",
+               "visit_count": 0
+            }, {
+               "date_added": "13280236981350062",
+               "date_last_used": "0",
+               "guid": "bd46fb69-227f-4511-9660-034d046a3472",
+               "id": "94",
+               "name": "20211013 Ask us anything on ConfigMgr, MDT, and Intune - wih David Segura",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=n87RzzFONhk&t=113s",
+               "visit_count": 0
+            }, {
+               "date_added": "13280234542251180",
+               "date_last_used": "0",
+               "guid": "5e580767-6cd7-4d6d-b175-fc710fda3127",
+               "id": "95",
+               "name": "20211027 Ask us anything on ConfigMgr, MDT, and Intuneunity Office Hours - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=P7y44QlH0uQ",
+               "visit_count": 0
+            }, {
+               "date_added": "13282057160958358",
+               "date_last_used": "0",
+               "guid": "eee2486c-8f41-4d89-a5a8-0ceddd638fc7",
+               "id": "96",
+               "name": "20211111 Deploying Windows 11 in the Enterprise and Additional Q & A. - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=FokSw6hWkcE",
+               "visit_count": 0
+            }, {
+               "date_added": "13292672622618510",
+               "date_last_used": "0",
+               "guid": "7ad8898b-2d25-4967-b786-13ce3df21998",
+               "id": "97",
+               "name": "3/2/22 ViaMonstra Academy OFFICE HOURS | ConfigMgr, MDT, Intune, Azure, PowerShell, MDT, and More! - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=gPWNJQ7BsDo",
+               "visit_count": 0
+            }, {
+               "date_added": "13404905395687220",
+               "date_last_used": "0",
+               "guid": "ca5beb0e-bf40-482f-8abf-ca38b3fa6857",
+               "id": "98",
+               "name": "NewHealth",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://modules.newhealth.nl/berichten/61c18248-1b40-4dd9-9698-26183ad7021e",
+               "visit_count": 1
+            } ],
+            "date_added": "13275137476430224",
+            "date_last_used": "0",
+            "date_modified": "13422705209430314",
+            "guid": "f11e4ed1-ddb1-4386-ad28-04e9badfa19f",
+            "id": "65",
+            "name": "Pers",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13362834857843982",
+               "date_last_used": "13390060845887472",
+               "guid": "76b265eb-a1c5-40fa-9992-e880a1832979",
+               "id": "100",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Leerportaal van Ministerie van Financiën",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://minfin.trainingscatalogus.nl/nl/ClassLogin?return=%2Fnl%2Fui%23%2F",
+               "visit_count": 5
+            }, {
+               "date_added": "13362843573820009",
+               "date_last_used": "13411038117571377",
+               "guid": "bac8dc4a-9c34-4013-b42c-c4a3d7d07132",
+               "id": "101",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Breinbrekers Hanayama cast uit Japan",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.puzzel-winkel.nl/contents/nl/d57_Breinbrekers-hanayama-japan.html",
+               "visit_count": 3
+            }, {
+               "date_added": "13338309038489162",
+               "date_last_used": "13411038122680512",
+               "guid": "7632d712-de12-44cf-ae4e-0b891b6b4c30",
+               "id": "102",
+               "name": "PuzzelMeester - Meester in 3D Breinbrekers van metaal en hout",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://puzzelmeester.nl/",
+               "visit_count": 5
+            }, {
+               "date_added": "13363085836968036",
+               "date_last_used": "13408637063282793",
+               "guid": "2496e343-2321-4113-9e93-008d7e63fd8f",
+               "id": "103",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Plaatsen | LinkedIn",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.linkedin.com/posts/picnictechnologies_could-we-have-the-best-office-in-amsterdam-ugcPost-6894301699939659776-StI5/",
+               "visit_count": 4
+            }, {
+               "date_added": "13363085915924152",
+               "date_last_used": "13423058828644088",
+               "guid": "87b66822-4fbd-4a43-abd6-c01a9371af14",
+               "id": "104",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Outlook",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://exchange.ssonet.nl/owa/",
+               "visit_count": 73
+            }, {
+               "date_added": "13387362236103187",
+               "date_last_used": "13407413883620987",
+               "guid": "0d1bfa5e-7c96-4639-9319-f4e3c1ff4088",
+               "id": "105",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Impossible puzzles – Benno de Grote – Benno de Grote – Puzzles and building plans",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.bennoboxes.com/",
+               "visit_count": 4
+            } ],
+            "date_added": "13362834884436481",
+            "date_last_used": "0",
+            "date_modified": "13387362241365983",
+            "guid": "55830862-3f97-478d-9d58-b13e9d4f393d",
+            "id": "99",
+            "name": "MINFIN",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13294159762398268",
+               "date_last_used": "13390058631772136",
+               "guid": "c43569d6-4069-4f3a-bd1c-c717aaf0f0e7",
+               "id": "126",
+               "name": "How to Use a USB 3.0 Dock - Sponsored by Kensington & the SD3500v dock - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=eZX8N3OBySo",
+               "visit_count": 1
+            }, {
+               "date_added": "13294159810470885",
+               "date_last_used": "0",
+               "guid": "e4f1fa54-f96a-404f-a469-c4cb7108360e",
+               "id": "127",
+               "name": "USB Port Replicator PR09 : Fujitsu Global",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.fujitsu.com/global/products/computing/peripheral/accessories/connectivity/usb-port-replicator-pr09.html",
+               "visit_count": 0
+            }, {
+               "date_added": "13296580117321012",
+               "date_last_used": "13421318567285771",
+               "guid": "093139cb-cc16-4d61-8c05-e4f69477ee1b",
+               "id": "128",
+               "name": "DisplayLink USB Graphics Software for Windows End User 10.2 M2 | Synaptics",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.synaptics.com/products/displaylink-graphics/downloads/windows-10.2-m2-public?filetype=exe",
+               "visit_count": 1
+            }, {
+               "date_added": "13366117398995918",
+               "date_last_used": "13396710168523433",
+               "guid": "44c6383d-db46-4ac0-b5e8-0d1c664a2d19",
+               "id": "129",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Identify your iPod model - Apple Support",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://support.apple.com/en-us/103823",
+               "visit_count": 1
+            }, {
+               "date_added": "13370714988991541",
+               "date_last_used": "13373385641692757",
+               "guid": "dda2b226-978b-4301-8732-ca28a0984370",
+               "id": "130",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "iPhoneAPK iPod classic reparatie | iPhoneAPK",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.iphoneapk.nl/ipod-classic-reparatie/",
+               "visit_count": 1
+            }, {
+               "date_added": "13373375332418754",
+               "date_last_used": "13375202539180315",
+               "guid": "03a1928a-d6a7-48b4-921c-9606707a5add",
+               "id": "131",
+               "name": "Think Deployment Resource Center - Lenovo Support US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://support.lenovo.com/us/en/solutions/ht104232",
+               "visit_count": 4
+            }, {
+               "date_added": "13374764940141078",
+               "date_last_used": "13374764948597277",
+               "guid": "bc0d62fb-884e-44aa-bfbb-ea65466710ea",
+               "id": "132",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Een eerste tipje van de Zeven Sluiers - De Upstarter",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://deupstarter.nl/blogpost/een-eerste-tipje-van-de-zeven-sluiers/",
+               "visit_count": 2
+            } ],
+            "date_added": "13294159773814370",
+            "date_last_used": "0",
+            "date_modified": "13409858749194815",
+            "guid": "37c5de13-da8b-4260-862c-c5b993cce631",
+            "id": "125",
+            "name": "Hardware",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13275667001782255",
+               "date_last_used": "13374948028006900",
+               "guid": "8c2f4d51-0b31-4c6a-a7be-3193d36f15ff",
+               "id": "134",
+               "name": "QCY T1C T2C Factory Reset - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=OcZbKbJW_aI",
+               "visit_count": 1
+            }, {
+               "date_added": "13275667301679634",
+               "date_last_used": "0",
+               "guid": "d2e4dd66-1f01-43fa-81bb-a1307598de44",
+               "id": "135",
+               "name": "Xiaomi Redmi Note 10S | Unboxing & Full Tour - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=ys-dMfKSPEY",
+               "visit_count": 0
+            }, {
+               "date_added": "13276278496508846",
+               "date_last_used": "0",
+               "guid": "9010802c-95e2-4408-9afc-0bf8afa2518b",
+               "id": "136",
+               "name": "SCCM gebruiken om een bijgewerkte Windows PE-image te maken met drivers voor uw Dell PC | Dell Nederland",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/nl-nl/000140273/sccm-gebruiken-om-een-bijgewerkte-windows-pe-image-te-maken-met-drivers-voor-uw-dell-pc",
+               "visit_count": 0
+            }, {
+               "date_added": "13282671254586738",
+               "date_last_used": "0",
+               "guid": "c2c7a861-89e3-48a6-830d-64eed198a71c",
+               "id": "137",
+               "name": "Apache Tomcat 8 (8.5.73) - Tomcat Setup",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://tomcat.apache.org/tomcat-8.5-doc/setup.html",
+               "visit_count": 0
+            }, {
+               "date_added": "13287686213660879",
+               "date_last_used": "0",
+               "guid": "89b2e648-1bf0-4ffe-a24e-66d30d17966e",
+               "id": "138",
+               "name": "AppLocker settings (Windows) - Windows security | Microsoft Docs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-settings",
+               "visit_count": 0
+            } ],
+            "date_added": "13275667027714782",
+            "date_last_used": "0",
+            "date_modified": "13287774305228226",
+            "guid": "17dec232-caa1-4758-9e4c-9546876a1108",
+            "id": "133",
+            "name": "TECH",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13285353761033568",
+               "date_last_used": "0",
+               "guid": "56e6a23c-d5d6-495b-9532-d23005f469f2",
+               "id": "140",
+               "name": "Remove Remote Desktop Services Profile in AD",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://social.technet.microsoft.com/Forums/windows/en-US/d98d561b-bc1c-4308-994c-2afa83f49bfc/remove-remote-desktop-services-profile-in-ad?forum=winserverpowershell",
+               "visit_count": 0
+            } ],
+            "date_added": "13285353774911595",
+            "date_last_used": "0",
+            "date_modified": "13288274593879914",
+            "guid": "6086264f-f31c-4355-9269-6500e9225887",
+            "id": "139",
+            "name": "KB",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13286633433729073",
+               "date_last_used": "0",
+               "guid": "e435c3c2-ec6b-4009-9ff0-222d673ba6ef",
+               "id": "142",
+               "name": "Step-by-Step SCCM 2111 Upgrade Guide",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://systemcenterdudes.com/step-by-step-sccm-2111-upgrade-guide/",
+               "visit_count": 0
+            }, {
+               "date_added": "13286645253537270",
+               "date_last_used": "0",
+               "guid": "679e7a83-27f6-4b8a-ae5e-1ff1cda8c77d",
+               "id": "143",
+               "name": "Windows Server-update veroorzaakt bootloop domeincontrollers en Hyper V-probleem - Computer - Nieuws - Tweakers",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://tweakers.net/nieuws/191982/windows-server-update-veroorzaakt-bootloop-domeincontrollers-en-hyper-v-probleem.html",
+               "visit_count": 0
+            }, {
+               "date_added": "13287077355116232",
+               "date_last_used": "0",
+               "guid": "aceeedf6-1c72-4eec-be65-6bb8ccf1d269",
+               "id": "144",
+               "name": "Skatterbrainz Blog | Humans: Automating themselves out of a job for 400 million years",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://skatterbrainz.wordpress.com/",
+               "visit_count": 0
+            }, {
+               "date_added": "13291305980114679",
+               "date_last_used": "0",
+               "guid": "d3b8ee58-c6d2-49d9-bd04-745e8eaddf71",
+               "id": "145",
+               "name": "How to Deploy Software Updates Using Microsoft SCCM (ADRs, Update Groups, and More) - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=6JHJes1u8Pg",
+               "visit_count": 0
+            }, {
+               "date_added": "13291403013216882",
+               "date_last_used": "0",
+               "guid": "fd92901b-b980-4530-b312-0801a0d3dfe5",
+               "id": "146",
+               "name": "Creating Automatic Deployment Rules (ADR) using PowerShell - Deployment Research",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.deploymentresearch.com/creating-automatic-deployment-rules-adr-using-powershell/",
+               "visit_count": 0
+            }, {
+               "date_added": "13309874129114066",
+               "date_last_used": "0",
+               "guid": "4a0c62ac-0601-4732-9e63-9222cbd2355b",
+               "id": "147",
+               "name": "Patch Tuesday Blog Home Page - Patch Tuesday Blog",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://patchtuesday.com/",
+               "visit_count": 0
+            }, {
+               "date_added": "13314380242028509",
+               "date_last_used": "13409164567798526",
+               "guid": "76371520-3272-4a21-ac69-60c64f874c9d",
+               "id": "148",
+               "name": "November 22, 2022—KB5020032 (OS Build 20348.1311) Preview - Microsoft Support",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://support.microsoft.com/en-gb/topic/november-22-2022-kb5020032-os-build-20348-1311-preview-7ca1be57-3555-4377-9eb1-0e4d714d9c68",
+               "visit_count": 1
+            } ],
+            "date_added": "13286645271496479",
+            "date_last_used": "0",
+            "date_modified": "13334401744996091",
+            "guid": "3eab1cc7-3b27-4f86-b8ad-8f086a67f6eb",
+            "id": "141",
+            "name": "Patch Tuesday",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13290711997970055",
+               "date_last_used": "0",
+               "guid": "c7f5dbc9-dcb7-44b2-86fc-a7d0066fa678",
+               "id": "150",
+               "name": "Deploy Office 365 Updates Using SCCM - Prajwal Desai",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.prajwaldesai.com/deploy-office-365-updates-using-sccm/",
+               "visit_count": 0
+            }, {
+               "date_added": "13290778101726282",
+               "date_last_used": "13386668047400314",
+               "guid": "3c8db40f-5807-4517-bc5e-ab440a989e67",
+               "id": "151",
+               "name": "Configure IE mode Policies | Microsoft Docs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.microsoft.com/en-us/deployedge/edge-ie-mode-policies#redirect-sites-from-microsoft-edge-to-ie-mode",
+               "visit_count": 1
+            }, {
+               "date_added": "13290784300705154",
+               "date_last_used": "0",
+               "guid": "0fcaee06-7725-4336-a0ed-7558214a8943",
+               "id": "152",
+               "name": "Disable Internet Explorer 11 | Microsoft Docs",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docs.microsoft.com/en-us/deployedge/edge-ie-disable-ie11",
+               "visit_count": 0
+            }, {
+               "date_added": "13291316412105831",
+               "date_last_used": "0",
+               "guid": "a4e5a2c4-5190-46d1-af38-bd3cd408ad90",
+               "id": "153",
+               "name": "Microsoft PowerToys Silent Install (How-To Guide) – Silent Install HQ",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://silentinstallhq.com/microsoft-powertoys-silent-install-how-to-guide/",
+               "visit_count": 0
+            }, {
+               "date_added": "13279898819872275",
+               "date_last_used": "13419676148448463",
+               "guid": "a9ee25f2-ab01-4f52-b10a-c5aca34c64fb",
+               "id": "154",
+               "name": "Servicecentrum voor volumelicenties",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.microsoft.com/Licensing/servicecenter/default.aspx",
+               "visit_count": 2
+            }, {
+               "date_added": "13277818430239142",
+               "date_last_used": "0",
+               "guid": "f2b7b1a9-fff1-4f5c-bf96-618e22016d7c",
+               "id": "155",
+               "name": "Windows 10 update history",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://support.microsoft.com/en-us/topic/windows-10-update-history-1b6aac92-bf01-42b5-b158-f80c6d93eb11",
+               "visit_count": 0
+            }, {
+               "date_added": "13259328429828689",
+               "date_last_used": "13419675765229914",
+               "guid": "161cd637-e155-49ce-ac85-16327006bc22",
+               "id": "156",
+               "name": "Services Hub",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://serviceshub.microsoft.com/home",
+               "visit_count": 2
+            }, {
+               "date_added": "13291316469739790",
+               "date_last_used": "0",
+               "guid": "366c0b7b-e8df-47ec-a097-b506c7318749",
+               "id": "157",
+               "name": "Release Release v0.56.2 · microsoft/PowerToys · GitHub",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/microsoft/PowerToys/releases/tag/v0.56.2",
+               "visit_count": 0
+            } ],
+            "date_added": "13290712010336663",
+            "date_last_used": "0",
+            "date_modified": "13363693337943944",
+            "guid": "9040ccd3-03b1-4892-b28a-330fcdb12184",
+            "id": "149",
+            "name": "MS Admi",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13282649740755419",
+               "date_last_used": "0",
+               "guid": "50a3da04-7925-43de-84d8-849b20aa7a3c",
+               "id": "159",
+               "name": "DNC WSS test",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "htttps://dnc-prod1-24.bsc.rijksoverheid.nl/ionweb/client",
+               "visit_count": 0
+            }, {
+               "date_added": "13282650183666246",
+               "date_last_used": "13413982523006611",
+               "guid": "160bceaf-e3e6-4a45-a31c-c146b3805d5f",
+               "id": "160",
+               "name": "HP BIOS Configuration Utility | HP Client Management Solutions",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "http://ftp.ext.hp.com//pub/caps-softpaq/cmit/HP_BCU.html",
+               "visit_count": 1
+            }, {
+               "date_added": "13288982442851280",
+               "date_last_used": "0",
+               "guid": "9a1c3a59-6f2b-4e08-9424-ca8207e8cc5c",
+               "id": "161",
+               "name": "Lenovo BIOS Password Management – Jon's Notes",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.configjon.com/lenovo-bios-password-management/",
+               "visit_count": 0
+            }, {
+               "date_added": "13289069586584965",
+               "date_last_used": "0",
+               "guid": "c459851b-7628-4d8b-a25e-cddef8a76b7b",
+               "id": "162",
+               "name": "Lenovo - set intitial BIOS password : SCCM",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.reddit.com/r/SCCM/comments/brtt1c/lenovo_set_intitial_bios_password/",
+               "visit_count": 0
+            }, {
+               "date_added": "13363693337943944",
+               "date_last_used": "0",
+               "guid": "5390be6c-8751-4415-b334-87d2f8dc4cca",
+               "id": "163",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "support.hp.com/nl-nl/products/smartwatches?source=google&channel=cpc&adcampaign=OLS-NL-PS-Gaming-Goo-Pmax&addisttype=x&kw=&adid=&gad_source=1&gclid=Cj0KCQjwsuSzBhCLARIsAIcdLm5rk9XzsK5pOcbO1akHRst5kxia5aqxU0oIAu9RTOgPGQrDYAVLteIaAoS5EALw_wcB&gclsrc=aw.ds",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://support.hp.com/nl-nl/products/smartwatches?source=google&channel=cpc&adcampaign=OLS-NL-PS-Gaming-Goo-Pmax&addisttype=x&kw=&adid=&gad_source=1&gclid=Cj0KCQjwsuSzBhCLARIsAIcdLm5rk9XzsK5pOcbO1akHRst5kxia5aqxU0oIAu9RTOgPGQrDYAVLteIaAoS5EALw_wcB&gclsrc=aw.ds",
+               "visit_count": 0
+            }, {
+               "date_added": "13427290529826159",
+               "date_last_used": "13427309703812308",
+               "guid": "dc628325-dbd4-4e91-a434-d16f98d1a04f",
+               "id": "295",
+               "name": "Dood van Tamar (14) riep gelijk al vragen op, maar strafzaak volgt pas jaren later | Misdaad | NU.nl",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.nu.nl/misdaad/6400856/dood-van-tamar-14-riep-gelijk-al-vragen-op-maar-strafzaak-volgt-pas-jaren-later.html",
+               "visit_count": 2
+            }, {
+               "date_added": "13363795843102336",
+               "date_last_used": "13391002199435307",
+               "guid": "3b8f2abf-9660-43f5-a3cb-095971b8fc32",
+               "id": "164",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Dell Suppoer",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/home/en-us",
+               "visit_count": 12
+            }, {
+               "date_added": "13417184467247356",
+               "date_last_used": "0",
+               "guid": "0e71b6ae-4839-46de-b90f-955a2352f456",
+               "id": "251",
+               "name": "How To Check Secure Boot Certificates | Dell US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/en-us/000385747/how-to-check-secure-boot-certificates",
+               "visit_count": 1
+            }, {
+               "date_added": "13364129704750258",
+               "date_last_used": "13426867685764936",
+               "guid": "ad6a9d84-145a-4714-b68f-f451068cd98c",
+               "id": "165",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Lenovo System Update: Update Drivers, BIOS and Applications - Lenovo Support US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-t-series-laptops/thinkpad-t16-gen-1-type-21bv-21bw/solutions/ht003029-lenovo-system-update-update-drivers-bios-and-applications",
+               "visit_count": 5
+            }, {
+               "date_added": "13386776048849609",
+               "date_last_used": "13386778742624405",
+               "guid": "89915fb1-d3bd-4c2a-b668-202988fc6756",
+               "id": "166",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "My computer keeps asking for the BIOS password when booting after removing a previous BIOS password | Dell US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/en-us/000190038/my-computer-keeps-asking-for-the-bios-password-when-booting-after-removing-a-previous-bios-password",
+               "visit_count": 3
+            }, {
+               "date_added": "13387042571874300",
+               "date_last_used": "13387044199663496",
+               "guid": "53b6949e-8450-4908-86a9-7e6368e2e13d",
+               "id": "167",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "All about Microsoft Intune | Working with the restart behavior of Applications in ConfigMgr 2012",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://petervanderwoude.nl/post/working-with-the-restart-behavior-of-applications-in-configmgr-2012/",
+               "visit_count": 3
+            }, {
+               "date_added": "13387299387970122",
+               "date_last_used": "13403006690840998",
+               "guid": "5102915d-e041-4b38-a17b-3252e66df2e2",
+               "id": "168",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Dell BIOS Settings Management – PSModule – Jon's Notes",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.configjon.com/dell-bios-settings-management/",
+               "visit_count": 4
+            }, {
+               "date_added": "13403106456890228",
+               "date_last_used": "13411651164431547",
+               "guid": "ef9f9786-67a5-4278-9ee8-d9e0d0a2b0ca",
+               "id": "169",
+               "name": "Ondersteuning voor Dell Pro Max Tower T2 FCT2250 | Drivers en downloads | Dell Nederland",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/product-details/nl-nl/product/dell-pro-max-fct2250-desktop/drivers",
+               "visit_count": 7
+            }, {
+               "date_added": "13391514608561465",
+               "date_last_used": "13414854730077886",
+               "guid": "53dc261d-f0bb-4244-aa2a-71883a22e186",
+               "id": "170",
+               "name": "Ondersteuning voor Precision 3660 Tower",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/product-details/nl-nl/product/precision-3660-workstation/drivers",
+               "visit_count": 12
+            }, {
+               "date_added": "13406228307588151",
+               "date_last_used": "13406228331972735",
+               "guid": "f0cae520-1395-4b28-abb5-4a00e16631e6",
+               "id": "171",
+               "name": "Omnissa OS Optimization Tool (OSOT) Build: 12943850210 Not supported on Windows 11 – 24H2! – childebrandt42",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://childebrandt42.blog/2025/02/26/omnissa-os-optimization-tool-osot-build-12943850210-not-supported-on-windows-11-24h2/",
+               "visit_count": 2
+            }, {
+               "date_added": "13391514706473265",
+               "date_last_used": "13412772101720469",
+               "guid": "951734ca-4c33-4539-a5d7-2cf7790ca314",
+               "id": "172",
+               "name": "Ondersteuning voor Precision 3680 Tower",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/product-details/nl-nl/product/precision-t3680-workstation/drivers",
+               "visit_count": 8
+            }, {
+               "date_added": "13391522423150889",
+               "date_last_used": "13416924967026101",
+               "guid": "5c80eed7-a814-45bd-8839-93e5430309f5",
+               "id": "173",
+               "name": "Ondersteuning voor OptiPlex Small Form Factor Plus 7020",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/product-details/nl-nl/product/optiplex-7020-plus-small-ff/drivers",
+               "visit_count": 29
+            }, {
+               "date_added": "13392133883352750",
+               "date_last_used": "13414247144007805",
+               "guid": "784e78a8-1767-43d3-a29e-b8b1ad492c96",
+               "id": "174",
+               "name": "Gezamenlijk gezag aanvragen | Rechtspraak",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.rechtspraak.nl/Onderwerpen/gezag/Paginas/Gezamenlijk-gezag-formulier.aspx",
+               "visit_count": 2
+            }, {
+               "date_added": "13400078551603780",
+               "date_last_used": "13414691309118014",
+               "guid": "c5422e55-8109-4c95-8edf-ec0aab072baf",
+               "id": "175",
+               "name": "Dell Family Driver Packs | Dell US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/en-us/000180534/dell-family-driver-packs",
+               "visit_count": 14
+            }, {
+               "date_added": "13392199792624677",
+               "date_last_used": "13414691303561398",
+               "guid": "0de0b1f2-5caf-42b4-8a9a-ca5df43fec75",
+               "id": "176",
+               "name": "Dell Command: Deploy Driver Packs for OptiPlex Models | Dell US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/en-us/000109785/dell-command-deploy-driver-packs-for-optiplex-models",
+               "visit_count": 14
+            }, {
+               "date_added": "13394883268050236",
+               "date_last_used": "13414691361331772",
+               "guid": "11aa954d-77e6-467f-b291-dfa150465099",
+               "id": "177",
+               "name": "Dell Command | Deploy Driver Packs for Precision Models | Dell US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dell.com/support/kbdoc/en-us/000109842/dell-command-deploy-driver-packs-for-precision-models",
+               "visit_count": 5
+            }, {
+               "date_added": "13395312658322711",
+               "date_last_used": "13414691293451042",
+               "guid": "6e79a1f3-a95c-49fe-b4b7-92f21c422575",
+               "id": "178",
+               "name": "SCCM Package for Windows 10 (Version 22H2), 11 (Version 23H2, 24H2), 11 IOT (Version 24H2) - ThinkCentre M70t Gen 5, M70s Gen 5, M70q Gen 5, M90t Gen 5, M90s Gen 5, M90q Gen 5, Neo Ultra, Neo 50t Gen 5 - Lenovo Support US",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://pcsupport.lenovo.com/us/en/products/desktops-and-all-in-ones/thinkcentre-m-series-desktops/thinkcentre-m90s-gen-5/12v7/12v7s15k00/downloads/ds568504-sccm-package-for-windows-11-version-23h2-thinkcentre-m90t-gen-5-m90s-gen-5",
+               "visit_count": 3
+            }, {
+               "date_added": "13395854361926724",
+               "date_last_used": "13395928314481167",
+               "guid": "d1e06850-3be5-450e-b65a-f5939155f9fe",
+               "id": "179",
+               "name": "Hoe voer ik een firmware-update uit via Philips SmartControl Software?",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://tv-sound-monitors.philips.com/s/article/Hoe-voer-ik-een-firmware-update-uit-via-Philips-SmartControl-Software?language=nl_NL",
+               "visit_count": 2
+            }, {
+               "date_added": "13396108744096220",
+               "date_last_used": "0",
+               "guid": "0415475c-9a9c-4dc8-86ec-1489e237cd20",
+               "id": "180",
+               "name": "Dozens of P556 with corrupted BIOS after update : r/Fujitsu",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.reddit.com/r/Fujitsu/comments/1l9i9w5/dozens_of_p556_with_corrupted_bios_after_update/",
+               "visit_count": 1
+            }, {
+               "date_added": "13409256300826866",
+               "date_last_used": "13409256397637988",
+               "guid": "f9ae6995-7c4d-4609-ba14-97ce4286fb4a",
+               "id": "215",
+               "name": "How long will it be until my software expires? | FAQ | Bloomberg Professional Services",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.bloomberg.com/faq/question/how-long-will-it-be-until-my-software-expires/",
+               "visit_count": 2
+            }, {
+               "date_added": "13372324381660101",
+               "date_last_used": "13409256183474761",
+               "guid": "82daf357-7a86-4dd8-965a-42d24f92e87a",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Software Updates | Bloomberg Professional Services",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.bloomberg.com/professional/support/customer-support/software-updates/",
+               "visit_count": 46
+            }, {
+               "date_added": "13409256319308110",
+               "date_last_used": "13409258950416607",
+               "guid": "5bac9081-d319-4e9b-8b4c-4d0303256342",
+               "id": "216",
+               "name": "BLP Professional - Bloomberg Software SupportBloomberg Software Support",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.blpprofessional.com/",
+               "visit_count": 3
+            }, {
+               "date_added": "13409256326101007",
+               "date_last_used": "13424796004271549",
+               "guid": "28c41ef1-a5de-4fb1-88b1-e263c02bd698",
+               "id": "217",
+               "name": "Software-Update-and-Expiration-20en.pdf",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://assets.bbhub.io/professional/sites/27/Software-Update-and-Expiration-20en.pdf",
+               "visit_count": 4
+            } ],
+            "date_added": "13282649762921564",
+            "date_last_used": "0",
+            "date_modified": "13427290800044442",
+            "guid": "5adf00fa-a528-414d-8554-a4f22e22155b",
+            "id": "158",
+            "name": "Vendors",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13387639245520979",
+               "date_last_used": "13421231019325917",
+               "guid": "9e69c9ce-a507-4827-b1b8-9d80719ec221",
+               "id": "182",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "You want to PXE Boot? Don't use DHCP Options. | Microsoft Community Hub",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://techcommunity.microsoft.com/blog/configurationmanagerblog/you-want-to-pxe-boot-dont-use-dhcp-options-/275562",
+               "visit_count": 4
+            }, {
+               "date_added": "13387639271944978",
+               "date_last_used": "13387639277230158",
+               "guid": "62ee7c72-b3dd-4cdc-9b5e-6cb1c42988ce",
+               "id": "183",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Mastering PXE Boot: A Comprehensive Guide",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.cablematters.com/Blog/Networking/pxe-boot-guide",
+               "visit_count": 2
+            }, {
+               "date_added": "13387652509142505",
+               "date_last_used": "13395854068934087",
+               "guid": "4065b9b2-1b01-46b0-b962-a1f7a4d17955",
+               "id": "184",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Add-CMTaskSequenceStep (ConfigurationManager) - Configuration Manager | Microsoft Learn",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://learn.microsoft.com/en-us/powershell/module/configurationmanager/add-cmtasksequencestep?view=sccm-ps",
+               "visit_count": 3
+            }, {
+               "date_added": "13388248267102260",
+               "date_last_used": "13388509774615639",
+               "guid": "16e7e01d-90ef-4007-b8ee-4156a29dd039",
+               "id": "185",
+               "name": "How to move the start button to the left side of the taskbar using Group Policy - Danny Moran",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dannymoran.com/windows-11-taskbar-align-left/",
+               "visit_count": 4
+            }, {
+               "date_added": "13390407456719289",
+               "date_last_used": "13403693060018138",
+               "guid": "e2b69dd7-634b-449d-a6bf-346a6da8e4ce",
+               "id": "186",
+               "name": "SCCM Application Installation Workflow – ConfigGirl",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://configgirl.com/2018/11/10/sccm-application-installation-workflow/",
+               "visit_count": 5
+            }, {
+               "date_added": "13391268501587465",
+               "date_last_used": "13422705221827857",
+               "guid": "d39f6260-4c34-4e6c-b7e9-da61ee5386d4",
+               "id": "187",
+               "name": "PowerShell Script to Check for and Disable Recall : r/sysadmin",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.reddit.com/r/sysadmin/comments/1g8m8g1/powershell_script_to_check_for_and_disable_recall/?rdt=44885",
+               "visit_count": 2
+            }, {
+               "date_added": "13422705209430314",
+               "date_last_used": "0",
+               "guid": "e347dd24-cb06-489c-b224-4d03ee2b1d94",
+               "id": "273",
+               "name": "Secure Boot Certificate Expiration 2026: Are you Actually Covered? | Patch My PC Webinar - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=CEXkZCSVRwQ",
+               "visit_count": 1
+            }, {
+               "date_added": "13423932557356073",
+               "date_last_used": "13423932567183272",
+               "guid": "49ad6b5b-94f5-46a4-839a-ef5a82e69aa6",
+               "id": "276",
+               "name": "Tweaking PXE boot times in Configuration Manager 1606 - CCMEXEC.COM - Enterprise Mobility",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://ccmexec.com/2016/09/tweaking-pxe-boot-times-in-configuration-manager-1606/",
+               "visit_count": 2
+            }, {
+               "date_added": "13391622094922822",
+               "date_last_used": "13422375889755833",
+               "guid": "540c48de-b564-4ffc-971e-5fa3349e61f3",
+               "id": "188",
+               "name": "How To Configure PKI for Microsoft SCCM to Use HTTPS/SSL Instead of HTTP - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?app=desktop&v=nChKKM9APAQ&t=30s",
+               "visit_count": 3
+            }, {
+               "date_added": "13396369481518490",
+               "date_last_used": "13396437237976086",
+               "guid": "fdae3e36-581e-4371-be05-520a7f3cbc00",
+               "id": "189",
+               "name": "PowerShell Script to set permissions in Active Directory for OSD - Deployment Research",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.deploymentresearch.com/powershell-script-to-set-permissions-in-active-directory-for-osd/",
+               "visit_count": 2
+            }, {
+               "date_added": "13424532419700328",
+               "date_last_used": "13424532432422213",
+               "guid": "7dbbeed0-c0f5-4c91-aea9-a80b6c9808f8",
+               "id": "282",
+               "name": "OSOT 2512 Generalize fails on Windows 11 25H2 - Horizon 8 - Omnissa Community",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://community.omnissa.com/forums/topic/71847-osot-2512-generalize-fails-on-windows-11-25h2/",
+               "visit_count": 2
+            }, {
+               "date_added": "13426103367204818",
+               "date_last_used": "13426105900992545",
+               "guid": "fab2a4f3-137f-4f2a-8db9-2c3f6ad8d0f8",
+               "id": "285",
+               "name": "How to Remove Software Update Point Role in SCCM » Prajwal Desai",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.prajwaldesai.com/remove-software-update-point-role-sccm/",
+               "visit_count": 3
+            }, {
+               "date_added": "13426106063301260",
+               "date_last_used": "13426106070692252",
+               "guid": "19bbd91a-20e7-45e9-8bd3-386c33967acd",
+               "id": "286",
+               "name": "Install WSUS For ConfigMgr Software Update Point Role | SUP | SCCM HTMD Blog",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.anoopcnair.com/install-wsus-for-configmgr-software-update/",
+               "visit_count": 2
+            }, {
+               "date_added": "13426107442826944",
+               "date_last_used": "13426107448811733",
+               "guid": "09e85726-5653-4600-97e7-82675f0e9fb4",
+               "id": "289",
+               "name": "Reset WSUS in SCCM to start from scratch - Microsoft Q&A",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://learn.microsoft.com/en-sg/answers/questions/155050/reset-wsus-in-sccm-to-start-from-scratch",
+               "visit_count": 2
+            }, {
+               "date_added": "13426169472773854",
+               "date_last_used": "13426672646848113",
+               "guid": "860d074c-83ce-4572-a5b3-205a2635a4d3",
+               "id": "292",
+               "name": "Microsoft Software License Terms have not been completely downloaded (0x80131500) - Patch My PC KB - YouTube",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.youtube.com/watch?v=2cGMSJyxaw8",
+               "visit_count": 2
+            } ],
+            "date_added": "13387639265456701",
+            "date_last_used": "0",
+            "date_modified": "13427290529826159",
+            "guid": "88da0f4e-61c4-4244-b545-63dba95c05f6",
+            "id": "181",
+            "name": "SCCM",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13258132505289115",
+               "date_last_used": "0",
+               "guid": "6cdaf4dd-7734-48f8-910c-90807c463871",
+               "id": "111",
+               "name": "Agile portaal",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://agile.rijksweb.nl/",
+               "visit_count": 0
+            }, {
+               "date_added": "13281116200567070",
+               "date_last_used": "13424795983749841",
+               "guid": "be056d3e-9172-4e9c-8598-adc3217f6cb2",
+               "id": "112",
+               "name": "System Dashboard - SSC-ICT - JIRA",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://jira.rijksweb.nl/secure/Dashboard.jspa",
+               "visit_count": 1
+            }, {
+               "date_added": "13268925114407774",
+               "date_last_used": "0",
+               "guid": "bf78097d-e5ba-48e4-b398-c246b6e04dc5",
+               "id": "113",
+               "name": "DocGen - Overzicht",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://docgen.frd.shsdir.nl/client/home",
+               "visit_count": 0
+            }, {
+               "date_added": "13269604611640978",
+               "date_last_used": "13387643365886663",
+               "guid": "7c25d890-7a3f-4f2e-a30e-678f0533bb54",
+               "id": "114",
+               "name": "Office 365-aanmelding | Microsoft Office",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.office.com/",
+               "visit_count": 1
+            }, {
+               "date_added": "13270203559831680",
+               "date_last_used": "13421341262935960",
+               "guid": "4a4dd94f-7167-465a-b0c9-9af75a8c4be5",
+               "id": "115",
+               "name": "Rijksvideo Vergaderen - Home",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://rijksvideo.webex.com/webappng/sites/rijksvideo/dashboard?siteurl=rijksvideo",
+               "visit_count": 5
+            }, {
+               "date_added": "13273836435868987",
+               "date_last_used": "13426952003895511",
+               "guid": "5c196a3c-1a26-479d-b303-667f4fe99291",
+               "id": "116",
+               "name": "Krombeen, J (Jurgen) (BEDR/I/SPEC) - Outlook Web App",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://exchange.ssonet.nl/owa/#path=/mail",
+               "visit_count": 151
+            }, {
+               "date_added": "13285846922816303",
+               "date_last_used": "13389192896761173",
+               "guid": "67c008c3-bd54-40a7-a033-43e7447d2f62",
+               "id": "117",
+               "name": "Selfservice portal SSC-ICT",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://topdesk-sscict.rijksweb.nl/tas/public/ssp/",
+               "visit_count": 3
+            }, {
+               "date_added": "13287255052502208",
+               "date_last_used": "13415451101818487",
+               "guid": "359494f3-a2b5-4c21-89c8-284c85f25771",
+               "id": "118",
+               "name": "ODCN Secure Transfer",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://securetransfer.rijkscloud.nl/",
+               "visit_count": 5
+            }, {
+               "date_added": "13299079579843996",
+               "date_last_used": "0",
+               "guid": "fee192ba-ddf6-4b98-848e-24507351e575",
+               "id": "119",
+               "name": "Nieuw tabblad",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "edge://newtab/",
+               "visit_count": 0
+            }, {
+               "date_added": "13283887917650516",
+               "date_last_used": "13413994269653583",
+               "guid": "40cb4985-c52f-4460-8438-3c578ebfc20b",
+               "id": "120",
+               "name": "Home - P-Direktportaal",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://sap-portal.p-direkt.rijksweb.nl/irj/portal",
+               "visit_count": 6
+            }, {
+               "date_added": "13302011030238798",
+               "date_last_used": "0",
+               "guid": "4daf319b-c566-4ac6-bfe8-c0e666e524b5",
+               "id": "121",
+               "name": "Medewerkersbeheer2",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://sv1502252.frd.shsdir.nl/Medewerkersbeheer2/html/MedewerkersShow.aspx",
+               "visit_count": 0
+            }, {
+               "date_added": "13307702966752255",
+               "date_last_used": "13427380133628874",
+               "guid": "0fb580c2-a486-433a-8bc0-1ade08d25ce5",
+               "id": "122",
+               "name": "TopDesk v2",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://topdesk-minfin.rijksweb.nl/tas/secure",
+               "visit_count": 311
+            }, {
+               "date_added": "13309538303503751",
+               "date_last_used": "13427280905403239",
+               "guid": "4aadf7c2-1045-4f23-bdd6-ff1f92d38e50",
+               "id": "123",
+               "name": "DPG Media Privacy Gate",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://myprivacy.dpgmedia.nl/consent/?siteKey=ucf98legs1caotgh&callbackUrl=https%3A%2F%2Fwww.nu.nl%2Fprivacy-gate%2Faccept%3FredirectUri%3Dhttps%253A%252F%252Fwww.nu.nl%252F",
+               "visit_count": 6
+            }, {
+               "date_added": "13310134570395226",
+               "date_last_used": "0",
+               "guid": "c30b3b10-3c9b-49e3-9d71-f6cf02945933",
+               "id": "124",
+               "name": "IFS EOI Login",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://finsec.rijksweb.nl/",
+               "visit_count": 0
+            }, {
+               "date_added": "13410266865265382",
+               "date_last_used": "13410266878159613",
+               "guid": "a780be3e-8524-428e-bcd1-22e30fa40810",
+               "id": "223",
+               "name": "avgregister.rijksweb.nl/Account/Login",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://avgregister.rijksweb.nl/Account/Login",
+               "visit_count": 2
+            } ],
+            "date_added": "13268925080982900",
+            "date_last_used": "0",
+            "date_modified": "13410266870651518",
+            "guid": "8c1657dd-8b67-4f52-bedc-b36aaa518425",
+            "id": "110",
+            "name": "SSC-ICT",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13251803915366069",
+               "date_last_used": "13425810788972473",
+               "guid": "7963a7bb-76a6-4e8f-993a-66ccb9b6293d",
+               "id": "36",
+               "name": "Passwordstate",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://kluis.bsc.rijksoverheid.nl/",
+               "visit_count": 59
+            }, {
+               "date_added": "13265816205580285",
+               "date_last_used": "13427300228186800",
+               "guid": "d7449cf5-bf3a-41fe-a179-d40e05441760",
+               "id": "37",
+               "name": "Confluence PRD",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://confluence.bsc.rijksoverheid.nl/",
+               "visit_count": 194
+            }, {
+               "date_added": "13399992337599375",
+               "date_last_used": "13426680811428480",
+               "guid": "5fd044d9-ba4c-4e44-8c73-3fc515221eb6",
+               "id": "38",
+               "name": "Confluence ACC",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://confluence.acc.bsc.rijksoverheid.nl/login.action?os_destination=%2Findex.action&permissionViolation=true",
+               "visit_count": 8
+            }, {
+               "date_added": "13298642533277144",
+               "date_last_used": "13421230635682086",
+               "guid": "5db3096c-ceb3-403b-bf53-abc3450fe51b",
+               "id": "39",
+               "name": "Cyberteletekst",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://cyberteletekst.nl/",
+               "visit_count": 9
+            }, {
+               "date_added": "13408640242876505",
+               "date_last_used": "13427377494659202",
+               "guid": "bff28741-8126-447d-b6a1-c9acf2b5a42c",
+               "id": "209",
+               "name": "valkenaer/Apps",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/valkenaer/Apps/tree/main",
+               "visit_count": 414
+            }, {
+               "date_added": "13406818757821845",
+               "date_last_used": "13427379998126263",
+               "guid": "e7774826-c642-4f2f-add7-71db9fb2bec6",
+               "id": "194",
+               "name": "valkenaer/Beeldenstorm: OSD tools, ready made distrubution shares and anything that makes my life easier",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/valkenaer/Beeldenstorm",
+               "visit_count": 300
+            }, {
+               "date_added": "13409858749194815",
+               "date_last_used": "13425999942718435",
+               "guid": "8854d6ec-daa3-4926-80ee-37a8192b54b9",
+               "id": "220",
+               "name": "valkenaer/USBMDT: Rapid USB MDT Deployment",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://github.com/valkenaer/USBMDT",
+               "visit_count": 24
+            }, {
+               "date_added": "13408453040664658",
+               "date_last_used": "13421330515498663",
+               "guid": "6ac62e95-5bea-4c22-ab45-4aa176424c0e",
+               "id": "206",
+               "name": "Add-WindowsPackage (Dism) | Microsoft Learn",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://learn.microsoft.com/en-us/powershell/module/dism/add-windowspackage?view=windowsserver2025-ps",
+               "visit_count": 11
+            }, {
+               "date_added": "13405002761360650",
+               "date_last_used": "13425555809218246",
+               "guid": "3a9de6a1-9636-40da-b9f0-5b97b937e4a0",
+               "id": "40",
+               "name": "Log in bij planon - ACC",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://safire-acc.planoncloud.com/",
+               "visit_count": 11
+            }, {
+               "date_added": "13407590237433719",
+               "date_last_used": "13408547127178199",
+               "guid": "28bf1c76-3453-48fb-ada7-a92baad56873",
+               "id": "200",
+               "name": "datAshur PRO - iStorage (UK)",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://istorage-uk.com/faq_post/datashur-pro/",
+               "visit_count": 4
+            }, {
+               "date_added": "13408035815238037",
+               "date_last_used": "13426765640686920",
+               "guid": "556224ea-b923-4e67-b668-5f3d95754448",
+               "id": "203",
+               "name": "Tracering - DHL - Nederland",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.dhl.com/nl-nl/home/traceren.html?tracking-id=JVGL02555027001313981327&submit=1",
+               "visit_count": 3
+            }, {
+               "date_added": "13403360932897056",
+               "date_last_used": "13406818780611548",
+               "guid": "1e430ff2-c940-468e-83f2-d7e100df5cd8",
+               "id": "41",
+               "name": "RSA Community",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://community.rsa.com/s/",
+               "visit_count": 5
+            }, {
+               "date_added": "13369905296866549",
+               "date_last_used": "13375804782142150",
+               "guid": "300b22bf-d03e-48ce-8491-bdf883252b3f",
+               "id": "42",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Login | Splunk",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://splunk.bsc.rijksoverheid.nl:8443/en-GB/account/login?return_to=%2Fen-GB%2F",
+               "visit_count": 1
+            }, {
+               "date_added": "13363193463507421",
+               "date_last_used": "0",
+               "guid": "c70641f4-87c3-4f39-b9b5-fb278c285bb5",
+               "id": "43",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "GitLab - DrawIO",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://gitlab.bsc.rijksoverheid.nl/its/drawio",
+               "visit_count": 0
+            }, {
+               "date_added": "13363194428390664",
+               "date_last_used": "13421231918733491",
+               "guid": "a1325562-a7bb-432d-bb18-3f94c2975c69",
+               "id": "44",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Zabbix",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://zbx.bsc.rijksoverheid.nl/zabbix/zabbix.php?action=dashboard.view&dashboard.id=285",
+               "visit_count": 1
+            }, {
+               "date_added": "13285164050408303",
+               "date_last_used": "13421330498305346",
+               "guid": "dda9155a-75be-4b68-84d1-fec9cdca4426",
+               "id": "45",
+               "name": "Home | NetBox",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://netbox.bsc.rijksoverheid.nl/",
+               "visit_count": 1
+            }, {
+               "date_added": "13335274167189213",
+               "date_last_used": "13421330493274626",
+               "guid": "56ae7a60-095f-4868-a62a-d6d99903be03",
+               "id": "46",
+               "name": "Waarom 70mm het beste formaat is om Oppenheimer te kijken | Eye Filmmuseum",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.eyefilm.nl/nl/magazine/waarom-70mm-het-beste-formaat-is-om-oppenheimer-op-te-kijken/1023803",
+               "visit_count": 4
+            }, {
+               "date_added": "13337364183720676",
+               "date_last_used": "13399391117678028",
+               "guid": "32d1c960-54b7-4626-ad69-b9c24feab818",
+               "id": "48",
+               "name": "Manually Creating Optimized Windows Images for VMware Horizon VMs | VMware",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://techzone.vmware.com/resource/manually-creating-optimized-windows-images-vmware-horizon-vms#install-vmware-tools",
+               "visit_count": 1
+            }, {
+               "date_added": "13337364205422932",
+               "date_last_used": "0",
+               "guid": "97e47e21-e9fd-4a6f-ab92-2b76d53a4720",
+               "id": "49",
+               "name": "Using Automation to Create Optimized Windows Images for VMware Horizon VMs | VMware",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://techzone.vmware.com/using-automation-create-optimized-windows-images-vmware-horizon-vms#install-winget",
+               "visit_count": 0
+            }, {
+               "date_added": "13337445747862791",
+               "date_last_used": "13407323229411188",
+               "guid": "f81ede59-3eae-4e93-8ea3-fc07c91bcb79",
+               "id": "50",
+               "name": "Microsoft 365 beheercentrum",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://admin.microsoft.com/Adminportal/Home?#/subscriptions/vlnew/downloadsandkeys",
+               "visit_count": 1
+            }, {
+               "date_added": "13364143577349167",
+               "date_last_used": "13374939867222549",
+               "guid": "fa2d2147-b723-4de7-9a5a-b29c1b67467b",
+               "id": "47",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "CRUD - preferences",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://www.itpromentor.com/gp-crud/",
+               "visit_count": 1
+            }, {
+               "date_added": "13370530997001034",
+               "date_last_used": "0",
+               "guid": "0fe4302f-82b7-4d9e-84d1-c151b479adb3",
+               "id": "51",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "filter - AD users that have specific word in the description field via Powershell - Stack Overflow",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://stackoverflow.com/questions/71018567/ad-users-that-have-specific-word-in-the-description-field-via-powershell",
+               "visit_count": 0
+            }, {
+               "date_added": "13374948011786913",
+               "date_last_used": "13375533910451501",
+               "guid": "16826d1d-3b2a-4bf0-ac5e-c781c5ecb68a",
+               "id": "52",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Microsoft Key Management Service (KMS) Volume Activation FAQs | Windows OS Hub",
+               "show_icon": false,
+               "source": "user_add",
+               "type": "url",
+               "url": "https://woshub.com/ms-kms-activation-faq/",
+               "visit_count": 2
+            }, {
+               "children": [ {
+                  "date_added": "13300805911142086",
+                  "date_last_used": "13399390941761757",
+                  "guid": "6bb82e3a-dc5b-45a2-bec1-0ea0d8619ac7",
+                  "id": "54",
+                  "name": "production.eurexrepo.com",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://production.eurexrepo.com:8443/TRADING_GUI",
+                  "visit_count": 8
+               }, {
+                  "date_added": "13302011377129059",
+                  "date_last_used": "0",
+                  "guid": "2d08d7b3-a048-45be-b00e-e2d7e4980d77",
+                  "id": "55",
+                  "name": "simulation.eurexrepo.com",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://simulation.eurexrepo.com:9443/TRADING_GUI/eurexrepo",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13302623406895194",
+                  "date_last_used": "0",
+                  "guid": "7fad4066-56d0-4fee-9eeb-05a182cfaf63",
+                  "id": "56",
+                  "name": "Rijksdienst PKI - Repository",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://repo.pki.ssc-ict.overheid-i.nl/",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13358263476811985",
+                  "date_last_used": "0",
+                  "guid": "e6f77dd4-bd6f-430c-a9cc-429a365b3519",
+                  "id": "57",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "ICNS | IFCN - International Federation of Clinical Neurophysiology",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://www.ifcn.info/membership/icns",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13358431704470126",
+                  "date_last_used": "13409257133649292",
+                  "guid": "1a62ea8a-0d9c-4864-9bf7-13112bfcad81",
+                  "id": "58",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Cantú syndrome - Wikipedia",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://en.wikipedia.org/wiki/Cant%C3%BA_syndrome",
+                  "visit_count": 2
+               }, {
+                  "date_added": "13358441764202506",
+                  "date_last_used": "0",
+                  "guid": "48b4ab19-516f-47ab-aed0-6c1262ed2b5c",
+                  "id": "59",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "ProTracker Studio Module - ModdingWiki",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://moddingwiki.shikadi.net/wiki/ProTracker_Studio_Module",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13366477173774878",
+                  "date_last_used": "0",
+                  "guid": "a412c3d6-ba66-42d4-8e97-f50e8055bce2",
+                  "id": "60",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Patch My PC Publisher Setup Guide for SCCM Third-Party Software Updates and Application Management - YouTube",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://www.youtube.com/watch?v=lTajAHmxsCY&t=66s",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13366478804995615",
+                  "date_last_used": "0",
+                  "guid": "1084779a-d9a2-4b00-91d8-08e09a3f4a5d",
+                  "id": "61",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Patch Tuesday Support Group Webinar - 202406",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://www.youtube.com/watch?v=gsfK1Z8f7uY",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13368006622965492",
+                  "date_last_used": "0",
+                  "guid": "950291ca-fa80-486d-b015-0bf6972489de",
+                  "id": "62",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Patch Tuesday Support Group Webinar - 202407",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://www.youtube.com/watch?v=HK2hpmNcGUs&t=751s",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13368549829693576",
+                  "date_last_used": "0",
+                  "guid": "d40a19db-3811-40e5-92c2-05eff26b6684",
+                  "id": "63",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Patch Tuesday Support Group Webinar - 202408",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://www.youtube.com/watch?v=UI0ntmMIHos&t=641s",
+                  "visit_count": 0
+               }, {
+                  "date_added": "13366729500242981",
+                  "date_last_used": "13394891819142096",
+                  "guid": "6f0df057-32c0-4bb8-8562-503c5fd27be6",
+                  "id": "64",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Stealing everything you’ve ever typed or viewed on your own Windows PC is now possible with two lines of code — inside the Copilot+ Recall disaster. | by Kevin Beaumont | May, 2024 | DoublePulsar",
+                  "show_icon": false,
+                  "source": "user_add",
+                  "type": "url",
+                  "url": "https://doublepulsar.com/recall-stealing-everything-youve-ever-typed-or-viewed-on-your-own-windows-pc-is-now-possible-da3e12e9465e",
+                  "visit_count": 1
+               } ],
+               "date_added": "13300805922851377",
+               "date_last_used": "0",
+               "date_modified": "13369905296866549",
+               "guid": "1c1e8dcd-d699-4cfa-8816-0dc14fb24e2f",
+               "id": "53",
+               "name": "Certs",
+               "source": "unknown",
+               "type": "folder"
+            } ],
+            "date_added": "13265817585184174",
+            "date_last_used": "0",
+            "date_modified": "13424795996335882",
+            "guid": "d403c5c4-e192-4223-b86e-7f2132b4dd60",
+            "id": "35",
+            "name": "Beheer",
+            "source": "unknown",
+            "type": "folder"
+         } ],
+         "date_added": "13236880305192377",
+         "date_last_used": "0",
+         "date_modified": "13426103367204818",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Werkbalk Favorieten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13236880305192430",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "190",
+         "name": "Andere favorieten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13236880305192433",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "191",
+         "name": "Mobiele favorieten",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "workspaces_v2": {
+         "children": [  ],
+         "date_added": "13416302601478470",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "75aa6670-344f-549d-b742-660f029506ab",
+         "id": "242",
+         "name": "Werkruimten",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

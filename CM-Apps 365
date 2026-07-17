@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
   $MAJVER =  "19127"        
-                          $MINVER =  "20678"             # MOD THIS and MAIN deployment time
+                          $MINVER =  "20730"             # MOD THIS and MAIN deployment time
   $FRIENDLY = "2508"
 
 $Manu = "Microsoft"
@@ -24,8 +24,8 @@ $RunningExe = "excel.exe"
  $DPGName = "BSC_DPG"
 $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
 
-$DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
-$DevColl02 = "BSC-P ALL MACHINES WITH M365"
+$DevColl01 = "Computer All Physical (incl Spark)"
+$DevColl02 = "BSC-P Telewerken Windows 11"
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -PropertyType Version -ValueName $RegValName -Value -ExpectedValue $ExpectedVersion -ExpressionOperator GreaterEquals 
 

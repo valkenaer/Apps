@@ -1,20 +1,19 @@
 Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
- 
-          $SiteServer = $Env:COMPUTERNAME
+$SiteServer = $Env:COMPUTERNAME
              $DPGName = "BSC_DPG"
 
 $Manu = "WinMerge"
 $AppName = "WinMerge"
 $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle."
 
-           $ExpVer      = "2.16.54"
-       $VerMinOne       = "2.16.52.2"
+           $ExpVer      = "2.16.56.2"
+       $VerMinOne       = "2.16.54"
 
        $PrevVersion = "WinMerge $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\WinMerge\$ExpVer"
-           $InstStr = "WinMerge-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"
+           $InstStr = "$AppName-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO
            $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1"
        $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"

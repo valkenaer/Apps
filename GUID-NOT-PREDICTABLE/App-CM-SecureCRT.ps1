@@ -3,9 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer    = "9.7.1"
-           $MinVer    = "3815"
-             $GUID    = "{5919E6A9-0AF4-4696-89A1-33F64D005DE0}"     #FIRST_FAKE
+           $ExpVer    = "9.7.3"
+           $MinVer    = "3916"
+             $GUID    = "{5919D6A9-0AC4-4696-89A1-21F64D005DE0}"     #FIRST_FAKE
 
      $Manu         = "VanDyke"
      $AppName      = "SecureCRT"

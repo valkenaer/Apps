@@ -11,7 +11,7 @@ $SiteServer = $Env:COMPUTERNAME
      $AppName      = "SecureCRT"
      $AppDesc      = "SecureCRT client for Windows, macOS, and Linux combines rock-solid terminal emulation with the strong encryption, broad range of authentication options, and data integrity of the SSH (Secure Shell) protocol for secure network administration and end user access."
      $InstStr      = "scrt-x64-bsafe.$ExpVer.$MinVer.exe /S /v`" /qn /norestart ALLUSERS=1`""
-     $ExeLocation  = "\\host1417\Sources$\Applications\$Manu\$AppName\$ExpVer"
+     $ExeLocation  = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpVer"
      $HKLMKey      = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
      $UninstStr    = "MsiExec.exe /I$GUID"
      $ProcName     = "securecrt.exe"

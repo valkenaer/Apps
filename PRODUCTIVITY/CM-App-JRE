@@ -12,7 +12,7 @@ $SiteServer = $Env:COMPUTERNAME
                    $MajVer  = "180"
                    $Arch    = "32"                          # 32   or  64
                  $ArchFull  = "i586"                        # i586 or x64
-                   $AppDesc = "April 2026 Update JRE"
+                   $AppDesc = "July 2026 Update JRE"
 
         $Manu      = "Oracle"
          $ExpPlat  = "($Arch-bit)"        

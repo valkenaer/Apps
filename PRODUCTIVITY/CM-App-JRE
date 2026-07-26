@@ -7,8 +7,8 @@ $SiteServer = $Env:COMPUTERNAME
  
               $ProdIDstart  = "{71024AE4-039E-4CA4-87B4-2F"
                  $ProdIDend = "F0}"
-                $MinVer     = "491"
-                $VerMinOne  = "481"
+                $MinVer     = "501"
+                $VerMinOne  = "491"
                    $MajVer  = "180"
                    $Arch    = "32"                          # 32   or  64
                  $ArchFull  = "i586"                        # i586 or x64

@@ -5,7 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 # DO THIS TWICE; once for x86 and once for the x64
  
-              $ProdIDstart  = "{71024AE4-039E-4CA4-87B4-2F"
+              $ProdIDstart  = "{77824AE4-039E-4CA4-87B4-2F"
                  $ProdIDend = "F0}"
                 $MinVer     = "501"
                 $VerMinOne  = "491"
@@ -59,9 +59,10 @@ If($ConsoleFolderPath) {
 }
 
 
-#  GUID for 8u431 (2024-10)    {71024AE4-039E-4CA4-87B4-2F 
+#  GUID for 8u431 (2024-10)   {71024AE4-039E-4CA4-87B4-2F 
 #  GUID for 8u441 (2025-01)   {77724AE4-039E-4CA4-87B4-2F
 #  GUID for 8u451 (2025-05)   {71024AE4-039E-4CA4-87B4-2F   
-#  GUID for 8u461 (2025-07)   {71124AE4-039E-4CA4-87B4-2F    -   
+#  GUID for 8u461 (2025-07)   {71124AE4-039E-4CA4-87B4-2F  
 #  GUID for 8u471 (2025-10)   {77924AE4-039E-4CA4-87B4-2F   
-#  GUID for 8u481 (2026-01)    {71024AE4-039E-4CA4-87B4-2F $Arc
+#  GUID for 8u481 (2026-01)   {71024AE4-039E-4CA4-87B4-2F
+#  GUID for 8u501 (2026-07)   {77824AE4-039E-4CA4-87B4-2F

@@ -14,6 +14,7 @@ $ExpPath     = "%programfiles%\PBI-Tools"
 $ExpVal      = "1.2.25006.2036"
 $UninstStr   = "powershell.exe Remove-Item -Path $ExpPath -Recurse -Force"
 $DevColl     = "BSCC0750_BSCC0750"
+$ConsoleFolderPath = "Applications\SBP Verzoeken"
 $Purp        = "Available"
 $AppFullName = "$Manu $AppName $ExpectedVersion"
 $DPGName     = "BSC_DPG"
@@ -23,7 +24,16 @@ $clause1 = New-CMDetectionClauseFile -Filename $ExpFile -Path $ExpPath -Property
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
 New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+
+
 
 <#
 $Folder = "C:\Program Files\PBI-Tools"

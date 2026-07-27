@@ -1,0 +1,42 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+            $Version = "2.0.1"              
+        $FullVersion = "3.2.4.0"
+          $PrevVer  = "3.3.8"
+
+$Manu              = "Logseq"
+$AppName           = "Logseq"
+$AppDesc           = "Logseq is the open toolbox for workflows that deal with lots of information: Students, Academics, Writers, Project Managers, Developers."
+$RunningImg        = "gimp.exe"
+$MSILocation       = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$Version"
+$InstStr           = "$AppName-win-$Version-nsis.exe /VERYSILENT -s"
+$UninstStr         = "`"c:\Program Files\$AppName\uninst\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"
+$AppFullName       = "$Manu $AppName $Version"
+$PrevVersion       = "$Manu $AppName $PrevVer"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+If (Get-CMApplication $PrevVersion) {
+
+    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+    Remove-CMApplication -$PrevVersion -Force  
+}
+
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "07/07/2025 12:34" -TimeBaseOn LocalTime -Verbose
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

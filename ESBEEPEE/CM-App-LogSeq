@@ -4,8 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
             $Version = "2.0.1"              
-        $FullVersion = "3.2.4.0"
-          $PrevVer  = "3.3.8"
+          $PrevVer  = "1.9.0"
 
 $Manu              = "Logseq"
 $AppName           = "Logseq"

@@ -6,13 +6,13 @@ $SiteServer = $Env:COMPUTERNAME
  
 $Manu = "Don Ho"
 $AppName = "NotepadPlusPlus"
-$AppDesc = "Notepad++ is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window."
+$AppDesc = "$AppName is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window."
 $RunningProc = "notepad++.exe"
 
           $ExpectedVersion = "8.9.7"
           $VerMinOne       = "8.9.6.4"
 
-$ExeLocation       = "\\$SiteServer\Sources$\Applications\NotepadPlusPlus\$ExpectedVersion"
+$ExeLocation       = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
 $InstStr           = "npp.$ExpectedVersion.Installer.x64.exe /S"
 $PrevVer           = "Don Ho NotepadPlusPlus $VerMinOne"
 $UninstStr         = "`"C:\Program Files\Notepad++\uninstall.exe`" /S"

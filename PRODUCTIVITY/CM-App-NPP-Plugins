@@ -5,13 +5,13 @@ $SiteServer = $Env:COMPUTERNAME
        
 $Manu        = "Don Ho"
 $AppName     = "NotepadPlusPlus Plugins"
-$ExpectedVersion = "8.1.1"    # PLUGINS VERSION
+$ExpectedVersion = "8.9.7"    # PLUGINS VERSION
 $AppDesc     = "$ExpectedVersion Plugins"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\NotepadPlusPlus\PLUGINS\$ExpectedVersion"
 $InstStr     = "powershell.exe -ExecutionPolicy Bypass -File Install-NPP-Plugins.ps1"
-$ExpFile     = "ComparePlus.dll"
-$ExpPath     = "%programfiles%\Notepad++\plugins\ComparePlus"
-$ExpVal      = "1.2.0.0"
+$ExpFile     = "PreviewHTML.dll"
+$ExpPath     = "%programfiles%\Notepad++\plugins\PreviewHTML"
+$ExpVal      = "1.4.5"   
 $UninstStr   = "powershell.exe Remove-Item arf.zip -Recurse -Force"
 $DevColl     = "BSCC0750_BSCC0750"
 $Purp        = "Available"

@@ -8,11 +8,10 @@ $GUID  =  {8b963d14-71b6-5579-927a-616b0650a9c8}
 
 $Manu              = "Logseq"
 $AppName           = "Logseq"
-$AppDesc           = "Logseq is the open toolbox for workflows that deal with lots of information: Students, Academics, Writers, Project Managers, Developers."
-$RunningImg        = "gimp.exe"
+$AppDesc           = "$AppName is the open toolbox for workflows that deal with lots of information: Students, Academics, Writers, Project Managers, Developers."
+$RunningImg        = "logseq.exe"
 $MSILocation       = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$Version"
 $InstStr           = "$AppName-win-x64-$Version-nsis.exe /S /allusers"
-$UninstStr         = "`"c:\Program Files\$AppName\uninst\unins000.exe`" /VERYSILENT /NORESTART"
 $UninstStr         =     "`"C:\Program Files\$AppName\Uninstall Logseq.exe`" /allusers /S"
 $HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
 $AppFullName       = "$AppName $Version"

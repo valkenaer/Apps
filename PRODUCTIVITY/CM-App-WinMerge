@@ -13,7 +13,7 @@ $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows
 
        $PrevVersion = "WinMerge $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
-           $InstStr = "$AppName-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO INSTALLER INNO INSTALLER
+           $InstStr = "$AppName-$AppVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO INSTALLER INNO INSTALLER
            $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName_is1"
        $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"

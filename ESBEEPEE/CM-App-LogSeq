@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
             $Version = "2.0.1"              
-$GUID  =  {8b963d14-71b6-5579-927a-616b0650a9c8}
+            $GUID    =  "{8b963d14-71b6-5579-927a-616b0650a9c8}"
 
 $Manu              = "Logseq"
 $AppName           = "Logseq"

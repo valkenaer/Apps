@@ -14,14 +14,14 @@ $AppDesc = "$AppName is an Open Source differencing and merging tool for Windows
        $PrevVersion = "WinMerge $VerMinOne"
        $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
            $InstStr = "$AppName-$AppVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO INSTALLER INNO INSTALLER
-           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName_is1"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"_is1"
        $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "winmerge.exe"
        $DevColl00    = "BSCC0750_BSCC0750"
        $DevColl01     = "W10V22H2 - 20250613 - MidOffice - P03_65"
        $DTName      = "WinMerge"
-       $AppFullName = "$AppName $ExpVer"
+       $AppFullName = "$AppName $AppVer"
 
 
 If (Get-CMApplication $PrevVersion) {

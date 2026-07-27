@@ -4,17 +4,17 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
              $DPGName = "BSC_DPG"
 
-$Manu = "WinMerge"
+$Manu = "Thingamahoochie Software"
 $AppName = "WinMerge"
 $AppDesc = "WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle."
 
-           $ExpVer      = "2.16.56.2"
-       $VerMinOne       = "2.16.54"
+           $AppVer      = "2.16.54"
+     $FulVer            = "2.16.54.0"
 
        $PrevVersion = "WinMerge $VerMinOne"
-       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$ExpVer"
-           $InstStr = "$AppName-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO
-           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1"
+       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
+           $InstStr = "$AppName-$ExpVer-x64-Setup.exe /VERYSILENT /NORESTART"                      # INNO INSTALLER INNO INSTALLER
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName_is1"
        $UninstStr   = "`"C:\Program Files\WinMerge\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "winmerge.exe"
@@ -31,7 +31,7 @@ If (Get-CMApplication $PrevVersion) {
 
 }
 
-$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $FullVer -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

@@ -1,0 +1,27 @@
+$Manu        = "DEV_NAME"
+$AppName     = "PBI-Tools"
+$AppDesc     = "Version 1.2.0 of PBITOOLS"
+$ExpectedVersion = "1.2.0"
+$ExeLocation = "\\SiteServer\sources$\Applications\SBP\$AppName\$ExpectedVersion"
+$InstStr     = "powershell.exe -ExecutionPolicy Bypass -File install-pbitools.ps1"
+$ExpFile     = "pbi-tools.exe"
+$ExpPath     = "%programfiles%\PBI-Tools"
+$ExpVal      = "1.2.25006.2036"
+$UninstStr   = "powershell.exe Remove-Item -Path $ExpPath -Recurse -Force"
+$DevColl     = "BSCC0750_BSCC0750"
+$Purp        = "Available"
+$AppFullName = "$Manu $AppName $ExpectedVersion"
+$DPGName     = "BSC_DPG"
+
+$clause1 = New-CMDetectionClauseFile -Filename $ExpFile -Path $ExpPath -PropertyType Version -ExpressionOperator IsEquals -ExpectedValue $ExpVal -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+<#
+$Folder = "C:\Program Files\PBI-Tools"
+$archivename   = "pbitools.zip"
+Expand-Archive -Force -LiteralPath $archivename -DestinationPath $Folder
+#>

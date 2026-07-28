@@ -3,15 +3,14 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
+   $Product     = "Nessus Agent"
+   $Arch        = "x64"
+   $AppDesc     = "The Nessus platform (officially known as Tenable Nessus) is a vulnerability assessment solution that enables organizations to proactively identify and fix security weaknesses or vulnerabilities across their attack surface before cyberattackers can exploit them."
+   $key         = "b274e69840623b7fad37ddd94875ae037631a5f14c86cf02fd5784b750695a29"
+   $srvprt      = "10.133.110.12:8834"
 
-$Product     = "Nessus Agent"
-$Arch        = "x64"
-$AppDesc     = "The Nessus platform (officially known as Tenable Nessus) is a vulnerability assessment solution that enables organizations to proactively identify and fix security weaknesses or vulnerabilities across their attack surface before cyberattackers can exploit them."
 $DPGName     = "BSC_DPG"
 $Purp        = "Required"
-$key         = "b274e69840623b7fad37ddd94875ae037631a5f14c86cf02fd5784b750695a29"
-$srvprt      = "10.133.110.12:8834"
-
 $ConsoleFolderPath = "\Applications\Inventory and Monitoring"
 
  ################################################################################################################################

@@ -6,7 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
 
               $RDATE           = "2.156.951.0"                                        # Removed version numbers from AppScript
              $RDATEOLD         = "20260421"
-              $GUID            = "{80e789ec-3e26-4641-a727-9ffe54e200be}"         # Use New-Guid to create bogus GUID on first run
+              $GUID            = "{4deec406-d7e0-43e5-bef4-f31b60a07d81}"           # Use New-Guid to create bogus GUID on first run
 
     $Manu            = "Microsoft"
     $AppName         = "PowerBI Desktop"
@@ -55,5 +55,7 @@ If($ConsoleFolderPath) {
 
 
 # PBI STANDARD    2.155.756.0   {80e789ec-3e26-4641-a727-9ffe54e200be}
+#                  2.156.951.0   {4deec406-d7e0-43e5-bef4-f31b60a07d81}
+#
 # PBI RS-2026-01 {e019f846-5aaf-4955-a3e0-04c27ea2e20d}
 # PBI RS-2026-05 {caef3295-cf32-48dd-a0b7-b156ba2b6344}

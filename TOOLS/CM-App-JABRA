@@ -1,0 +1,37 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+ 
+             $GUID            = "{6BECDF25-B99D-45FB-BDC5-FFEE761F11F3}"
+             $AppVer          = "8.1.14601"
+			 $ExeName         = "JabraDirectSetup.exe"
+
+$Manu      = "Jabra"
+$AppName   = "Direct"
+$EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
+$InstStr   = "$ExeName /install /quiet /norestart"
+$UninstStr = "MsiExec.exe /X$GUID"
+$HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
+$AppDesc   = "Jabra Direct is a free desktop application for Windows designed to manage, update, and optimize Jabra headsets and speakerphones. It lets users control softphone calls remotely, change device settings, and install the latest firmware." 
+$AppFullName = "$Manu $AppName $AppVer"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$DPGName = "BSC_DPG"
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $AppVer -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $EXELoc -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+# $DevColl01 = "Computer All Physical (incl Spark)" 
+# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "24/04/2026 16:49" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+# JABRA  8.1.14601  {6BECDF25-B99D-45FB-BDC5-FFEE761F11F3}

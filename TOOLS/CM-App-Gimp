@@ -42,4 +42,3 @@ If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
 
-#  3.2.4   EC31D757DD82831D201FFCF47FFEAC4175DF739E0C02D5122E89AEEADFB988CC

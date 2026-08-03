@@ -6,6 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
             $Version = "3.2.4"                 # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
         $FullVersion = "3.2.4.0"
           $PrevVer  = "3.3.8"
+       $SHA256      = "EC31D757DD82831D201FFCF47FFEAC4175DF739E0C02D5122E89AEEADFB988CC"
 
 $Manu              = "GIMP"
 $AppName           = "for Windows"

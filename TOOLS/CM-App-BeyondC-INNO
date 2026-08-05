@@ -6,22 +6,22 @@ Set-Location "$($SiteCode.Name):\"
              $DPGName = "BSC_DPG"
 
 $Manu = "Scooter Software"
-$AppName = "Beyond Compare"
-$AppDesc = "$AppName is a light-weight screenshot software tool for Windows"
+$AppName = "Beyond Compare 5"
+$AppDesc = "$AppName is the popular choice for data comparison.  Compare folders, text files, images, and tables.  Review differences efficiently and merge changes with confidence."
 
-                     $ExpVer         = "5.2.5"                     #INNO 64 installer
+                     $ExpVer         = "5.2.5.32528"                     #INNO 64 installer
                       $Minver        = "32528"
 
 
        $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpVer"
-           $InstStr = "BCompare-$ExpVer.$minver.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
-           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"_is1"
+           $InstStr = "BCompare-$ExpVer.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"5"+"_is1"
        $UninstStr   = "`"C:\Program Files\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "$AppName.exe"
        $DevColl00     = "BSCC0750_BSCC0750"
 	   $DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
-       $AppFullName = "$AppName $ExpectedVersion"
+       $AppFullName = "$Manu $AppName $ExpectedVersion"
     
 if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
 

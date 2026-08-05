@@ -30,7 +30,7 @@ Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFu
 
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
-New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl00 -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

@@ -1,21 +1,19 @@
-﻿Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
 $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
- 
-          $SiteServer = $Env:COMPUTERNAME
-             $DPGName = "BSC_DPG"
+ $SiteServer = $Env:COMPUTERNAME
+$DPGName = "BSC_DPG"
 
-$Manu = "Scooter Software"
-$AppName = "Beyond Compare 5"
-$AppDesc = "$AppName is the popular choice for data comparison.  Compare folders, text files, images, and tables.  Review differences efficiently and merge changes with confidence."
+             $Manu = "Scooter Software"
+          $AppName = "Beyond Compare 5"
+      $AppShortName = "BeyondCompare5"
+           $AppDesc = "$AppName is the popular choice for data comparison.  Compare folders, text files, images, and tables.  Review differences efficiently and merge changes with confidence."
 
                      $ExpVer         = "5.2.5.32528"                     #INNO 64 installer
-                      $Minver        = "32528"
-
 
        $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpVer"
            $InstStr = "BCompare-$ExpVer.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
-           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"5"+"_is1"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppShortName"+"_is1"
        $UninstStr   = "`"C:\Program Files\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "$AppName.exe"

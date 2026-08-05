@@ -22,6 +22,8 @@ $DPGName           = "BSC_DPG"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $DevColl01         = "BSCC0750_BSCC0750"
 
+if (!(test-path d:\Sources\Applications\SBP\$Manu\$Version)){Write-Warning "Import path not found";Break}
+
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $FullVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 

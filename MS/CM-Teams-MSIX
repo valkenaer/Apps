@@ -22,6 +22,7 @@ $DevColl02         = "Computer All Physical (incl Spark)"
 $DevColl03         = "BSC-P Telewerken VDI's"
 $DevColl04         = "extrateamsBO"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
 
 If (Get-CMApplication $PrevVersion) {

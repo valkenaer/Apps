@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer      = "153.0"
-       $VerMinOne       = "152.0.6"
+           $ExpVer      = "153.0.3"
+       $VerMinOne       = "153.0.1"
 
               $Manu = "Mozilla"
            $AppName = "Firefox"
@@ -21,6 +21,7 @@ $SiteServer = $Env:COMPUTERNAME
        $PrevVersion = "$Manu $AppName $VerMinOne"
        $AppFullName = "$Manu $AppName $ExpVer"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
 
 If (Get-CMApplication $PrevVersion) {
 

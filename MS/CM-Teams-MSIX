@@ -4,12 +4,12 @@ Set-Location "$($SiteCode.Name):\"
  
           $SiteServer = $Env:COMPUTERNAME
 
-$AppVer         = "20260709"
-$VerMinOne      = "20260708"
+$AppVer         = "20260724"
+$VerMinOne      = "20260709"
 
-$MSIXLocation     = "\\$SiteServer\Sources$\Applications\Microsoft\Teams\$AppVer\MSTeams-x64.msix"
 $AppName         = "Teams"
 $Manu            = "Microsoft"
+$MSIXLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\MSTeams-x64.msix"
 $AppDesc         = "Microsoft Teams is the ultimate messaging app for your organization—a workspace for real-time collaboration and communication, meetings, file and app sharing, and even the occasional emoji!"
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"

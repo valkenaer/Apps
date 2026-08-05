@@ -23,6 +23,8 @@ $PrevVersion     = "$Manu $AppName $VerMinOne"
    $DevColl02         = "Workstations Windows 11 version 24H2"
    $DevColl03         = "Computer All Physical (incl Spark)"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+
 
 If (Get-CMApplication $PrevVersion) {
 

@@ -9,12 +9,12 @@ $Manu = "Scooter Software"
 $AppName = "Beyond Compare"
 $AppDesc = "$AppName is a light-weight screenshot software tool for Windows"
 
-                     $ExpectedVersion      = "5.2.5"                     #INNO 64 installer
-                      $Minver              = "32528"
+                     $ExpVer         = "5.2.5"                     #INNO 64 installer
+                      $Minver        = "32528"
 
 
-       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
-           $InstStr = "BCompare-$ExpectedVersion.$minver.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
+       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpVer"
+           $InstStr = "BCompare-$ExpVer.$minver.exe /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /ALLUSERS"
            $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$AppName"+"_is1"
        $UninstStr   = "`"C:\Program Files\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
@@ -23,11 +23,11 @@ $AppDesc = "$AppName is a light-weight screenshot software tool for Windows"
 	   $DevColl01 = "W1XV2XH2 - 20250613 - ITS - P04_65"
        $AppFullName = "$AppName $ExpectedVersion"
     
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
 
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
 
-$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
-
-New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpVer
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 
 

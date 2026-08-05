@@ -9,19 +9,20 @@ $VerMinOne      = "20260709"
 
 $AppName         = "Teams"
 $Manu            = "Microsoft"
-$MSIXLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\MSTeams-x64.msix"
+$AppTopFolder    = "Applications"
+$MSIXLocation     = "\\$SiteServer\Sources$\$AppTopFolder\$Manu\$AppName\$AppVer\MSTeams-x64.msix"
 $AppDesc         = "Microsoft Teams is the ultimate messaging app for your organization—a workspace for real-time collaboration and communication, meetings, file and app sharing, and even the occasional emoji!"
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
-$ConsoleFolderPath = "\Applications\$Manu"
+$ConsoleFolderPath = "\$AppTopFolder\$Manu"
 
 $DevColl01         = "BSC-P Telewerken Windows 11"
 $DevColl02         = "Computer All Physical (incl Spark)"
 $DevColl03         = "BSC-P Telewerken VDI's"
 
-   if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+   if (!(test-path d:\Sources\$AppTopFolder\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
 If (Get-CMApplication $PrevVersion) {
 

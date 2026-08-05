@@ -24,6 +24,7 @@ $PrevVersion     = "$AppName $VerMinOne"
    $DevColl03         = "BSC-P SOC Beheer VDI's"
    $DevColl04         = "Computer All Physical (incl Spark)"
 
+if (!(test-path d:\Sources\Applications\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
 If (Get-CMApplication $PrevVersion) {
 

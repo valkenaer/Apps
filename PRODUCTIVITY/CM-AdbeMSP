@@ -13,7 +13,7 @@ $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
 $PrevVersion = "Adobe Acrobat Reader DC MSP 2026.001.$VerMinOne"
 $AppDesc = "$RDate Planned update https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html#continuous-track"
-$MSILocation = "\\$SiteServer\Sources$\Applications\Adobe\MSP\2026.001.$MinVer"
+$MSILocation = "\\$SiteServer\Sources$\Applications\$AppName\MSP\2026.001.$MinVer"
 $InstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp /qn"
 $UninstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp"
 $ExpectedVersion = "26.001.$MinVer"
@@ -27,6 +27,9 @@ $DevColl01 = "Computer All Physical (incl Spark)"
 $DevColl02 = "Workstations Windows 10 version 22H2"
 $DevColl03 = "Workstations Windows 11 version 24H2"
 $DevColl09 = "BSC-A ALL Workstations"
+
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\MSP\2016.001.$MinVer)){Write-Warning "Import path not found";Break}
+
 
 $clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value

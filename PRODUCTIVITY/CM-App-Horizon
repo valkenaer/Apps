@@ -21,6 +21,8 @@ $AppFullName = "$Manu $Prod $AppName $Friendly $ExpectedVersion"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName = "BSC_DPG"
 
+if (!(test-path d:\Sources\Applications\$Manu\$Prod\$AppName\$Friendly)){Write-Warning "Import path not found";Break}
+
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 

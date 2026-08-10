@@ -14,7 +14,12 @@ $DPGName         = "BSC_DPG"
 $AppFullName     = "$AppName $AppVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 
-if (!(test-path d:\Sources\Applications\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+if (!(test-path d:\Sources\Applications\SBP\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

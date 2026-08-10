@@ -1,0 +1,26 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+     $AppVer      = "2.8.0"
+
+$AppName         = "WindDirStat"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$AppVer\$AppName-$AppVer-x64.msi"
+$Manu            = "Dunno yet"
+$AppDesc         = "WinDirStat is a free, open-source disk usage analyzer for Microsoft Windows. It scans drives and folders and shows how disk space is distributed."
+$Purp            = "Available"
+$DPGName         = "BSC_DPG"
+$AppFullName     = "$AppName $AppVer"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+
+if (!(test-path d:\Sources\Applications\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+

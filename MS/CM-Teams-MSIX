@@ -20,17 +20,13 @@ $ConsoleFolderPath = "\$AppTopFolder\$Manu"
 
 $DevColl01         = "BSC-P Telewerken Windows 11"
 $DevColl02         = "Computer All Physical (incl Spark)"
-$DevColl03         = "BSC-P Telewerken VDI's"
 
    if (!(test-path d:\Sources\$AppTopFolder\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
 If (Get-CMApplication $PrevVersion) {
-
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
-    Remove-CMApplication $PrevVersion -Force
-
+         Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
+         Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
+         Remove-CMApplication $PrevVersion -Force
 }
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
@@ -39,7 +35,6 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 
 New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
-New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

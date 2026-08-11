@@ -1,0 +1,37 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+         $AppVer      = "3.14.7"
+                $GUID = "{3C63D355-4BE7-GENERATEBOGUSGUID-40E5-89AD-85F43B39D0F1}"          # Development Libraries x64
+       $ExpectedVersion = "3.14.7150.0" 
+
+$Manu = "Python Software Foundation"
+$AppName = "Python"
+$AppDesc = "Python is a programming language that lets you work more quickly and integrate your systems more effectively."
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
+$InstStr = "python-$AppVer-amd64.exe /passive /quiet InstallAllUsers=1 PrependPath=1"
+$UninstStr = "python-$AppVer-amd64.exe /uninstall /quiet"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
+$ConsoleFolderPath = "\Applications\Productivity Tools"
+$DevColl = "BSCC0750_BSCC0750"
+$Purp            = "Available"
+$DPGName         = "BSC_DPG"
+$AppFullName = "$AppName $AppVer"
+
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime "26/09/2024 12:34" -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+

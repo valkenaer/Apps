@@ -5,7 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
                     $MinVer = "21789"
                  $VerMinOne = "21771"
-                     $RDate   = "August 1st 2026"
+                     $RDate   = "August 11th 2026"    #    20260811 was an out of cycle update
 
 
 $Manu = "Adobe"
@@ -24,12 +24,12 @@ $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC7
 $DPGName = "BSC_DPG"
 
 $DevColl01 = "Computer All Physical (incl Spark)" 
-$DevColl02 = "Workstations Windows 10 version 22H2"
-$DevColl03 = "Workstations Windows 11 version 24H2"
-$DevColl09 = "BSC-A ALL Workstations"
+$DevColl02 = "BSC-P Telewerken Windows 11" 
+$DevColl99 = "Workstations Windows 10 version 22H2"
+$DevColl98 = "Workstations Windows 11 version 24H2"
+$DevColl97 = "BSC-A ALL Workstations"
 
-if (!(test-path d:\Sources\Applications\$Manu\$AppName\MSP\2026.001.$MinVer)){Write-Warning "Import path not found";Break}
-
+                             if (!(test-path d:\Sources\Applications\$Manu\$AppName\MSP\2026.001.$MinVer)){Write-Warning "Import path not found";Break}
 
 $clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
@@ -38,7 +38,6 @@ If (Get-CMApplication $PrevVersion) {
 
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
     Remove-CMApplication $PrevVersion -Force
 
 }
@@ -50,11 +49,8 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName "Script Installer"
 Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcNAme -DisplayName "Running image name"
 
-
 New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
-# New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
-New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
-
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

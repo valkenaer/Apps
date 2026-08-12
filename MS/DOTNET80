@@ -5,11 +5,11 @@ $SiteServer = $Env:COMPUTERNAME
 
 ####       https://dotnet.microsoft.com/en-us/download/dotnet/8.0         First install on standalone, use the key that holds "Microsoft Windows Desktop Runtime VERSION" as check
 
-   $ExpVer          = "8.0.29"
-   $GUIDRT          = "{F7A0E757-A368-44E4-A62B-C1A1954375AE}"     # 1ST RUN RANDOM
-   $ExpectedVersion = "64.116.55314"
-   $AppName         = "Windows Desktop Runtime [2026-07]"
-   $PrevVersion     = "Windows Desktop Runtime [2026-06]"
+   $ExpVer          = "8.0.30"
+   $GUIDRT          = "{6784D4C7-0D5A-468F-A27D-4B687DC16EFF}"     # 1ST RUN RANDOM
+   $ExpectedVersion = "64.120.56881"
+   $AppName         = "Windows Desktop Runtime [2026-08]"
+   $PrevVersion     = "Windows Desktop Runtime [2026-07]"
 
 
 $Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"

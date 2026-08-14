@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
   $MAJVER =  "19127"        
-                          $MINVER =  "20730"             # MOD THIS and MAIN deployment time
+                          $MINVER =  "20752"             # MOD THIS and MAIN deployment time
   $FRIENDLY = "2508"
 
 $Manu = "Microsoft"
@@ -15,6 +15,7 @@ $ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.$MAJ
 $ExpectedVersion = "16.0.$MAJVER.$MINVER"
 $UpdateVersion = "(version $FRIENDLY)"
 $InstStr = "setup.exe /configure Config365Apps_$FRIENDLY.xml"
+# $InstStr = "setup.exe /configure Config365Apps_$FRIENDLY_SBP.xml"
 $ConsoleFolderPath = "\Applications\Microsoft"
 $UninstStr = "setup.exe /configure Uninstall-365Apps.xml"
 $RepStr = "`"C:\Program Files\Microsoft Office 15\ClientX64\OfficeClickToRun.exe`" scenario=Repair platform=x64 culture=nl-nl RepairType=QuickRepair DisplaylayLevel=False"

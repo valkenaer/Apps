@@ -5,6 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
                $AppVer      = "2.9.0"
 
+$Manu            = "Hohnstaedt GmbH"
 $AppName         = "xca"
 $AppDesc         = "This application is intended for creating and managing X.509 certificates, certificate requests, RSA, DSA and EC private keys, Smartcards and CRLs.
 Everything that is needed for a CA is implemented"

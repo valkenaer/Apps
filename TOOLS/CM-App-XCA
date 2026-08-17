@@ -13,7 +13,8 @@ $DevColl        = "BSCC0750_BSCC0750"
 $MSILocation    = "\\$SiteServer\Sources$\Applications\Tools\$AppName\$AppVer\$AppName-$AppVer-win64.msi"
 $Purp           = "Available"
 $AppFullName    = "$AppName $AppVer"
-$DPGName        = "BSC_DPG"                     # $FixedInstallCMD   = "msiexec.exe /i app-$AppVer-x64.msi /qn /norestart"
+$DPGName        = "BSC_DPG"
+$FixedInstallCMD   = "msiexec.exe /i app-$AppVer-x64.msi ALLUSERS=1 /qn /norestart"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 

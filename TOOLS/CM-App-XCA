@@ -14,7 +14,8 @@ $MSILocation    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\$A
 $Purp           = "Available"
 $AppFullName    = "$AppName $AppVer"
 $DPGName        = "BSC_DPG"
-$FixedInstallCMD   = "msiexec.exe /i app-$AppVer-x64.msi ALLUSERS=1 /qn /norestart"
+$DTName         = "$AppName - Windows Installer (*.msi file)"
+$FixedInstallCMD   = "msiexec.exe /i $AppName-$AppVer-win64.msi ALLUSERS=1 /qn /norestart"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 

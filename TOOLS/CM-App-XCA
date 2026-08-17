@@ -5,7 +5,7 @@ $SiteServer = $Env:COMPUTERNAME
 
                $AppVer      = "2.9.0"
 
-$Manu            = "Hohnstaedt GmbH"
+$Manu            = "Christian Hohnstaedt"
 $AppName         = "xca"
 $AppDesc         = "This application is intended for creating and managing X.509 certificates, certificate requests, RSA, DSA and EC private keys, Smartcards and CRLs.
 Everything that is needed for a CA is implemented"
@@ -16,7 +16,7 @@ $AppFullName    = "$AppName $AppVer"
 $DPGName        = "BSC_DPG"                     # $FixedInstallCMD   = "msiexec.exe /i app-$AppVer-x64.msi /qn /norestart"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 
-New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $AppName -SoftwareVersion $AppVer 
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

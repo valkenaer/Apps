@@ -10,7 +10,7 @@ $AppName         = "xca"
 $AppDesc         = "This application is intended for creating and managing X.509 certificates, certificate requests, RSA, DSA and EC private keys, Smartcards and CRLs.
 Everything that is needed for a CA is implemented"
 $DevColl        = "BSCC0750_BSCC0750"
-$MSILocation    = "\\$SiteServer\Sources$\Applications\Tools\$AppName\$AppVer\$AppName-$AppVer-win64.msi"
+$MSILocation    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\$AppName-$AppVer-win64.msi"
 $Purp           = "Available"
 $AppFullName    = "$AppName $AppVer"
 $DPGName        = "BSC_DPG"

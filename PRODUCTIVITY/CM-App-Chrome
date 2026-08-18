@@ -6,7 +6,6 @@ $SiteServer = $Env:COMPUTERNAME
     $AppVer      = "151.0.7922.138"
     $VerMinOne   = "151.0.7922.109"
 
-
 $Manu            = "Google"
 $AppName         = "Chrome"
 $url             = "https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi"
@@ -28,7 +27,6 @@ if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "
 
 If (Get-CMApplication $PrevVersion) {
 
-    Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl01 -Force
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl02 -Force
     Remove-CMApplicationDeployment -Name $PrevVersion -CollectionName $DevColl03 -Force
     Remove-CMApplication $PrevVersion -Force
@@ -41,7 +39,7 @@ Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocat
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 
-New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+# New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
 

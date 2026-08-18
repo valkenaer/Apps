@@ -48,3 +48,5 @@ $MoveApp = Get-CMApplication -Name $AppFullName
 If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
+
+# InstalledSoftware | where ProductName == 'WinSCP'

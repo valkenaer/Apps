@@ -11,7 +11,7 @@ $AppName           = "WinSCP"
 $AppDesc           = "WinSCP is a popular SFTP client and FTP client for Microsoft Windows. Copy file between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocol."
 $RunningImg        = "$AppName.exe"
 $MSILocation       = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer"
-$InstStr           = "$AppName-$Version-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"
+$InstStr           = "$AppName-$AppVer-Setup.exe /VERYSILENT /NORESTART /ALLUSERS"
 $UninstStr         = "`"c:\Program Files (x86)\$AppName\unins000.exe`" /VERYSILENT /NORESTART"
 $HKLMKey           = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\winscp3_is1"
 $AppFullName       = "$Manu $AppName $AppVer"
@@ -24,7 +24,7 @@ $ConsoleFolderPath = "\Applications\Productivity Tools"
 
 if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
-$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $AppVer -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 
 Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

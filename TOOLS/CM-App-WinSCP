@@ -22,6 +22,7 @@ $ConsoleFolderPath = "\Applications\Productivity Tools"
      $DevColl02         = "BSC-P Beheer VDI's"
      $DevColl03         = "BSC-P SOC Beheer VDI's"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
 

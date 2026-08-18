@@ -49,4 +49,4 @@ If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
 
-# InstalledSoftware | where ProductName == 'WinSCP'
+# InstalledSoftware | where Publisher == 'Martin Prikryl'  # Because ProductName contains the version...

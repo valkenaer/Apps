@@ -11,7 +11,7 @@ $AppDesc         = "This application is intended for creating and managing X.509
 Everything that is needed for a CA is implemented"
 $DevColl        = "BSC-P Beheer VDI ITS"
 $MSILocation    = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\$AppName-$AppVer-win64.msi"
-$Purp           = "Available"
+$Purp           = "Required"
 $AppFullName    = "$AppName $AppVer"
 $DPGName        = "BSC_DPG"
 $DTName         = "$AppName - Windows Installer (*.msi file)"

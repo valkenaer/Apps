@@ -7,12 +7,12 @@ $SiteServer = $Env:COMPUTERNAME
  
               $ProdIDstart  = "{77824AE4-039E-4CA4-87B4-2F"
                  $ProdIDend = "F0}"
-                $MinVer     = "501"
-                $VerMinOne  = "491"
+                $MinVer     = "503"
+                $VerMinOne  = "501"
                    $MajVer  = "180"
                    $Arch    = "32"                          # 32   or  64
                  $ArchFull  = "i586"                        # i586 or x64
-                   $AppDesc = "July 2026 Update JRE"
+                   $AppDesc = "August 2026 Update JRE"
 
         $Manu      = "Oracle"
          $ExpPlat  = "($Arch-bit)"        

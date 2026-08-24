@@ -3,10 +3,10 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-             $GUID            = "{DEC45DBB-54DB-4240-B051-275904E49765}"
-             $Friendly        = "2603"
-             $ExpectedVersion = "8.18.0.51429"
-          $FullInstaller      = "8.18.0-24230927696"
+             $GUID            = "{DEC45CBB-54DB-4340-B051-275904E59765}"
+             $Friendly        = "2606"
+             $ExpectedVersion = "8.17.0.5143523459"
+          $FullInstaller      = "8.19.0-32215845441"
 
 $Manu      = "Omnissa"
 $Prod      = "Horizon"

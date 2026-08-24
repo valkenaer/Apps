@@ -3,9 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-             $GUID            = "{DEC45CBB-54DB-4340-B051-275904E59765}"
+             $GUID            = "{7D7B8A13-3785-4B74-8852-A5FD5FF899EA}"
              $Friendly        = "2606"
-             $ExpectedVersion = "8.17.0.5143523459"
+             $ExpectedVersion = "8.19.0"
           $FullInstaller      = "8.19.0-32215845441"
 
 $Manu      = "Omnissa"
@@ -13,7 +13,8 @@ $Prod      = "Horizon"
 $AppName   = "Client"
 $EXELoc    = "\\$SiteServer\Sources$\Applications\$Manu\$Prod\$AppName\$Friendly"
 $ExeName   = "$Manu-$Prod-$AppName-$Friendly-$FullInstaller.exe"
-$InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLAY=1 LOGINASCURRENTUSER_DEFAULT=1 DESKTOP_SHORTCUT=0 STARTMENU_SHORTCUT=1 AUTO_UPDATE_ENABLED=0 KEYLOGGER_BLOCKING_ENABLED=1 SKIP_DOTNET_RUNTIME_INSTALL=1 VDM_SERVER=vdi2022.bsc.rijksoverheid.nl"
+$InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLAY=1 LOGINASCURRENTUSER_DEFAULT=1 DESKTOP_SHORTCUT=0 STARTMENU_SHORTCUT=1 AUTO_UPDATE_ENABLED=0 KEYLOGGER_BLOCKING_ENABLED=1 SKIP_DOTNET_RUNTIME_INSTALL=1"
+# $InstStr   = "$ExeName /silent /norestart ADDLOCAL=ALL LOGINASCURRENTUSER_DISPLAY=1 LOGINASCURRENTUSER_DEFAULT=1 DESKTOP_SHORTCUT=0 STARTMENU_SHORTCUT=1 AUTO_UPDATE_ENABLED=0 KEYLOGGER_BLOCKING_ENABLED=1 SKIP_DOTNET_RUNTIME_INSTALL=1 VDM_SERVER=vdi2022.bsc.rijksoverheid.nl"
 $UninstStr = "MsiExec.exe /X$GUID"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
 $AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizon virtual desktop from your device of choice giving you on-the-go access from any location." 
@@ -45,5 +46,6 @@ If($ConsoleFolderPath) {
 #     2512    {EB025864-E249-42F1-9D44-019C080D0D5D}   8.17.0.42163
 #     2512.1  {7D2D5F3D-72D2-41C1-8EA4-3BA5C2AB0468}   8.17.1.47220
 #     2603    {DEC45DBB-54DB-4240-B051-275904E49765}      8.18.0.51429
+#     2606    7D7B8A13-3785-4B74-8852-A5FD5FF899EA
      
 

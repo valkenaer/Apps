@@ -19,7 +19,7 @@ $UninstStr = "MsiExec.exe /X$GUID"
 $HKLMKey   = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUID"
 $AppDesc   = "Omnissa Horizon Client allows you to connect to your VMware Horizon virtual desktop from your device of choice giving you on-the-go access from any location." 
 $AppFullName = "$Manu $Prod $AppName $Friendly $ExpectedVersion"
-$ConsoleFolderPath = "\Applications\Productivity Tools"
+$ConsoleFolderPath = "\Applications\OSD Applications"
 $DPGName = "BSC_DPG"
 
 if (!(test-path d:\Sources\Applications\$Manu\$Prod\$AppName\$Friendly)){Write-Warning "Import path not found";Break}

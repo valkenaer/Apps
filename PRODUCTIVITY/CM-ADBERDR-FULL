@@ -5,13 +5,13 @@ $SiteServer = $Env:COMPUTERNAME
 
                        # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
 
-           $MinVer = "21789"
-          $AppDesc = "FULL Reader August 11th 2026 Out-of-Cycle Update"
+           $MinVer = "21869"
+          $AppDesc = "FULL Reader August 31st 2026 Planned Update"
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
-$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$\AppName\OSD\2026.001.$MinVer"
-$ExpectedVersion = "26.001.$MinVer"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$\AppName\OSD\2026.002.$MinVer"
+$ExpectedVersion = "26.002.$MinVer"
 $FORM = "FULL"
 $InstStr = "setup.exe"
 $UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"

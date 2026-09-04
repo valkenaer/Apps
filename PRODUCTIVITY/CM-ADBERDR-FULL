@@ -10,10 +10,11 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
-$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$\AppName\OSD\2026.002.$MinVer"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\OSD\2026.002.$MinVer"
 $ExpectedVersion = "26.002.$MinVer"
 $FORM = "FULL"
 $InstStr = "setup.exe"
+#WIMInstStr = powershell.exe -ExecutionPolicy Bypass -NoProfile -File `".\Invoke-Deploy-WIM.ps1`" -DeploymentMode `"Install`" -AppName `"ADBEREDER`""
 $UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $AppFullName = "$Manu $AppName $FORM $ExpectedVersion"

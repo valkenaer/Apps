@@ -4,6 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                        # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
+                       # FOR WIM deployment ----  change $ExpectedVersion to "WIM"
 
            $MinVer = "21869"
           $AppDesc = "FULL Reader August 31st 2026 Planned Update"
@@ -14,7 +15,7 @@ $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\OSD\2026.002.
 $ExpectedVersion = "26.002.$MinVer"
 $FORM = "FULL"
 $InstStr = "setup.exe"
-#WIMInstStr = powershell.exe -ExecutionPolicy Bypass -NoProfile -File `".\Invoke-Deploy-WIM.ps1`" -DeploymentMode `"Install`" -AppName `"ADBEREDER`""
+#WIMInstStr = "powershell.exe -ExecutionPolicy Bypass -NoProfile -File `".\Invoke-Deploy-WIM.ps1`" -DeploymentMode `"Install`" -AppName `"ADBEREDER`""
 $UninstStr = "msiexec.exe /X{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"
 $AppFullName = "$Manu $AppName $FORM $ExpectedVersion"

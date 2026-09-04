@@ -4,7 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                        # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
-                       # FOR WIM deployment ----  change $ExpectedVersion to "WIM"
+                       # FOR WIM deployment change THE FOLLPWING
+
 
            $MinVer = "21869"
           $AppDesc = "FULL Reader August 31st 2026 Planned Update"

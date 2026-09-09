@@ -3,21 +3,21 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                    $MinVer = "21789"
-                 $VerMinOne = "21771"
-                     $RDate   = "August 11th 2026"    #    20260811 was an out of cycle update
+                    $MinVer = "21901"
+                 $VerMinOne = "21869"
+                     $RDate   = "September 8th 2026"    #    20260811 was an out of cycle update
 
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
 $ProcName = "AcroRd32.exe"
-$PrevVersion = "Adobe Acrobat Reader DC MSP 2026.001.$VerMinOne"
+$PrevVersion = "Adobe Acrobat Reader DC MSP 2026.002.$VerMinOne"
 $AppDesc = "$RDate Planned update https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html#continuous-track"
 $MSILocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\MSP\2026.001.$MinVer"
-$InstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp /qn"
-$UninstStr = "msiexec.exe /p AcroRdrDCUpd26001$MinVer.msp"
-$ExpectedVersion = "26.001.$MinVer"
-$CustomVal = "MSP 2026.001.$MinVer"
+$InstStr = "msiexec.exe /p AcroRdrDCUpd26002$MinVer.msp /qn"
+$UninstStr = "msiexec.exe /p AcroRdrDCUpd26002$MinVer.msp"
+$ExpectedVersion = "26.002.$MinVer"
+$CustomVal = "MSP 2026.002.$MinVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName = "$Manu $AppName $CustomVal"
 $HKLMKey = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{AC76BA86-7AD7-1043-7B44-AC0F074E4100}"

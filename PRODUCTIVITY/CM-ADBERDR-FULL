@@ -7,8 +7,8 @@ $SiteServer = $Env:COMPUTERNAME
                        # FOR WIM deployment change THE FOLLPWING
 
 
-           $MinVer = "21869"
-          $AppDesc = "FULL Reader August 31st 2026 Planned Update"
+           $MinVer = "21901"
+          $AppDesc = "FULL Reader September 8th 2026 Planned Update"
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"

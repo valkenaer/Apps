@@ -9,6 +9,7 @@ $SiteServer = $Env:COMPUTERNAME
 $AppName         = "PowerShell"
 $Manu            = "Microsoft"
 $MSILocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\$AppName-$AppVer-win-x64.msi"
+ $sha265         = "sha256:958838ff55091e1c8705d89efed0cc7e8245a3a6ef6c0ccfae20015227108ad8"
 $AppDesc         = "$AppName $AppVer is $Manu's latest version of Windows task automation framework"
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"

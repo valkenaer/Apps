@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-            $AppVer = "6.5.6"     #INNO INST
-            $PrevVer  = "6.5.5"
+            $AppVer = "6.5.7"     #INNO INST
+            $PrevVer  = "6.5.6"
 
 $Manu              = "Martin Prikryl"
 $AppName           = "WinSCP"

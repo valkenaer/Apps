@@ -24,7 +24,8 @@ $HKLMKey = "SOFTWARE\Microsoft\Office\ClickToRun\Configuration"
 $RegValName = "VersionToReport"
 $RunningExe = "excel.exe"
  $DPGName = "BSC_DPG"
-$AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"    # ADD CUST FOR SBP
+$AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
+# $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion $CUST"
 
 $DevColl01 = "Computer All Physical (incl Spark)"
 $DevColl02 = "BSC-P Telewerken Windows 11"

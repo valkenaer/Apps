@@ -17,6 +17,8 @@ $DTName         = "Node.js - Windows Installer (*.msi file)"
 $DPGName          = "BSC_DPG"
 $FixedInstallCMD   = "msiexec.exe /i node-v$AppVer-x64.msi /qn /norestart"
 
+if (!(test-path d:\Sources\Applications\SBP\$Manu\$AppVer)){Write-Warning "Import path not found";Break}
+
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
 Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20

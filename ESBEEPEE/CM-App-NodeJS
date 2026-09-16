@@ -3,10 +3,11 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                        $AppVer      = "24.12.0"
+                        $AppVer      = "24.21.0"
 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\NodeJS\$AppVer\node-v$AppVer-x64.msi"
-$Manu            = "Node_JS"
+
+$Manu            = "NodeJS"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppVer\node-v$AppVer-x64.msi"
 $AppDesc         = "Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts."
 $DevColl        = "BSCC0750_BSCC0750"
 $Purp           = "Available"

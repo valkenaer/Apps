@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer      = "154.0."
-       $VerMinOne       = "153.0.3"
+           $ExpVer      = "156.0"
+       $VerMinOne       = "154.0"
 
               $Manu = "Mozilla"
            $AppName = "Firefox"

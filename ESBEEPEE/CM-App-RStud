@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
 
-  $MajVer = "2026.09.0"        # Icon in RStudio.exe   
+  $MajVer = "2026.09.0"        # Icon in RStudio.exe                                     installation moved away from Wow6432 node
   $MinVer = "174"              # DL in https://posit.co/download/rstudio-desktop/
 
 $Manu = "RStudio"
@@ -12,9 +12,9 @@ $AppName = "RStudio"
 $AppDesc = "RStudio is a set of integrated tools designed to help you be more productive with R. It includes a console, syntax-highlighting editor that supports direct code execution, and a variety of robust tools for plotting, viewing history, debugging and managing your workspace."
 $MSILocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R Studio\$MajVer"
 $ProcName = "$AppName.exe"
-$InstStr = "$AppName-$MajVer-$MinVer.exe /S"
+$InstStr = "$AppName-$MajVer-$MinVer.exe /S /allusers"
 $UninstStr = "`"C:\Program Files\RStudio\Uninstall.exe`" /S"
-$HKLMKey = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\RStudio"
+$HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\RStudio"
 $ExpectedVersion = "$MajVer+$MinVer"
 $DPGName           = "BSC_DPG"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"

@@ -4,8 +4,8 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
 
-  $MajVer = "2026.04.0"        # Icon in RStudio.exe   
-  $MinVer = "526"              # DL in https://posit.co/download/rstudio-desktop/
+  $MajVer = "2026.09.0"        # Icon in RStudio.exe   
+  $MinVer = "174"              # DL in https://posit.co/download/rstudio-desktop/
 
 $Manu = "RStudio"
 $AppName = "RStudio"

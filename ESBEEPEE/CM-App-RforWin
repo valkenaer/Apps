@@ -7,10 +7,11 @@ $SiteServer = $Env:COMPUTERNAME
 $ExpectedVersion = "4.6.1"
 $PrevVer         = "4.6.0"
 
-$ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R for Windows\$ExpectedVersion"
+# $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\R Project\R for Windows\$ExpectedVersion"
 
         $Manu      = "R Project"
         $AppName   = "R for Windows"
+      $ExeLocation = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$ExpectedVersion"
         $AppDesc   = "R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS"
         $InstStr   = "R-$ExpectedVersion-win.exe /VERYSILENT"
         $UninstStr = "`"C:\Program Files\R\R-$ExpectedVersion\unins000.exe`" /VERYSILENT /NORESTART"

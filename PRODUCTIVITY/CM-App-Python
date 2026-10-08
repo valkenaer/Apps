@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-         $AppVer      = "3.14.8"
+         $AppVer      = "3.14.8"     #SHA256:759BE887B96E736A3CA886DAF8D575F18FCAE1A09EFAB6902F42D59E8999F8EF
                 $GUID = "{3C63D255-4BE7-40E5-89AD-85F43C39D0F1}"          # Development Libraries x64
        $ExpectedVersion = "3.14.8150.0" 
 

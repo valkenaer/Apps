@@ -3,10 +3,10 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                    $MinVer = "21931"
-                 $VerMinOne = "21901"
-                     $RDate   = "September 17th 2026" 
-                  $REASON    = "Out of cycle"
+                    $MinVer = "21996"
+                 $VerMinOne = "21931"
+                     $RDate   = "October 6th 2026" 
+                  $REASON    = "Planned"   #  "Out of Cycle" or "Planned"
 
 
 $Manu = "Adobe"

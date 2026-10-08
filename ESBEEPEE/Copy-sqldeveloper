@@ -6,9 +6,10 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu            = "Oracle"
 $AppName         = "sqldeveloper"
 $ExpectedVersion = "26.2.0" 
+$ExpectedFileVersion = "26.2.0.186"
 $AppDesc         = "Oracle SQL Developer is a free, development environment that simplifies the management of Oracle Database in both traditional and Cloud deployments."
 $ExeLocation     = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersion"
-$InstStr         = "powershell.exe -ExecutionPolicy Bypass -File Copy-$AppName-07.ps1"
+$InstStr         = "powershell.exe -ExecutionPolicy Bypass -File Copy-$AppName.ps1"
 $ExpFile         = "$AppName.exe"
 $ExpPath         = "c:\$AppName"
 $UninstStr   = "powershell.exe Remove-Item c:\$AppName -Recurse -Force"
@@ -18,7 +19,7 @@ $ConsoleFolderPath = "\Applications\SBP Verzoeken"
 $AppFullName = "$Manu $AppName $ExpectedVersion"
 $DPGName     = "BSC_DPG"
 
-$clause1 = New-CMDetectionClauseFile -Filename $ExpFile -Path $ExpPath -PropertyType Version -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
+$clause1 = New-CMDetectionClauseFile -Filename $ExpFile -Path $ExpPath -PropertyType Version -ExpressionOperator IsEquals -ExpectedValue $ExpectedFileVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden

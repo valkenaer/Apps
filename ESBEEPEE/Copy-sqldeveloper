@@ -8,7 +8,7 @@ $AppName         = "sqldeveloper"
 $ExpectedVersion = "26.2.0" 
 $AppDesc         = "Oracle SQL Developer is a free, development environment that simplifies the management of Oracle Database in both traditional and Cloud deployments."
 $ExeLocation     = "\\$SiteServer\Sources$\Applications\SBP\$AppName\$ExpectedVersion"
-$InstStr         = "powershell.exe -ExecutionPolicy Bypass -File Copy-$AppName-03.ps1"
+$InstStr         = "powershell.exe -ExecutionPolicy Bypass -File Copy-$AppName-07.ps1"
 $ExpFile         = "$AppName.exe"
 $ExpPath         = "c:\$AppName"
 $UninstStr   = "powershell.exe Remove-Item c:\$AppName -Recurse -Force"
@@ -30,13 +30,3 @@ $MoveApp = Get-CMApplication -Name $AppFullName
 If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
-
-<#
-
-$PluginFolder = "c:\Program Files\Notepad++\plugins"
-$archivename   = "PLUGINS.zip"
-
-Expand-Archive -Force -LiteralPath $archivename -DestinationPath $PluginFolder
-
-
-#>

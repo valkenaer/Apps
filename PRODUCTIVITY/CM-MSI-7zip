@@ -14,14 +14,10 @@ $DevColl        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
 $AppFullName    = "$AppName $AppVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
-# $DTName         = "Gurobi $AppVer (64 bit) - Windows Installer (*.msi file)"
 $DPGName           = "BSC_DPG"
-# $FixedInstallCMD   = "msiexec.exe /i Gurobi-$AppVer-$ExpPlat.msi /qn /norestart"
-
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
-# Set-CMMSIDeploymentType -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $FixedInstallCMD -MaximumRuntimeMins 20
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 $MoveApp = Get-CMApplication -Name $AppFullName

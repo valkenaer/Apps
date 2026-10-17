@@ -58,6 +58,6 @@ if ((Test-Path -LiteralPath "$env:ProgramFiles\Google\Chrome\Application") -ne $
     Start-Process $env:TEMP\googlechromestandaloneenterprise64.msi -ArgumentList '/quiet'
 }
 
-$fn="googlechromestandaloneenterprise64.msi";(New-Object System.Net.WebClient).DownloadFile("https://dl.google.com/dl/chrome/install/$fn", "$env:TEMP\$fn")
+$fn="googlechromestandaloneenterprise64.msi";(New-Object System.Net.WebClient).DownloadFile("https://dl.google.com/dl/chrome/install/$fn", "$env:TEMP\$fn");saps $env:TEMP\$fn -ArgumentList '/quiet'
 
 #>

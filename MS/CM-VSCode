@@ -14,7 +14,7 @@ $Arch    = "x64"
 $AppDesc = "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux."
 $PrevVersion = "$Manu $AppName $VerMINUSONE"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
-$InstStr = "$BinName-$Arch-$ExpectedVersion.exe /VERYSILENT /NORESTART"
+$InstStr = "$BinName-$Arch-$ExpectedVersion.exe /VERYSILENT /NORESTART /MERGETASKS=!runcode"
 $UninstStr = "`"C:\Program Files\Microsoft VS Code\unins000.exe`" /VERYSILENT /NORESTART"
 $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{EA457B21-F73E-494C-ACAB-524FDE069978}_is1"   # STILL UNCHANGED :)
 $DTName = "VSCode deployment"

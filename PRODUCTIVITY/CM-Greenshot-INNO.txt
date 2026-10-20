@@ -16,6 +16,7 @@ $AppDesc = "$AppName is a light-weight screenshot software tool for Windows"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
          $ProcName  = "$AppName.exe"
        $DTName      = "$AppName Deployment"
+          $Purp     = "Required"
            $DPGName = "BSC_DPG"
        $DevColl00   = "BSCC0750_BSCC0750"
 	   $DevColl01   = "BSC-P Telewerken Windows 11"
@@ -27,11 +28,11 @@ $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HK
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $DTName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 
-$msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
-Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
+           $msi_dt = Get-CMDeploymentType -ApplicationName $AppFullName -DeploymentTypeName $DTName
+            Add-CMDeploymentTypeInstallBehavior -InputObject $msi_dt -ExeFileName $ProcName -DisplayName "Running image name"
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
-New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose # OverrideServiceWindow $true 
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

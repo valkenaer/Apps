@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer      = "157.0"
+           $ExpVer      = "158.0"
        $VerMinOne       = "156.0.1"
 
               $Manu = "Mozilla"
@@ -14,10 +14,10 @@ $SiteServer = $Env:COMPUTERNAME
            $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Mozilla Firefox"
        $UninstStr   = "`"C:\Program Files\Mozilla Firefox\uninstall\helper.exe`" /S"
  $ConsoleFolderPath = "\Applications\Productivity Tools"
-         $ProcName  = "firefox.exe"
+         $ProcName  = "$AppName.exe"
           $DPGName  = "BSC_DPG"
        $DevColl     = "20180808_FIREFOX"
-       $DTName      = "Firefox"
+       $DTName      = "$AppName Deployment"
        $PrevVersion = "$Manu $AppName $VerMinOne"
        $AppFullName = "$Manu $AppName $ExpVer"
 

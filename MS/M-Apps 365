@@ -27,7 +27,7 @@ $RunningExe = "excel.exe"
 # $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
 $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion $CUST"
 
-
+$DevColl01 = "BSCC0750_BSCC0750"
 $DevColl11 = "Computer All Physical (incl Spark)"
 $DevColl12 = "BSC-P Telewerken Windows 11"
 
@@ -39,7 +39,7 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 
          # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
          # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "13/03/2026 16:30" -TimeBaseOn LocalTime -Verbose
-         New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/07/2026 16:00" TimeBaseOn LocalTime -Verbose
+         New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/10/2026 16:00" TimeBaseOn LocalTime -Verbose
          # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/07/2026 16:00" -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName

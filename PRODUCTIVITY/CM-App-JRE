@@ -4,8 +4,9 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
 # DO THIS TWICE; once for x86 and once for the x64
- 
-              $ProdIDstart  = "{77124AE4-039E-4CA4-87B4-2F"
+
+                               
+              $ProdIDstart  = "{77924AE4-039E-4CA4-87B4-2F"
                  $ProdIDend = "F0}"
                 $MinVer     = "511"
                 $VerMinOne  = "503"

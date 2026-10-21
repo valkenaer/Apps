@@ -15,8 +15,8 @@ $DTName = "Office 365 Default Deployment Type"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\Microsoft\Apps 365\16.0.$MAJVER.$MINVER.V$FRIENDLY"
 $ExpectedVersion = "16.0.$MAJVER.$MINVER"
 $UpdateVersion = "(version $FRIENDLY)"
-$InstStr = "setup.exe /configure Config365Apps-$FRIENDLY.xml"
-# $InstStr = "setup.exe /configure Config365Apps-$FRIENDLY-$CUST.xml"
+# $InstStr = "setup.exe /configure Config365Apps-$FRIENDLY.xml"
+$InstStr = "setup.exe /configure Config365Apps-$FRIENDLY-$CUST.xml"
 $ConsoleFolderPath = "\Applications\Microsoft"
 $UninstStr = "setup.exe /configure Uninstall-365Apps.xml"
 $RepStr = "`"C:\Program Files\Microsoft Office 15\ClientX64\OfficeClickToRun.exe`" scenario=Repair platform=x64 culture=nl-nl RepairType=QuickRepair DisplaylayLevel=False"
@@ -24,11 +24,12 @@ $HKLMKey = "SOFTWARE\Microsoft\Office\ClickToRun\Configuration"
 $RegValName = "VersionToReport"
 $RunningExe = "excel.exe"
  $DPGName = "BSC_DPG"
-$AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
-# $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion $CUST"
+# $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
+$AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion $CUST"
 
-$DevColl01 = "Computer All Physical (incl Spark)"
-$DevColl02 = "BSC-P Telewerken Windows 11"
+
+$DevColl11 = "Computer All Physical (incl Spark)"
+$DevColl12 = "BSC-P Telewerken Windows 11"
 
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -PropertyType Version -ValueName $RegValName -Value -ExpectedValue $ExpectedVersion -ExpressionOperator GreaterEquals 
 
@@ -39,7 +40,7 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
          # New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -TimeBaseOn LocalTime -Verbose
          # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "13/03/2026 16:30" -TimeBaseOn LocalTime -Verbose
          New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/07/2026 16:00" TimeBaseOn LocalTime -Verbose
-         New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/07/2026 16:00" -TimeBaseOn LocalTime -Verbose
+         # New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose Required -AllowRepairApp $true -UserNotification DisplayAll -OverrideServiceWindow $true -AvailableDateTime "17/07/2026 16:00" -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

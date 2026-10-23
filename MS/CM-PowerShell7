@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
     
-    $AppVer      = "7.6.7"
-    $VerMinOne   = "7.6.6"
+    $AppVer      = "7.6.8"
+    $VerMinOne   = "7.6.7"
 
 $AppName         = "PowerShell"
 $Manu            = "Microsoft"

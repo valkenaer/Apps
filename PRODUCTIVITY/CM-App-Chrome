@@ -13,13 +13,12 @@ $MSILocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$AppVer\g
 $AppDesc         = "Chrome Enterprise offers scalable security, additional controls, customizable policies, and effortless integration of all the tools users already know and love."
 $Purp            = "Required"
 $DPGName         = "BSC_DPG"
-
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $AppFullName     = "$Manu $AppName $AppVer"
 $PrevVersion     = "$Manu $AppName $VerMinOne"
 
-   $DevColl01         = "BSC-P Telewerken Windows 11"
-   $DevColl02         = "Computer All Physical (incl Spark)"
+                                             $DevColl01         = "BSC-P Telewerken Windows 11"
+                                             $DevColl02         = "Computer All Physical (incl Spark)"
 
 if (!(test-path d:\Sources\Applications\$Manu\$AppName\$AppVer)){Write-Warning "Import path not found";Break}
 

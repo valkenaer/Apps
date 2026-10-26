@@ -3,8 +3,6 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-####       https://dotnet.microsoft.com/en-us/download/dotnet/8.0      First install on standalone, use the key that holds "Microsoft Windows Desktop Runtime VERSION" as check
-
    $ExpVer          = "10.0.14"
    $GUIDRT          = "{64BFC674-D664-480B-AFF2-D47C5531D6D2}"     # 1ST RUN RANDOM
    $ExpectedVersion = "80.56.61678"

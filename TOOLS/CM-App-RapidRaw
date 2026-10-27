@@ -8,10 +8,11 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu              = "Timon Kach"
 $AppName           = "RapidRAW"
+$arch              = "x64"
 $AppDesc           = "A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
 $RunningImg        = "$AppName.exe"
 $MSILocation       = "\\$SiteServer\Sources$\Applications\$Manu\$Version"
-$InstStr           = "$AppName-v$Version-$arch.exe /VERYSILENT /NORESTART /ALLUSERS"
+$InstStr           = "$AppName-v$Version-$arch.exe /S"
 $UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
 $HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\RapidRAW_is1"
 $AppFullName       = "$AppName $Version"

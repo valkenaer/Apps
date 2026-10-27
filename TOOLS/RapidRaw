@@ -1,0 +1,35 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+            $Version = "1.6.7"     
+
+
+$Manu              = "Timon Kach"
+$AppName           = "RapidRAW"
+$AppDesc           = "A beautiful, non-destructive, and GPU-accelerated RAW image editor built with performance in mind."
+$RunningImg        = "$AppName.exe"
+$MSILocation       = "\\$SiteServer\Sources$\Applications\$Manu\$Version"
+$InstStr           = "$AppName-v$Version-$arch.exe /VERYSILENT /NORESTART /ALLUSERS"
+$UninstStr         = "`"c:\Program Files\GIMP 3\uninst\unins000.exe`" /VERYSILENT /NORESTART"
+$HKLMKey           = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\RapidRAW_is1"
+$AppFullName       = "$Manu $AppName $Version"
+$DPGName           = "BSC_DPG"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$DevColl01         = "BSCC0750_BSCC0750"
+
+if (!(test-path d:\Sources\Applications\$Manu\$Version)){Write-Warning "Import path not found";Break}
+
+$clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $Version -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $MSILocation -ApplicationName $AppFullname -DeploymentTypeName "Script Installer" -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose Available -UserNotification DisplayAll -AvailableDateTime "10/10/2026 12:34" -TimeBaseOn LocalTime -Verbose
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

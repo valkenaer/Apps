@@ -35,6 +35,3 @@ $MoveApp = Get-CMApplication -Name $AppFullName
 If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
-
-
-#  InstalledSoftware | where Publisher == 'Mozilla'     138.0.4                \\host1014\Packages$\AppIcons             Not updated      0417 0448 0337

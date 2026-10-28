@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer      = "156.0"
+           $ExpVer      = "156.0"           UNINSTALL
 
               $Manu = "Mozilla"
            $AppName = "Maintenance Service"

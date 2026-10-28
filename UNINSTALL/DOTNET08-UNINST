@@ -6,7 +6,7 @@ $SiteServer = $Env:COMPUTERNAME
    $ExpVer          = "8.0.32"              
     $GUIDRT          = "{B3F524C3-ADC5-4043-9624-61055DE12870}"              #UNINSTALL
    $ExpectedVersion = "64.128.61394"
-   $AppName         = "Windows Desktop Runtime $ExpVer [2026-11]"
+   $AppName         = "Windows Desktop Runtime $ExpVer [2026-10]"
 
 
 $Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
@@ -16,18 +16,17 @@ $InstStr          = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet 
       $UninstStr = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
           $AppDesc = "The .NET Desktop Runtime $ExpVer enables you to run existing Windows desktop applications. This release includes the .NET Runtime; you don't need to install it separately."
           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUIDRT"
-$ConsoleFolderPath = "\Applications\Microsoft"
+$ConsoleFolderPath = "\Applications\Uninstalls"
       $AppFullName = "$AppName" 
 
-$DevColl   = "Computer All Physical (incl Spark)"
-$DevColl07   = "BSCC0750_BSCC0750"
+$DevColl01   = "Computer All Physical (incl Spark)"
 
 $clause1 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $Location -ApplicationName $AppFullname -DeploymentTypeName $AppFullName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause1 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName "BSC_DPG"
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Uninstall -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "10/10/2026 08:00" -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Uninstall -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime "10/10/2026 08:00" -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-           $ExpVer      = "156.0"           UNINSTALL
+           $ExpVer      = "156.0" 
 
               $Manu = "Mozilla"
            $AppName = "Maintenance Service"
@@ -28,7 +28,7 @@ New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -Sof
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
-New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Unnstall -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Uninstall -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
 $MoveApp = Get-CMApplication -Name $AppFullName
 

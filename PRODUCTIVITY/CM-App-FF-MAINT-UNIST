@@ -1,0 +1,40 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+           $ExpVer      = "156.0"
+
+              $Manu = "Mozilla"
+           $AppName = "Maintenance Service"
+            $AppDesc = "Mozilla Maintenance Service $ExpVer"
+       $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpVer"
+           $InstStr = "dummy.exe"
+           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MozillaMaitenanceService"
+       $UninstStr   = "`"C:\Program Files (x86)\Mozilla Maintenance Service\uninstall.exe"`" /S"
+ $ConsoleFolderPath = "\Applications\Productivity Tools"
+         $ProcName  = "$AppName.exe"
+          $DPGName  = "BSC_DPG"
+       $DevColl01     = "MOZ"
+       $DTName      = "$AppName Deployment"
+       $PrevVersion = "$Manu $AppName $VerMinOne"
+       $AppFullName = "$Manu $AppName $ExpVer"
+
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
+
+$clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpVer -Value
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullName -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -AddDetectionClause $clause2 -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Unnstall -UserNotification HideAll -OverrideServiceWindow $true -AvailableDateTime (Get-Date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}
+
+
+#  InstalledSoftware | where Publisher == 'Mozilla'     138.0.4                \\host1014\Packages$\AppIcons             Not updated      0417 0448 0337

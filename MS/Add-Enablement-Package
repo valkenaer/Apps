@@ -1,13 +1,15 @@
+# This servicing requires the october MSU of the 24H2 and 25H2; this should be 26100.9711 or 26200.9711
+
+
 installsource = 
 installcmd = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath Windows11.0-KB5121794-x64.msu -NoRestart -ErrorAction Stop`""
 
 
 
 
-<# Define the target KB number of your enablement package
-$KBNumber = "5121794" 
+<#
 
-# Path to the CBS Packages registry hive
+$KBNumber = "5121794" 
 $CBSPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages"
 
 # Search for the package identity corresponding to your KB

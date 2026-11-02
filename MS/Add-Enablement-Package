@@ -1,0 +1,34 @@
+installsource = 
+installcmd = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath Windows11.0-KB5121794-x64.msu -NoRestart -ErrorAction Stop`""
+
+
+
+
+<# Define the target KB number of your enablement package
+$KBNumber = "5121794" 
+
+# Path to the CBS Packages registry hive
+$CBSPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages"
+
+# Search for the package identity corresponding to your KB
+$Package = Get-ChildItem -Path $CBSPath -ErrorAction SilentlyContinue | 
+           Where-Object { $_.Name -like "*KB$KBNumber*" }
+
+if ($Package) {
+    # Read the current installation state of the package
+    $CurrentState = Get-ItemProperty -Path "HKLM:\$($Package.Name)" -Name "CurrentState" -ErrorAction SilentlyContinue
+    
+    # CBS State Values: 
+    # 70 = Staged (Installed, pending reboot)
+    # 112 = Installed (Fully active post-reboot)
+    if ($CurrentState.CurrentState -eq 70 -or $CurrentState.CurrentState -eq 112) {
+        # Outputting text signals to SCCM that the application is successfully detected
+        Write-Host "Installed"
+        Exit 0
+    }
+}
+
+# If not found or not in a staging state, exit cleanly without outputting text
+Exit 0
+
+#>

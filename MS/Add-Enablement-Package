@@ -14,7 +14,7 @@ $DevColl03     = "BSCC0750_BSCC0750"
 $DevColl04     = "Computer All Physical (incl Spark)"
 $DevColl05     = "BSC-P All VDI's"
 $Purp        = "Required"
-$ConsoleFolderPath = "\Applications\Micrsoft"
+$ConsoleFolderPath = "\Applications\Microsoft"
 $AppFullName = "$Manu $AppName Plugins $ExpectedVersion"
 $DPGName     = "BSC_DPG"
 
@@ -25,7 +25,10 @@ Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGrou
 # New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 # New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose
 
+$MoveApp = Get-CMApplication -Name $AppFullName
 
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 
 <#
 

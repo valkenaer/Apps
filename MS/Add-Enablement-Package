@@ -3,23 +3,23 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
        
-$Manu            = "Microsoft"
-$AppName         = "Enablement Package"
-$ExpectedVersion = "26H2"   
-$AppDesc         = "This applicatiosn installs that $Manu $AppName for Windows 11 version $ExpectedVersion. It needs the october 2026 MSU to do so (should be 26100.9711 or 26200.9711 or higher)"
-$ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
-$InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath .\Windows11.0-KB5121794-x64_5e20a3cce48d6611b16bdec42b07167f5456586a.msu -NoRestart -ErrorAction Stop`""
-$UninstStr   = "powershell.exe Remove-Item arf.zip -Recurse -Force"
-$DevColl03     = "BSCC0750_BSCC0750"
-$DevColl04     = "Computer All Physical (incl Spark)"
-$DevColl05     = "BSC-P All VDI's"
-$Purp        = "Required"
-$ConsoleFolderPath = "\Applications\Microsoft"
-$AppFullName = "$Manu $AppName Plugins $ExpectedVersion"
-$DPGName     = "BSC_DPG"
+   $Manu            = "Microsoft"
+   $AppName         = "Enablement Package"
+   $ExpectedVersion = "26H2"   
+   $AppDesc         = "This applicatiosn installs that $Manu $AppName for Windows 11 version $ExpectedVersion. It needs the october 2026 MSU to do so (should be 26100.9711 or 26200.9711 or higher)"
+   $ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+   $InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath .\Windows11.0-KB5121794-x64_5e20a3cce48d6611b16bdec42b07167f5456586a.msu -NoRestart -ErrorAction Stop`""
+   $UninstStr   = "powershell.exe Remove-Item arf.zip -Recurse -Force"
+       $DevColl03     = "BSCC0750_BSCC0750"
+       $DevColl04     = "Computer All Physical (incl Spark)"
+       $DevColl05     = "BSC-P All VDI's"
+   $Purp        = "Required"
+   $ConsoleFolderPath = "\Applications\Microsoft"
+   $AppFullName = "$Manu $AppName $ExpectedVersion"
+   $DPGName     = "BSC_DPG"
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
-Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -ScriptLanguage `"PowerShell`" -ScriptContent "do stuff here" -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -ScriptLanguage -ScriptContent "replace with actual detection script" -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
 
 # New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -AutoCloseExecutable $true -TimeBaseOn LocalTime -Verbose

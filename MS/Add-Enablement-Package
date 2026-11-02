@@ -1,8 +1,26 @@
 # This servicing requires the october MSU of the 24H2 and 25H2; this should be 26100.9711 or 26200.9711
 
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+       
+$Manu            = "Microsoft"
+$AppName         = "Enablement Package"
+$ExpectedVersion = "26H2"   
+$AppDesc         = "$ExpectedVersion Plugins"
+$ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+$InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath Windows11.0-KB5121794-x64_5e20a3cce48d6611b16bdec42b07167f5456586a.msu -NoRestart -ErrorAction Stop`""
+$UninstStr   = "powershell.exe Remove-Item arf.zip -Recurse -Force"
+$DevColl00     = "BSCC0750_BSCC0750"
+$DevColl01     = "Computer All Physical (incl Spark)"
+$DevColl02     = "BSC-P All VDI's"
+$Purp        = "Required"
+$ConsoleFolderPath = "\Applications\Micrsoft"
+$AppFullName = "$Manu $AppName Plugins $ExpectedVersion"
+$DPGName     = "BSC_DPG"
 
-installsource = 
-installcmd = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath Windows11.0-KB5121794-x64.msu -NoRestart -ErrorAction Stop`""
+
 
 
 

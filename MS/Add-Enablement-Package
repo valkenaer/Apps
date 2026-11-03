@@ -42,8 +42,6 @@ if ($Package) {
     $CurrentState = Get-ItemProperty -Path "HKLM:\$($Package.Name)" -Name "CurrentState" -ErrorAction SilentlyContinue
     
     # CBS State Values: 
-    # Staged (70/)       (Installed, pending reboot)
-    # Installed (112 / 0x70): The package is fully installed and active.
     # Absent (0 / 0x00): The package is not present or not installed.
     # Uninstall Pending (5 / 0x05): The package is scheduled for removal.
     # Resolving (16 / 0x10): The package dependencies are currently being resolved.
@@ -53,6 +51,7 @@ if ($Package) {
     # Superseded (80 / 0x50): The package has been replaced by a newer update.
     # Install Pending (96 / 0x60): The package installation is pending (often requiring a restart).
     # Partially Installed (101 / 0x65): The package installation was interrupted or is incomplete.
+    # Installed (112/0x70): The package is fully applied on operating system
     # Permanent (128 / 0x80): The package is a permanent part of the system image and cannot be uninstalled normally.
 
     if ($CurrentState.CurrentState -eq 70 -or $CurrentState.CurrentState -eq 112 -or $CurrentState.CurrentState -eq 96) {

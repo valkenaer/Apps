@@ -35,8 +35,6 @@ If($ConsoleFolderPath) {
 
 $KBNumber = "5121794" 
 $CBSPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages"
-
-# Search for the package identity corresponding to your KB
 $Package = Get-ChildItem -Path $CBSPath -ErrorAction SilentlyContinue | 
            Where-Object { $_.Name -like "*KB$KBNumber*" }
 
@@ -44,8 +42,8 @@ if ($Package) {
     $CurrentState = Get-ItemProperty -Path "HKLM:\$($Package.Name)" -Name "CurrentState" -ErrorAction SilentlyContinue
     
     # CBS State Values: 
-    # 70 = Staged (Installed, pending reboot)
-    # 112 = Installed (112 / 0x70): The package is fully installed and active.
+    # Staged (70/)       (Installed, pending reboot)
+    # Installed (112 / 0x70): The package is fully installed and active.
     # Absent (0 / 0x00): The package is not present or not installed.
     # Uninstall Pending (5 / 0x05): The package is scheduled for removal.
     # Resolving (16 / 0x10): The package dependencies are currently being resolved.
@@ -56,8 +54,6 @@ if ($Package) {
     # Install Pending (96 / 0x60): The package installation is pending (often requiring a restart).
     # Partially Installed (101 / 0x65): The package installation was interrupted or is incomplete.
     # Permanent (128 / 0x80): The package is a permanent part of the system image and cannot be uninstalled normally.
-
-
 
     if ($CurrentState.CurrentState -eq 70 -or $CurrentState.CurrentState -eq 112 -or $CurrentState.CurrentState -eq 96) {
         # Outputting text signals to SCCM that the application is successfully detected

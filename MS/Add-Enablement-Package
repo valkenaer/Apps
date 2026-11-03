@@ -56,13 +56,11 @@ if ($Package) {
     # Permanent (128 / 0x80): The package is a permanent part of the system image and cannot be uninstalled normally.
 
     if ($CurrentState.CurrentState -eq 70 -or $CurrentState.CurrentState -eq 112 -or $CurrentState.CurrentState -eq 96) {
-        # Outputting text signals to SCCM that the application is successfully detected
         Write-Host "Installed"
         Exit 0
     }
 }
 
-# If not found or not in a staging state, exit cleanly without outputting text
 Exit 0
 
 #>

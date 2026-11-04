@@ -7,13 +7,13 @@ $SiteServer = $Env:COMPUTERNAME
                        # FOR WIM deployment change THE FOLLPWING
 
 
-           $MinVer = "22031"
-          $AppDesc = "FULL Reader October 14th 2026 Planned Update"
+           $MinVer = "22075"
+          $AppDesc = "FULL Reader November 2nd 2026 Planned Update"
 
 $Manu = "Adobe"
 $AppName = "Acrobat Reader DC"
-$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\OSD\2026.002.$MinVer"
-$ExpectedVersion = "26.002.$MinVer"
+$ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\OSD\2026.003.$MinVer"
+$ExpectedVersion = "26.003.$MinVer"
 $FORM = "FULL"
 $InstStr = "setup.exe"
 #WIMInstStr = "powershell.exe -ExecutionPolicy Bypass -NoProfile -File `".\Deploy-App.ps1`" # -DeploymentMode `"Install`" -AppName `"ADBEREDER`""

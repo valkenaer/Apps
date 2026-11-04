@@ -3,8 +3,8 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-            $Version = "3.2.6"                 # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
-        $FullVersion = "3.2.4.0"
+            $Version = "3.2.8"                 # $URL = https://www.gimp.org/downloads      INNO INSTALLER4
+        $FullVersion = "3.2.8.0"
           $PrevVer  = "3.3.8"
        $SHA256       = "9337CCCBC01D4098EE7A3DAB215B3AFBE6ECE99C5287C92441D6F12CF541EBCA"
 

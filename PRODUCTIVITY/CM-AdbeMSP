@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                     $MinVer = "22075"
-                 $VerMinOne = "21931"
+                 $VerMinOne = "21999"
                      $RDate   = "November 2nd 2026" 
                   $REASON    = "Planned"   #  "Out of Cycle" or "Planned"
 
@@ -26,11 +26,11 @@ $DPGName = "BSC_DPG"
 
 $DevColl01 = "Computer All Physical (incl Spark)" 
 $DevColl02 = "BSC-P Telewerken Windows 11" 
-$DevColl99 = "Workstations Windows 10 version 22H2"
-$DevColl98 = "Workstations Windows 11 version 24H2"
-$DevColl97 = "BSC-A ALL Workstations"
+# $DevColl99 = "Workstations Windows 10 version 22H2"
+# $DevColl98 = "Workstations Windows 11 version 24H2"
+# $DevColl97 = "BSC-A ALL Workstations"
 
-                             if (!(test-path d:\Sources\Applications\$Manu\$AppName\MSP\2026.002.$MinVer)){Write-Warning "Import path not found";Break}
+                             if (!(test-path d:\Sources\Applications\$Manu\$AppName\MSP\2026.003.$MinVer)){Write-Warning "Import path not found";Break}
 
 $clause1 = New-CMDetectionClauseWindowsInstaller -ProductCode "{AC76BA86-7AD7-1043-7B44-AC0F074E4100}" -Existence
 $clause2 = New-CMDetectionClauseRegistryKeyValue -Hive LocalMachine -KeyName $HKLMKey -ValueName "DisplayVersion" -PropertyType String -ExpressionOperator IsEquals -ExpectedValue $ExpectedVersion -Value

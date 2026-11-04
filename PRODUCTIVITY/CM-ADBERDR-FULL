@@ -3,11 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-                       # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
-                       # FOR WIM deployment change THE FOLLPWING
-
-
-           $MinVer = "22075"
+           $MinVer = "22075"      # Make sure to update the PATCH= line in setup.ini in the package to represent the latest msp version
           $AppDesc = "FULL Reader November 2nd 2026 Planned Update"
 
 $Manu = "Adobe"

@@ -5,13 +5,15 @@ $SiteServer = $Env:COMPUTERNAME
 
                            $AppVer      = "2606"    #INSTALLFORSYSTEM
                           $ExpPlat      = "x64"
+                           $PrevVer    = "2605"
 
 $Manu            = "Igor Pavlov"
 $AppName         = "7-Zip"
 $MSILocation     = "\\$SiteServer\Sources$\Applications\$AppName\$AppVer\7z$AppVer-$ExpPlat.msi"
 $AppDesc         = "7-Zip is a file archiver with a high compression ratio."
-$Purp           = "Available"
+$Purp           = "Required"
 $AppFullName    = "$AppName $AppVer"
+$AppPrevVer        =  "AppName $PrevVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName           = "BSC_DPG"
 
@@ -20,6 +22,17 @@ $DPGName           = "BSC_DPG"
    $DevColl03         = "All Computer Physical (incl Spark)"
    $DevColl04         = "BSC-P Telewerken VDI's"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
+
+If (Get-CMApplication $AppPrevVer) {
+
+    Remove-CMApplicationDeployment -Name $AppPrevVer -CollectionName $DevColl01 -Force
+    Remove-CMApplicationDeployment -Name $AppPrevVer -CollectionName $DevColl02 -Force
+    Remove-CMApplicationDeployment -Name $AppPrevVer -CollectionName $DevColl03 -Force
+    Remove-CMApplicationDeployment -Name $AppPrevVer -CollectionName $DevColl04 -Force
+    Remove-CMApplication $AppPrevVer -Force
+
+}
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
@@ -31,4 +44,7 @@ If($ConsoleFolderPath) {
     $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
 }
 
-New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl01 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl02 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose

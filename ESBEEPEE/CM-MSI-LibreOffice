@@ -13,7 +13,7 @@ $AppDesc         = "LibreOffice is community-driven and developed software, and 
 $DevColl01        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
 $ConsoleFolderPath = "\Applications\SBP Verzoeken"
-$AppFullName    = "$Manu $AppVer"
+$AppFullName    = "$Manu $AppName $AppVer"
 $DPGName          = "BSC_DPG"
 
 

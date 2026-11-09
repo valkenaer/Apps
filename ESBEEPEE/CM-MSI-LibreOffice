@@ -8,7 +8,7 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu            = "The Document Foundation"
 $AppName         = "LibreOffice" 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName+"_"_"$AppVer"+"_"+"$Arch.msi"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName"+"_"+"$AppVer"+"_"+"$Arch.msi"
 $AppDesc         = "LibreOffice is community-driven and developed software, and is a project of the not-for-profit organization, The Document Foundation. LibreOffice is free and open source software, originally based on OpenOffice.org (commonly known as OpenOffice), and is the most actively developed OpenOffice.org successor project."
 $DevColl01        = "BSCC0750_BSCC0750"
 $Purp           = "Available"

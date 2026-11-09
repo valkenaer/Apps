@@ -10,11 +10,16 @@ $Manu            = "Igor Pavlov"
 $AppName         = "7-Zip"
 $MSILocation     = "\\$SiteServer\Sources$\Applications\$AppName\$AppVer\7z$AppVer-$ExpPlat.msi"
 $AppDesc         = "7-Zip is a file archiver with a high compression ratio."
-$DevColl        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
 $AppFullName    = "$AppName $AppVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName           = "BSC_DPG"
+
+   $DevColl01         = "BSC-P Beheer VDI's"
+   $DevColl02         = "BSC-P SOC Beheer VDI's"
+   $DevColl03         = "All Computer Physical (incl Spark)"
+   $DevColl04         = "BSC-P Telewerken VDI's"
+
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden

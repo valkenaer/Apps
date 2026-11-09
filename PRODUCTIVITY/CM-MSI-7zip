@@ -10,16 +10,16 @@ $SiteServer = $Env:COMPUTERNAME
 $Manu            = "Igor Pavlov"
 $AppName         = "7-Zip"
 $MSILocation     = "\\$SiteServer\Sources$\Applications\$AppName\$AppVer\7z$AppVer-$ExpPlat.msi"
-$AppDesc         = "7-Zip is a file archiver with a high compression ratio."
+$AppDesc         = "$AppName 7-Zip is a free, open-source file archiver and data compression utility used to bundle multiple files into a single compressed container (archive) or extract files from existing compressed formats. It was created by $Manu and first released in 1999"
 $Purp           = "Required"
 $AppFullName    = "$AppName $AppVer"
-$AppPrevVer        =  "AppName $PrevVer"
+$AppPrevVer        =  "$AppName $PrevVer"
 $ConsoleFolderPath = "\Applications\Productivity Tools"
 $DPGName           = "BSC_DPG"
 
    $DevColl01         = "BSC-P Beheer VDI's"
    $DevColl02         = "BSC-P SOC Beheer VDI's"
-   $DevColl03         = "All Computer Physical (incl Spark)"
+   $DevColl03         = "Computer All Physical (incl Spark)"
    $DevColl04         = "BSC-P Telewerken VDI's"
 
 if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}

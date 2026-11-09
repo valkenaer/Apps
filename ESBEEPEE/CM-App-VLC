@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-      $ExpectedVersion = "3.0.23"
+      $ExpectedVersion = "3.0.24"
                  $PrevVer = "3.0.21"
 
 $Manu = "VideoLAN"

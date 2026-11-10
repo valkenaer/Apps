@@ -1,0 +1,65 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+       
+   $Manu            = "Microsoft"
+   $AppName         = "Cumulative Update KB5127694"
+   $ExpectedVersion = "26H2"   
+   $AppDesc         = ".NET CU"
+   $ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+   $InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath `".\windows11.0-kb5127694-x64-ndp481_a1a6f6d3c61e46a77278881fc5f7245bcf09ce3f.msu`" -NoRestart -ErrorAction Stop`""
+   $UninstStr   = "powershell.exe Remove-Applications.ps1 -Recurse -Force"
+       $DevColl03     = "BSCC0750_BSCC0750"
+       $DevColl04     = "Computer All Physical (incl Spark)"
+       $DevColl05     = "BSC-P All VDI's"
+   $Purp        = "Required"
+   $ConsoleFolderPath = "\Applications\Microsoft"
+   $AppFullName = "$Manu $AppName $ExpectedVersion"
+   $DPGName     = "BSC_DPG"
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -ScriptLanguage Powershell -ScriptContent "Invoke-DummyScript -Really" -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+# New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+# New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+    }
+
+<#
+
+$KBNumber = "5121794" 
+$CBSPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages"
+$Package = Get-ChildItem -Path $CBSPath -ErrorAction SilentlyContinue | 
+           Where-Object { $_.Name -like "*KB$KBNumber*" }
+
+if ($Package) {
+    $CurrentState = Get-ItemProperty -Path "HKLM:\$($Package.Name)" -Name "CurrentState" -ErrorAction SilentlyContinue
+    
+    # CBS State Values: 
+    # Absent (0 / 0x00): The package is not present or not installed.
+    # Uninstall Pending (5 / 0x05): The package is scheduled for removal.
+    # Resolving (16 / 0x10): The package dependencies are currently being resolved.
+    # Resolved (32 / 0x20): The package dependencies have been resolved.
+    # Staging (48 / 0x30): The package files are being unpacked/staged into the system.
+    # Staged (64 / 0x40): The package is staged and ready for installation.
+    # Superseded (80 / 0x50): The package has been replaced by a newer update.
+    # Install Pending (96 / 0x60): The package installation is pending (often requiring a restart).
+    # Partially Installed (101 / 0x65): The package installation was interrupted or is incomplete.
+    # Installed (112/0x70): The package is fully applied on operating system
+    # Permanent (128 / 0x80): The package is a permanent part of the system image and cannot be uninstalled normally.
+
+    if ($CurrentState.CurrentState -eq 70 -or $CurrentState.CurrentState -eq 112 -or $CurrentState.CurrentState -eq 96) {
+        Write-Host "Installed"
+        Exit 0
+    }
+}
+
+Exit 0
+
+#>

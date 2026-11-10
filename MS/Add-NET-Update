@@ -18,6 +18,8 @@ $SiteServer = $Env:COMPUTERNAME
    $AppFullName = "$Manu $AppName $ExpectedVersion"
    $DPGName     = "BSC_DPG"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpectedVersion)){Write-Warning "Import path not found";Break}
+
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -ScriptLanguage Powershell -ScriptContent "Invoke-DummyScript -Really" -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
 Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName

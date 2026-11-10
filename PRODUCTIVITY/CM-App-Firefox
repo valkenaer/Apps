@@ -17,7 +17,7 @@ $SiteServer = $Env:COMPUTERNAME
          $ProcName  = "$AppName.exe"
           $DPGName  = "BSC_DPG"
        $DevColl01     = "MOZ"
-       $DTName      = "$AppName Deployment"
+       $DTName      = "$AppName"
        $PrevVersion = "$Manu $AppName $VerMinOne"
        $AppFullName = "$Manu $AppName $ExpVer"
 

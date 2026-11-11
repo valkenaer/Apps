@@ -1,0 +1,43 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+       
+   $Manu            = "Microsoft"
+   $AppName         = "Cumulative Update"
+   $ExpectedVersion = "kb5132061"   
+   $AppDesc         = "$ExpectedVersion addresse 1235 vuls"
+   $ExeLocation     = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\$ExpectedVersion"
+   $InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath `".\windows11.0-$ExpectedVersion-x64.msu`" -NoRestart -ErrorAction Stop`""
+   # $InstStr         = "powershell.exe -ExecutionPolicy Bypass -Command `"Add-WindowsPackage -Online -PackagePath `".\windows11.0-kb5127694-x64-ndp481_a1a6f6d3c61e46a77278881fc5f7245bcf09ce3f.msu`" -NoRestart -ErrorAction Stop`""
+   $UninstStr   = "powershell.exe Remove-Applications.ps1 -Recurse -Force"
+       $DevColl03     = "BSCC0750_BSCC0750"
+       $DevColl04     = "Computer All Physical (incl Spark)"
+       $DevColl05     = "BSC-P All VDI's"
+   $Purp        = "Required"
+   $ConsoleFolderPath = "\Applications\Microsoft"
+   $AppFullName = "$Manu $AppName $ExpectedVersion"
+   $DPGName     = "BSC_DPG"
+
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpectedVersion)){Write-Warning "Import path not found";Break}
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMScriptDeploymentType -ContentLocation $ExeLocation -ApplicationName $AppFullname -DeploymentTypeName $AppName -InstallCommand $InstStr -UninstallCommand $UninstStr -ScriptLanguage Powershell -ScriptContent "Invoke-DummyScript -Really" -MaximumRuntimeMins 20 -InstallationBehaviorType InstallForSystem -UserInterActionMode Hidden
+Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+
+# New-CMApplicationDeployment -CollectionName $DevColl03 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+# New-CMApplicationDeployment -CollectionName $DevColl04 -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification HideAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+    }
+
+<#
+
+if (Get-HotFix -Id "KB5132061" -ErrorAction SilentlyContinue) {
+    Write-Output "Installed"
+}
+
+#>

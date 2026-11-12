@@ -4,15 +4,16 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
    $ExpVer          = "10.0.15"
-   $GUIDRT          = "{64BFC474-D664-420B-AFF2-D47C5571D6D2}"             # 1ST RUN RANDOM
-   $ExpectedVersion = "81.26.61678"
-   $AppName         = "Windows Desktop Runtime $ExpVer [2026-11]"
+   $GUIDRT          = "{888E927F-F300-4F16-882A-B9A04F9513FB}"             # 1ST RUN RANDOM
+   $ExpectedVersion = "80.60.61788"
+   $Manu            = "Microsoft"
+   $AppName         = "NET Desktop Runtime"
+ $AppNameFull       = "$AppName $ExpVer [2026-11]"
    $PrevVersion     = "Windows Desktop Runtime [2026-10]"
 
 
-$Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"
+$Location         = "\\$SiteServer\Sources$\Applications\$\$ExpVer"
 $ProcName         = "abacab4e.exe"
-$Manu             = "Microsoft"
 $InstStr          = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet /norestart"
       $UninstStr = "windowsdesktop-runtime-$ExpVer-win-x64.exe /Uninstall /Quiet /Norestart"
           $AppDesc = "The .NET Desktop Runtime $ExpVer enables you to run existing Windows desktop applications. This release includes the .NET Runtime; you don't need to install it separately."
@@ -20,7 +21,7 @@ $InstStr          = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet 
 $ConsoleFolderPath = "\Applications\Microsoft"
       $AppFullName = "$AppName" 
 
-if (!(test-path d:\Sources\Applications\$Manu\NET Desktop Runtime\$ExpVer)){Write-Warning "Import path not found";Break}
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpVer)){Write-Warning "Import path not found";Break}
 
 $DevColl00   = "Computer All Physical (incl Spark)"
 $DevColl07   = "BSCC0750_BSCC0750"

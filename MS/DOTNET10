@@ -6,8 +6,8 @@ $SiteServer = $Env:COMPUTERNAME
    $ExpVer          = "10.0.15"
    $GUIDRT          = "{64BFC474-D664-420B-AFF2-D47C5571D6D2}"             # 1ST RUN RANDOM
    $ExpectedVersion = "81.26.61678"
-   $AppName         = "Windows Desktop Runtime $ExpVer [2026-10]"
-   $PrevVersion     = "Windows Desktop Runtime [2026-09]"
+   $AppName         = "Windows Desktop Runtime $ExpVer [2026-11]"
+   $PrevVersion     = "Windows Desktop Runtime [2026-10]"
 
 
 $Location         = "\\$SiteServer\Sources$\Applications\Microsoft\NET Desktop Runtime\$ExpVer"

@@ -3,9 +3,9 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-   $ExpVer          = "10.0.14"
-   $GUIDRT          = "{64BFC674-D664-480B-AFF2-D47C5531D6D2}"     # 1ST RUN RANDOM
-   $ExpectedVersion = "80.56.61678"
+   $ExpVer          = "10.0.15"
+   $GUIDRT          = "{64BFC474-D664-420B-AFF2-D47C5571D6D2}"             # 1ST RUN RANDOM
+   $ExpectedVersion = "81.26.61678"
    $AppName         = "Windows Desktop Runtime $ExpVer [2026-10]"
    $PrevVersion     = "Windows Desktop Runtime [2026-09]"
 
@@ -19,6 +19,8 @@ $InstStr          = "windowsdesktop-runtime-$ExpVer-win-x64.exe /install /quiet 
           $HKLMKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$GUIDRT"
 $ConsoleFolderPath = "\Applications\Microsoft"
       $AppFullName = "$AppName" 
+
+if (!(test-path d:\Sources\Applications\$Manu\NET Desktop Runtime\$ExpVer)){Write-Warning "Import path not found";Break}
 
 $DevColl00   = "Computer All Physical (incl Spark)"
 $DevColl07   = "BSCC0750_BSCC0750"

@@ -1,0 +1,32 @@
+Import-Module $env:SMS_ADMIN_UI_PATH.Replace("\bin\i386","\bin\configurationmanager.psd1")
+$SiteCode = Get-PSDrive -PSProvider CMSITE
+Set-Location "$($SiteCode.Name):\"
+$SiteServer = $Env:COMPUTERNAME
+
+                        $AppVer      = "5.3.0"
+                     $Arch           = "x64"
+
+$Manu            = "Ton Roosendaal"
+$AppName         = "Blender" 
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName-$AppVer-$Arch.msi"
+$AppDesc         = "LibreOffice is community-driven and developed software, and is a project of the not-for-profit organization, The Document Foundation. LibreOffice is free and open source software, originally based on OpenOffice.org (commonly known as OpenOffice), and is the most actively developed OpenOffice.org successor project."
+$DevColl01        = "BSCC0750_BSCC0750"
+$Purp           = "Available"
+$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$AppFullName    = "$Manu $AppName $AppVer"
+$DPGName          = "BSC_DPG"
+
+
+if (!(test-path d:\Sources\Applications\SBP\$Manu\$Appname\$AppVer)){Write-Warning "Import path not found";Break}
+
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
+
+   Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName
+   New-CMApplicationDeployment -CollectionName $DevColl -Name $AppFullName -DeployAction Install -DeployPurpose $Purp -UserNotification DisplayAll -AvailableDateTime (get-date) -TimeBaseOn LocalTime -Verbose
+
+$MoveApp = Get-CMApplication -Name $AppFullName
+
+If($ConsoleFolderPath) {
+    $MoveApp | Move-CMObject -FolderPath "$($SiteCode):\Application$($ConsoleFolderPath)"
+}

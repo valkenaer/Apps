@@ -4,11 +4,12 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
                         $AppVer      = "5.3.0"
+                   $OperatingSys     = "windows"
                      $Arch           = "x64"
 
 $Manu            = "Ton Roosendaal"
 $AppName         = "Blender" 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName-$AppVer-$Arch.msi"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName-$AppVer-$OperatingSys-$Arch.msi"     # msiexec /i "blender-x.y.z-windows64.msi" ALLUSERS=1 /qn /norestart
 $AppDesc         = "$AppName is a free and open-source 3D computer graphics software suite. It runs on Windows, macOS, Linux, BSD, Haiku, and IRIX and is used for general 3D modeling, animation, digital sculpting, visual effects, rendering, compositing, motion tracking, drawing, 2D animation and video editing."
 $DevColl01        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
@@ -19,7 +20,7 @@ $DPGName          = "BSC_DPG"
 
 if (!(test-path d:\Sources\Applications\SBP\$Manu\$Appname\$AppVer)){Write-Warning "Import path not found";Break}
 
-New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
 
    Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName

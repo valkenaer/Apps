@@ -14,13 +14,13 @@ $AppDesc         = "LibreOffice is community-driven and developed software, and 
 $DevColl01        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
 $ConsoleFolderPath = "\Applications\$Cust Verzoeken"
-$AppFullName    = "$Manu $AppName $AppVer"
+$AppFullName    = "$AppName $AppVer"
 $DPGName          = "BSC_DPG"
 
 
 if (!(test-path d:\Sources\Applications\$Cust\$Manu\$Appname\$AppVer)){Write-Warning "Import path not found";Break}
 
-New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
+New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $AppVer 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden
 
    Start-CMContentDistribution -ApplicationName $AppFullName -DistributionPointGroupName $DPGName

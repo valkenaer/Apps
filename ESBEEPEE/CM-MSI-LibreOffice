@@ -8,16 +8,17 @@ $SiteServer = $Env:COMPUTERNAME
 
 $Manu            = "The Document Foundation"
 $AppName         = "LibreOffice" 
-$MSILocation     = "\\$SiteServer\Sources$\Applications\SBP\$Manu\$AppName\$AppVer\$AppName"+"_"+"$AppVer"+"_"+"$Arch.msi"
+$Cust            = "SBP"
+$MSILocation     = "\\$SiteServer\Sources$\Applications\$Cust\$Manu\$AppName\$AppVer\$AppName"+"_"+"$AppVer"+"_"+"$Arch.msi"
 $AppDesc         = "LibreOffice is community-driven and developed software, and is a project of the not-for-profit organization, The Document Foundation. LibreOffice is free and open source software, originally based on OpenOffice.org (commonly known as OpenOffice), and is the most actively developed OpenOffice.org successor project."
 $DevColl01        = "BSCC0750_BSCC0750"
 $Purp           = "Available"
-$ConsoleFolderPath = "\Applications\SBP Verzoeken"
+$ConsoleFolderPath = "\Applications\$Cust Verzoeken"
 $AppFullName    = "$Manu $AppName $AppVer"
 $DPGName          = "BSC_DPG"
 
 
-if (!(test-path d:\Sources\Applications\SBP\$Manu\$Appname\$AppVer)){Write-Warning "Import path not found";Break}
+if (!(test-path d:\Sources\Applications\$Cust\$Manu\$Appname\$AppVer)){Write-Warning "Import path not found";Break}
 
 New-CMApplication -Name $AppFullName -Description $AppDesc -Publisher $Manu -SoftwareVersion $ExpectedVersion 
 Add-CMMSIDeploymentType -ApplicationName $AppFullname -ContentLocation $MSILocation -InstallationBehaviorType InstallForSystem -Force -UserInterActionMode Hidden

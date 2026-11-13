@@ -24,6 +24,8 @@ $DevColl01         = "Computer All Physical (incl Spark)"
 $DevColl02         = "BSC-P All VDI's"
 $AppFullName       = "$Manu $AppName $ExpectedVersion"
 
+if (!(test-path d:\Sources\Applications\$Manu\$AppName\$ExpectedVersion)){Write-Warning "Import path not found";Break}
+
 If (Get-CMApplication $PrevVer) {
 
     Remove-CMApplicationDeployment -Name $PrevVer -CollectionName $DevColl01 -Force

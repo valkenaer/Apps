@@ -4,9 +4,9 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
            $MAJVER =  "20430"        
-                                       $MINVER =  "20264"             # 2026-11    MOD SOURCE FOLDER NAME 
+                                       $MINVER =  "20264"             # 2026-11    MOD SOURCE FOLDER NAME / Monthly Enterprise Channel
          $FRIENDLY = "2609"
-                                         $CUST = "SBP"
+                                         $CUST = "MEC"     # MEC OR SBP
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
@@ -15,7 +15,6 @@ $DTName = "Office 365 Default Deployment Type"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\16.0.$MAJVER.$MINVER.V$FRIENDLY"
 $ExpectedVersion = "16.0.$MAJVER.$MINVER"
 $UpdateVersion = "(version $FRIENDLY)"
-# $InstStr = "setup.exe /configure Config365Apps-$FRIENDLY.xml"
 $InstStr = "setup.exe /configure Config365Apps-$FRIENDLY-$CUST.xml"
 $ConsoleFolderPath = "\Applications\$Manu"
 $UninstStr = "setup.exe /configure Uninstall-365Apps.xml"

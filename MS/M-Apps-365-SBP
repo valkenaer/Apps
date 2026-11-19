@@ -4,9 +4,9 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
            $MAJVER =  "20430"        
-                                       $MINVER =  "20264"             # 2026-11    MOD SOURCE FOLDER NAME / Monthly Enterprise Channel
+                                       $MINVER =  "20264"       # 2026-11    MOD SOURCE FOLDER NAME / Monthly Enterprise Channel
          $FRIENDLY = "2609"
-                                         $CUST = "MEC"     # MEC OR SBP
+                                         $CUST = "MEC"          # MEC OR SBP
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"

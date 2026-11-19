@@ -4,7 +4,7 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
   $MAJVER =  "20430"        
-                          $MINVER =  "20262 or 20264"             # 2026-11    MOD THIS and MAIN deployment time
+                          $MINVER =  "2026 2/4"             # 2026-11    MOD THIS and MAIN deployment time
   $FRIENDLY = "2609"
                          $CUST = "SBP"
 

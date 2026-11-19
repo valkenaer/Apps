@@ -4,13 +4,13 @@ Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
   $MAJVER =  "20430"        
-                          $MINVER =  "2026 2/4"             # 2026-11    MOD THIS and MAIN deployment time
+                          $MINVER =  "2026 2/4"             # 2026-11    MOD SOURCE FOLDER NAME 
   $FRIENDLY = "2609"
                          $CUST = "SBP"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
-$AppDesc = "Microsoft 365 Apps for enterprise is a version of Office applications and is made available as part of your Microsoft 365 subscription. The apps are installed on your computer or smartphone from the cloud. You would need an active subscription to Microsoft 365 so that the apps are verified to have the requisite license."
+$AppDesc = "$Manu $AppName is a version of Office applications and is made available as part of your $Manu 365 subscription. The apps are installed on your computer or smartphone from the cloud. You would need an active subscription to $Manu 365 so that the apps are verified to have the requisite license."
 $DTName = "Office 365 Default Deployment Type"
 $ExeLocation = "\\$SiteServer\Sources$\Applications\$Manu\$AppName\16.0.$MAJVER.$MINVER.V$FRIENDLY"
 $ExpectedVersion = "16.0.$MAJVER.$MINVER"

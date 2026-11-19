@@ -3,10 +3,10 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
               
-  $MAJVER =  "20430"        
-                          $MINVER =  "2026 2/4"             # 2026-11    MOD SOURCE FOLDER NAME 
-  $FRIENDLY = "2609"
-                         $CUST = "SBP"
+           $MAJVER =  "20430"        
+                                       $MINVER =  "2026 2/4"             # 2026-11    MOD SOURCE FOLDER NAME 
+        $FRIENDLY = "2609"
+                                     $CUST = "SBP"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"
@@ -27,8 +27,7 @@ $RunningExe = "excel.exe"
 # $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion"
 $AppFullName = "$Manu $AppName $ExpectedVersion $UpdateVersion $CUST"
 
-    
-if (!(test-path d:\Sources\Applications\$Manu\$AppName\16.0.$MAJVER.$MINVER.V$FRIENDLY)){Write-Warning "Import path not found";Break}
+                           if (!(test-path d:\Sources\Applications\$Manu\$AppName\16.0.$MAJVER.$MINVER.V$FRIENDLY)){Write-Warning "Import path not found";Break}
 
 $DevColl01 = "BSCC0750_BSCC0750"
 $DevColl11 = "Computer All Physical (incl Spark)"

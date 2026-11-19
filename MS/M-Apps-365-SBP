@@ -5,8 +5,8 @@ $SiteServer = $Env:COMPUTERNAME
               
            $MAJVER =  "20430"        
                                        $MINVER =  "2026 2/4"             # 2026-11    MOD SOURCE FOLDER NAME 
-        $FRIENDLY = "2609"
-                                     $CUST = "SBP"
+         $FRIENDLY = "2609"
+                                         $CUST = "SBP"
 
 $Manu = "Microsoft"
 $AppName = "365 Apps for Enterprise"

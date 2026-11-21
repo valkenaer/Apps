@@ -3,7 +3,7 @@ $SiteCode = Get-PSDrive -PSProvider CMSITE
 Set-Location "$($SiteCode.Name):\"
 $SiteServer = $Env:COMPUTERNAME
 
-             $GUID            = "{EA88EFD6-DBE3-4F60-B418-D814D8C34CE1}"   # BOGUS ONE TEST ON MONDAY
+             $GUID            = "{85E947A4-F693-4F76-80A1-2CA134271C6B}"   # BOGUS ONE TEST ON MONDAY
              $Friendly        = "2609"
              $ExpectedVersion = "8.20.1"
           $FullInstaller      = "8.20.1-43782309723"
